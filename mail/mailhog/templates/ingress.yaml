@@ -1,0 +1,26 @@
+kind: Ingress
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: mailhog
+  annotations:
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    cert-manager.io/cluster-issuer: {{ .Values.ingress.certificateIssuer}}
+    cert-manager.io/renew-before: 360h
+    cert-manager.io/common-name: {{ .Values.ingress.host}}
+spec:
+  ingressClassName: {{ .Values.ingress.className}}
+  tls:
+    - hosts:
+        - {{ .Values.ingress.host}}
+      secretName: {{ .Values.ingress.host}}
+  rules:
+    - host: {{ .Values.ingress.host}}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: mailhog
+                port:
+                  number: 8025

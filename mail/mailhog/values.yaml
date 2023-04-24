@@ -1,0 +1,15 @@
+ingress:
+  host: overlay_me
+  certificateIssuer: overlay_me
+  className: overlay_me
+
+mailhog:
+  image:
+    pullPolicy: IfNotPresent
+  resources:
+    limits:
+      cpu: 100m
+      memory: 128Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi
