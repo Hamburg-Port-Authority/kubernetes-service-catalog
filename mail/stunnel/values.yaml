@@ -5,4 +5,7 @@ certificate:
   dnsNames: overlay_me
 
 psp:
-  priviledgeRole: overlay_me
+  privileged: overlay_me
+
+configuration:
+  connect: overlay_me
