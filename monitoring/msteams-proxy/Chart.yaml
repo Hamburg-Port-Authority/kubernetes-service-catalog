@@ -3,6 +3,6 @@ name: msteams-proxy
 version: 1.0.0
 description: This Chart deploys msteams-proxy.
 dependencies:
-- name: prometheus-msteams
-  version: 1.3.*
-  repository: https://prometheus-msteams.github.io/prometheus-msteams/
+  - name: prometheus-msteams
+    version: 1.3.4
+    repository: https://prometheus-msteams.github.io/prometheus-msteams/
