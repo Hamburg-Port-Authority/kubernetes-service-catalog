@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stunnel-{{ .Release.Name }}
+  labels:
+    app: stunnel-{{ .Release.Name }}
+spec:
+  serviceAccountName: stunnel-{{ .Release.Name }}
+  selector:
+    matchLabels:
+      app: stunnel-{{ .Release.Name }}
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: stunnel-{{ .Release.Name }}
+    spec:
+      containers:
+        - name: stunnel
+          image: ghcr.io/hamburg-port-authority/stunnel:sha-e3b7753
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+            limits:
+              cpu: 100m
+              memory: 100Mi
+          envFrom:
+            - configMapRef:
+                name: stunnel-{{ .Release.Name }}
+          ports:
+            - containerPort: 465
+              name: smtp
+          volumeMounts:
+            - mountPath: "/tmp/certs"
+              name: ssl
+              readOnly: true
+      volumes:
+        - name: ssl
+          secret:
+            secretName: stunnel-{{ .Release.Name }}
+      restartPolicy: Always
