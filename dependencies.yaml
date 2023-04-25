@@ -29,3 +29,10 @@ dependencies:
     repository:
       type: artifacthub
       name: ingress-nginx/ingress-nginx
+  - name: "Cert Manager"
+    source:
+      file: security/cert-manager/Chart.yaml
+      path: .dependencies[0].version
+    repository:
+      type: artifacthub
+      name: cert-manager/cert-manager
