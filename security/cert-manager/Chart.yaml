@@ -3,6 +3,6 @@ name: cert-manager
 version: 1.0.0
 description: This Chart deploys cert-manager.
 dependencies:
-- name: cert-manager
-  version: 1.9.*
-  repository: https://charts.jetstack.io
+  - name: cert-manager
+    version: 1.11.1
+    repository: https://charts.jetstack.io
