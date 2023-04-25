@@ -15,3 +15,17 @@ dependencies:
     repository:
       type: artifacthub
       name: codecentric/mailhog
+  - name: "MS Teams Proxy"
+    source:
+      file: monitoring/msteams-proxy/Chart.yaml
+      path: .dependencies[0].version
+    repository:
+      type: artifacthub
+      name: prometheus-msteams/prometheus-msteams
+  - name: "Nginx Ingress"
+    source:
+      file: networking/ingress-nginx/Chart.yaml
+      path: .dependencies[0].version
+    repository:
+      type: artifacthub
+      name: ingress-nginx/ingress-nginx
