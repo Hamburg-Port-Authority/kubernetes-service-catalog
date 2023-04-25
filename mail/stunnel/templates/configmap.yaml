@@ -5,6 +5,6 @@ metadata:
 data:
   STUNNEL_SERVICE: "smtps"
   STUNNEL_ACCEPT: "465"
-  STUNNEL_CONNECT: "mailhog.mailhog:1025"
+  STUNNEL_CONNECT: {{ .Values.configuration.connect }}
   STUNNEL_KEY: "/tmp/certs/tls.key"
   STUNNEL_CRT: "/tmp/certs/tls.crt"

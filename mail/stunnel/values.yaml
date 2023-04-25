@@ -6,3 +6,6 @@ certificate:
 
 psp:
   privileged: overlay_me
+
+configuration:
+  connect: overlay_me
