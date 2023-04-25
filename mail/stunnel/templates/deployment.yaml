@@ -5,7 +5,6 @@ metadata:
   labels:
     app: stunnel-{{ .Release.Name }}
 spec:
-  serviceAccountName: stunnel-{{ .Release.Name }}
   selector:
     matchLabels:
       app: stunnel-{{ .Release.Name }}
@@ -17,6 +16,7 @@ spec:
       labels:
         app: stunnel-{{ .Release.Name }}
     spec:
+      serviceAccountName: stunnel-{{ .Release.Name }}
       containers:
         - name: stunnel
           image: ghcr.io/hamburg-port-authority/stunnel:sha-e3b7753
