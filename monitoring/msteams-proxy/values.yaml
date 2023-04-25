@@ -1,0 +1,26 @@
+prometheus-msteams:
+  replicaCount: 1
+
+  connectors:
+    # in alertmanager, this will be used as http://prometheus-msteams.msteams:2000/debug
+    - debug: https://outlook.office.com/webhook/xxxx/xxxx
+    # in alertmanager, this will be used as http://prometheus-msteams.msteams:2000/info
+    - info: https://outlook.office.com/webhook/xxxx/xxxx
+    # in alertmanager, this will be used as http://prometheus-msteams.msteams:2000/critical
+    - critical: https://outlook.office.com/webhook/xxxx/xxxx
+
+  resources:
+      limits:
+        cpu: 100m
+        memory: 100Mi
+      requests:
+        cpu: 10m
+        memory: 50Mi
+
+  # Enable metrics for prometheus operator
+  metrics:
+    serviceMonitor:
+      enabled: true
+      additionalLabels:
+        release: msteamsproxy # change this accordingly
+      scrapeInterval: 30s
