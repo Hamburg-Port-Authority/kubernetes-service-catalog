@@ -1,0 +1,8 @@
+certificate:
+  subject:
+    organizations: overlay_me
+  commonName: overlay_me
+  dnsNames: overlay_me
+
+psp:
+  priviledgeRole: overlay_me

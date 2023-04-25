@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: stunnel-{{ .Release.Name }}
+spec:
+  selector:
+    app: stunnel-{{ .Release.Name }}
+  type: ClusterIP
+  sessionAffinity: None
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 10800
+  ports:
+    - name: stunnel
+      protocol: TCP
+      port: 465
+      targetPort: 465
