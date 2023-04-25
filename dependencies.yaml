@@ -8,3 +8,10 @@ dependencies:
     repository:
       type: artifacthub
       name: bitnami/external-dns
+  - name: "Mailhog"
+    source:
+      file: mail/mailhog/Chart.yaml
+      path: .dependencies[0].version
+    repository:
+      type: artifacthub
+      name: codecentric/mailhog
