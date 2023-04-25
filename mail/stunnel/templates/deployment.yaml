@@ -19,7 +19,7 @@ spec:
       serviceAccountName: stunnel-{{ .Release.Name }}
       containers:
         - name: stunnel
-          image: ghcr.io/hamburg-port-authority/stunnel:sha-e3b7753
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
           resources:
             requests:
               cpu: 100m
