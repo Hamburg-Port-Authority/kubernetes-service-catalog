@@ -1,0 +1,10 @@
+version: 1
+
+dependencies:
+  - name: "External DNS"
+    source:
+      file: dns/external-dns/Chart.yaml
+      path: .dependencies[0].version
+    repository:
+      type: artifacthub
+      name: bitnami/external-dns
