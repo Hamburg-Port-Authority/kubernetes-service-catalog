@@ -36,3 +36,10 @@ dependencies:
     repository:
       type: artifacthub
       name: cert-manager/cert-manager
+  - name: "Prometheus Node Exporter"
+    source:
+      file: monitoring/prometheus-node-exporter/Chart.yaml
+      path: .dependencies[0].version
+    repository:
+      type: artifacthub
+      name: prometheus-community/prometheus-node-exporter
