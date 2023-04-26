@@ -57,3 +57,10 @@ dependencies:
     repository:
       type: artifacthub
       name: prometheus-community/alertmanager
+  - name: "VCLUSTER"
+    source:
+      file: optimization/vcluster/Chart.yaml
+      path: .dependencies[0].version
+    repository:
+      type: artifacthub
+      name: loft/vcluster
