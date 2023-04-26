@@ -4,11 +4,11 @@ on:
   # enable manual trigger
   workflow_dispatch:
   schedule:
-    # every 12 hours
-    - cron: '0 0,12 * * *'
+    - cron: '0 0 * * *'
   push:
     branches:
       - main
+      - development
     paths:
       - '.github/workflows/helm-dependencies.yml'
       - 'dependencies.yaml'
