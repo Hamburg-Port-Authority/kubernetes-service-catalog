@@ -1,0 +1,21 @@
+alertmanager:
+  ingress:
+    enabled: true
+    className: nginx
+    
+  resources:
+    limits:
+      cpu: 100m
+      memory: 128Mi
+    requests:
+      cpu: 10m
+      memory: 32Mi
+
+  persistence:
+    enabled: true
+    accessModes:
+      - ReadWriteOnce
+    size: 50Mi
+
+  configmapReload:
+    enabled: true
