@@ -9,6 +9,7 @@ on:
   push:
     branches:
       - main
+      - development
     paths:
       - '.github/workflows/helm-dependencies.yml'
       - 'dependencies.yaml'
