@@ -12,7 +12,7 @@ ingress-nginx:
     metrics:
       enabled: true
       serviceMonitor:
-        enabled: false
+        enabled: true
     setAsDefaultIngress: true
   defaultBackend:
     enabled: true
