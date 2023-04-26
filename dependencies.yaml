@@ -50,3 +50,10 @@ dependencies:
     repository:
       type: artifacthub
       name: prometheus-community/prometheus-operator-crds
+  - name: "Prometheus Alertmanager"
+    source:
+      file: monitoring/prometheus-alertmanager/Chart.yaml
+      path: .dependencies[0].version
+    repository:
+      type: artifacthub
+      name: prometheus-community/alertmanager
