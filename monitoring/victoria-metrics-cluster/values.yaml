@@ -1,0 +1,136 @@
+victoria-metrics-cluster:
+  rbac:
+    create: true
+    # Note: The PSP will only be deployed, if Kubernetes (<1.25) supports the resource.
+    pspEnabled: true
+    namespaced: true
+    
+  serviceAccount:
+    create: true
+    automountToken: true
+
+  vmselect:
+    enabled: true
+    name: vmselect
+    extraArgs:
+      envflag.enable: "true"
+      envflag.prefix: VM_
+      loggerFormat: json
+    # -- Additional environment variables (ex.: secret tokens, flags) https://github.com/VictoriaMetrics/VictoriaMetrics#environment-variables
+    env: []
+    podAnnotations:
+      #  prometheus.io/scrape: "true"
+      #  prometheus.io/port: "8481"
+    replicaCount: 3
+    resources: {}
+      # limits:
+      #   cpu: 50m
+      #   memory: 64Mi
+      # requests:
+      #   cpu: 50m
+      #   memory: 64Mi
+    ingress:
+      enabled: false
+      annotations: {}
+      #   kubernetes.io/ingress.class: nginx
+      #   kubernetes.io/tls-acme: 'true'
+      extraLabels: {}
+      hosts: []
+      #   - name: vmselect.local
+      #     path: /select
+      #    port: http
+      # -- Array of TLS objects
+      tls: []
+      #   - secretName: vmselect-ingress-tls
+      #     hosts:
+      #       - vmselect.local
+      # For Kubernetes >= 1.18 you should specify the ingress-controller via the field ingressClassName
+      # See https://kubernetes.io/blog/2020/04/02/improvements-to-the-ingress-api-in-kubernetes-1.18/#specifying-the-class-of-an-ingress
+      # ingressClassName: nginx
+      # -- pathType is only for k8s >= 1.1=
+      pathType: Prefix
+    statefulSet:
+      enabled: true
+      podManagementPolicy: OrderedReady
+      service:
+        annotations: {}
+        labels: {}
+        servicePort: 8481
+    persistentVolume:
+      enabled: false
+      accessModes:
+        - ReadWriteOnce
+      size: 2Gi
+      subPath: ""
+    serviceMonitor:
+      enabled: true
+      namespace: ""
+      interval: 15s
+      scrapeTimeout: 5s
+
+  vminsert:
+    enabled: true
+    name: vminsert
+    extraArgs:
+      envflag.enable: "true"
+      envflag.prefix: VM_
+      loggerFormat: json
+    # -- Additional environment variables (ex.: secret tokens, flags) https://github.com/VictoriaMetrics/VictoriaMetrics#environment-variables
+    env: []
+    podAnnotations:
+      #  prometheus.io/scrape: "true"
+      #  prometheus.io/port: "8480"
+    replicaCount: 3
+    ingress:
+      enabled: false
+      annotations: {}
+      #   kubernetes.io/ingress.class: nginx
+      #   kubernetes.io/tls-acme: 'true'
+      extraLabels: {}
+      hosts: []
+      # - name: vminsert.local
+      #   path: /insert
+      #   port: http
+      # -- Array of TLS objects
+      tls: []
+      #   - secretName: vminsert-ingress-tls
+      #     hosts:
+      #       - vminsert.local
+      # For Kubernetes >= 1.18 you should specify the ingress-controller via the field ingressClassName
+      # See https://kubernetes.io/blog/2020/04/02/improvements-to-the-ingress-api-in-kubernetes-1.18/#specifying-the-class-of-an-ingress
+      # ingressClassName: nginx
+      # -- pathType is only for k8s >= 1.1=
+      pathType: Prefix
+    serviceMonitor:
+      enabled: true
+      namespace: ""
+      interval: 15s
+      scrapeTimeout: 5s
+
+  vmstorage:
+    enabled: true
+    name: vmstorage
+    extraArgs:
+      envflag.enable: "true"
+      envflag.prefix: VM_
+      loggerFormat: json
+    # -- Additional environment variables (ex.: secret tokens, flags) https://github.com/VictoriaMetrics/VictoriaMetrics#environment-variables
+    env: []
+    # -- Data retention period. Supported values 1w, 1d, number without measurement means month, e.g. 2 = 2month
+    retentionPeriod: 1
+    persistentVolume:
+      enabled: true
+      accessModes:
+        - ReadWriteOnce
+      annotations: {}
+      storageClass: ""
+      size: 8Gi
+    # -- Pod's annotations
+    podAnnotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8482"
+    serviceMonitor:
+      enabled: true
+      namespace: ""
+      interval: 15s
+      scrapeTimeout: 5s
