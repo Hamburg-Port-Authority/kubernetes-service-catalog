@@ -1,0 +1,4 @@
+apiVersion: v2
+name: victoria-metrics-vmalert-cr
+version: 1.0.0
+description: This Chart deploys an alertmanager custom resource for victoria-metrics-operator.

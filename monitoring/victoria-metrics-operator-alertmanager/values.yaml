@@ -1,0 +1,7 @@
+image:
+  repository: "prom/alertmanager"
+  tag: "v0.25.0"
+ingress:
+  host: alertmanageer.localhost
+  className: nginx
+  certificateIssuer: selfsigned

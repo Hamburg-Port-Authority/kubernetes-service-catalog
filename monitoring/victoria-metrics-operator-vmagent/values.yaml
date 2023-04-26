@@ -1,0 +1,4 @@
+image:
+  repository: victoriametrics/vmagent
+agent:
+  remoteWriteUrl: http://victoria-metrics-cluster-vminsert.default:8480/insert/0/prometheus

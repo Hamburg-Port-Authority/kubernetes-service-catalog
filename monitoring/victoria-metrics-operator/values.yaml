@@ -1,0 +1,32 @@
+victoria-metrics-operator:
+  createCRD: true
+  replicaCount: 1
+  logLevel: "info"
+  rbac:
+    create: true
+    pspEnabled: true
+  operator:
+    disable_prometheus_converter: false
+    prometheus_converter_add_argocd_ignore_annotations: true
+    psp_auto_creation_enabled: true
+    enable_converter_ownership: false
+    useCustomConfigReloader: false
+  serviceAccount:
+    create: true
+  resources:
+    limits:
+      cpu: 120m
+      memory: 320Mi
+    requests:
+      cpu: 80m
+      memory: 120Mi
+  env:
+    #-- available env variables found here: https://docs.victoriametrics.com/operator/vars.html
+    - name: VM_VMALERTDEFAULT_CONFIGRELOADIMAGE
+      value: jimmidyson/configmap-reload:v0.3.0
+    - name: VM_VMAGENTDEFAULT_CONFIGRELOADIMAGE
+      value: prometheus-operator/prometheus-config-reloader:v0.58.0
+    - name: VM_VMALERTMANAGER_CONFIGRELOADERIMAGE
+      value: jimmidyson/configmap-reload:v0.3.0
+  serviceMonitor:
+    enabled: true

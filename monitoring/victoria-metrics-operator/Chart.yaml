@@ -1,0 +1,8 @@
+apiVersion: v2
+name: victoria-metrics-operator
+version: 1.0.0
+description: This Chart deploys victoria-metrics-operator.
+dependencies:
+- name: victoria-metrics-operator
+  version: 0.19.*
+  repository: https://victoriametrics.github.io/helm-charts/

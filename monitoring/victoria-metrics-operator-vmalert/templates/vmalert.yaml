@@ -1,0 +1,21 @@
+# Source: victoria-metrics-k8s-stack/templates/victoria-metrics-operator/vmalert/vmalert.yaml
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMAlert
+metadata:
+  name: victoria-metrics-alert
+spec:
+  datasource:
+    url: {{ .Values.vmalert.datasource }}
+  evaluationInterval: 15s
+  extraArgs:
+    remoteWrite.disablePathAppend: "true"
+  image:
+    repository: {{ .Values.image.repository }}
+  notifiers:
+  - url: {{ .Values.vmalert.notifiers }}
+  remoteRead:
+    url: {{ .Values.vmalert.remoteRead }}
+  remoteWrite:
+    url: {{ .Values.vmalert.remoteWrite }}
+  selectAllByDefault: true
+

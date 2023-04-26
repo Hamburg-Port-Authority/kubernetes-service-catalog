@@ -1,0 +1,28 @@
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMAlertmanager
+metadata:
+  name: alertmanager
+spec:
+  image: 
+    repository: {{ .Values.image.repository }}
+    tag: {{ .Values.image.tag }}
+    pullPolicy: IfNotPresent
+  configNamespaceSelector: {}
+  configRawYaml: |
+    global:
+      resolve_timeout: 5m
+    route:
+      receiver: 'default'
+      group_interval: 5m
+      repeat_interval: 12h
+    receivers:
+    - name: 'default'
+  configSelector: {}
+  replicaCount: 1
+  resources:
+    limits:
+      cpu: 100m
+      memory: 250Mi
+    requests:
+      cpu: 50m
+      memory: 150Mi

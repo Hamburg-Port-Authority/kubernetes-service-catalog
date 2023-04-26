@@ -1,0 +1,4 @@
+apiVersion: v2
+name: victoria-metrics-agent-cr
+version: 1.0.0
+description: This Chart deploys a victoria metrics agent custom resource for victoria-metrics-operator.
