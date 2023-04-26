@@ -71,6 +71,12 @@ dependencies:
     repository:
       type: artifacthub
       name: victoriametrics/victoria-metrics-operator
-
+  - name: "Victoria Metrics Cluster"
+    source:
+      file: monitoring/victoria-metrics-cluster/Chart.yaml
+      path: .dependencies[0].version
+    repository:
+      type: artifacthub
+      name: victoriametrics/victoria-metrics-cluster
 
       
