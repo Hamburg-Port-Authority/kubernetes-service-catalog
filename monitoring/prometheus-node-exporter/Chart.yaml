@@ -3,6 +3,6 @@ name: prometheus-node-exporter
 version: 1.0.0
 description: This Chart deploys prometheus-node-exporter.
 dependencies:
-- name: prometheus-node-exporter
-  version: 4.13.*
-  repository: https://prometheus-community.github.io/helm-charts
+  - name: prometheus-node-exporter
+    version: 4.17.0
+    repository: https://prometheus-community.github.io/helm-charts
