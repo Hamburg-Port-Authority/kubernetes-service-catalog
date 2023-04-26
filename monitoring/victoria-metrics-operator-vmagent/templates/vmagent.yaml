@@ -1,0 +1,20 @@
+# Source: victoria-metrics-k8s-stack/templates/victoria-metrics-operator/vmagent.yaml
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMAgent
+metadata:
+  name: victoria-metrics-agent
+spec:
+  image:
+    repository: {{ .Values.image.repository }}
+  extraArgs:
+    envflag.enable: "true"
+    envflag.prefix: VM_
+    loggerFormat: json
+    promscrape.maxScrapeSize: "167772160"
+    promscrape.streamParse: "true"
+  remoteWrite:
+    - url: {{ .Values.agent.remoteWriteUrl }}
+  scrapeInterval: 10s
+  selectAllByDefault: true
+  serviceAccountName: victoria-metrics-agent
+  shardCount: 2

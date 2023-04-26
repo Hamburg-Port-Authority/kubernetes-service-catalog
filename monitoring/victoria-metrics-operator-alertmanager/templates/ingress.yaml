@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: prometheus-alertmanager
+  namespace: victoria-metrics
+  annotations:
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    cert-manager.io/cluster-issuer: {{ .Values.ingress.certificateIssuer }}
+    cert-manager.io/renew-before: 360h
+    cert-manager.io/common-name: {{ .Values.ingress.host }}
+spec:
+  ingressClassName: {{ .Values.ingress.className }}
+  rules:
+  - host: {{ .Values.ingress.host }}
+    http:
+      paths:
+      - backend:
+          service:
+            name: vmalertmanager-alertmanager
+            port:
+              number: 9093
+        path: /
+        pathType: ImplementationSpecific
+  tls:
+    - hosts:
+      - {{ .Values.ingress.host }}
+      secretName: {{ .Values.ingress.host }}

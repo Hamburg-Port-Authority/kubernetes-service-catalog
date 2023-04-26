@@ -64,3 +64,13 @@ dependencies:
     repository:
       type: artifacthub
       name: loft/vcluster
+  - name: "Victoria Metrics Operator"
+    source:
+      file: monitoring/victoria-metrics-operator/Chart.yaml
+      path: .dependencies[0].version
+    repository:
+      type: artifacthub
+      name: victoriametrics/victoria-metrics-operator
+
+
+      
