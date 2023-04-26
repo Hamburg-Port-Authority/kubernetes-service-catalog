@@ -4,7 +4,6 @@ on:
   # enable manual trigger
   workflow_dispatch:
   schedule:
-    # every 12 hours
     - cron: '0 0 * * *'
   push:
     branches:
