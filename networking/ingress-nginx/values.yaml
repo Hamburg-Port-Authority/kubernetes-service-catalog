@@ -1,6 +1,6 @@
 ingress-nginx:
   podSecurityPolicy:
-      enabled: true
+    enabled: true
   controller:
     resources:
       requests:
@@ -14,6 +14,8 @@ ingress-nginx:
       serviceMonitor:
         enabled: false
     setAsDefaultIngress: true
+    extraArgs:
+      enable-ssl-passthrough: true
   defaultBackend:
     enabled: true
     resources:
