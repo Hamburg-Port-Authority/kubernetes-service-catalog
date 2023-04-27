@@ -7,7 +7,6 @@ on:
     - cron: '0 0 * * *'
   push:
     branches:
-      - main
       - development
     paths:
       - '.github/workflows/helm-dependencies.yml'

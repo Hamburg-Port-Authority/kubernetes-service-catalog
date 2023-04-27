@@ -78,5 +78,12 @@ dependencies:
     repository:
       type: artifacthub
       name: victoriametrics/victoria-metrics-cluster
+  - name: "ArgoCD Core"
+    source:
+      file: system/argocdcore/Chart.yaml
+      path: .dependencies[0].version
+    repository:
+      type: artifacthub
+      name: argo/argo-cd
 
       

@@ -3,11 +3,12 @@ prometheus-node-exporter:
   # This is a YAML-formatted file.
   # Declare variables to be passed into your templates.
   image:
-    repository: quay.io/prometheus/node-exporter
+    registry: quay.io
+    repository: prometheus/node-exporter
     # Overrides the image tag whose default is {{ printf "v%s" .Chart.AppVersion }}
     tag: ""
     pullPolicy: IfNotPresent
-    sha: ""
+    digest: ""
 
   imagePullSecrets: []
   # - name: "image-pull-secret"
@@ -25,13 +26,17 @@ prometheus-node-exporter:
     #   - pullSecret1
     #   - pullSecret2
     imagePullSecrets: []
+    #
+    # Allow parent charts to override registry hostname
+    imageRegistry: ""
 
   # Configure kube-rbac-proxy. When enabled, creates a kube-rbac-proxy to protect the node-exporter http endpoint.
   # The requests are served through the same service but requests are HTTPS.
   kubeRBACProxy:
     enabled: false
     image:
-      repository: quay.io/brancz/kube-rbac-proxy
+      registry: quay.io
+      repository: brancz/kube-rbac-proxy
       tag: v0.14.0
       sha: ""
       pullPolicy: IfNotPresent
@@ -68,6 +73,12 @@ prometheus-node-exporter:
     annotations:
       prometheus.io/scrape: "true"
 
+  # Set a NetworkPolicy with:
+  # ingress only on service.port
+  # no egress permitted
+  networkPolicy:
+    enabled: false
+
   # Additional environment variables that will be passed to the daemonset
   env: {}
   ##  env:
@@ -97,6 +108,11 @@ prometheus-node-exporter:
       ## Override serviceMonitor selector
       ##
       selectorOverride: {}
+
+      ## Attach node metadata to discovered targets. Requires Prometheus v2.35.0 and above.
+      ##
+      attachMetadata:
+        node: false
 
       relabelings: []
       metricRelabelings: []
@@ -249,7 +265,8 @@ prometheus-node-exporter:
     runAsNonRoot: true
     runAsUser: 65534
 
-  containerSecurityContext: {}
+  containerSecurityContext:
+    readOnlyRootFilesystem: true
     # capabilities:
     #   add:
     #   - SYS_TIME

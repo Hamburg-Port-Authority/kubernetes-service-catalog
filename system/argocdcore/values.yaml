@@ -1,0 +1,58 @@
+argo-cd:
+  redis:
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+    serviceAccount:
+      create: true
+
+
+  controller:
+    replicas: 1
+    resources:
+      limits:
+        cpu: 500m
+        memory: 512Mi
+      requests:
+        cpu: 250m
+        memory: 256Mi
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+
+  server:
+    replicas: 2
+    resources:
+      limits:
+        cpu: 50m
+        memory: 128Mi
+      requests:
+        cpu: 10m
+        memory: 64Mi
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+
+  repoServer:
+    replicas: 2
+    resources:
+      limits:
+        cpu: 50m
+        memory: 128Mi
+      requests:
+        cpu: 10m
+        memory: 64Mi
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+
+  applicationSet:
+    replicaCount: 2
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
