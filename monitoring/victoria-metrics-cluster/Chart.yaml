@@ -3,6 +3,6 @@ name: victoria-metrics-cluster
 version: 1.0.0
 description: This Chart deploys victoria-metrics-cluster.
 dependencies:
-- name: victoria-metrics-cluster
-  version: 0.9.56
-  repository: https://victoriametrics.github.io/helm-charts/
+  - name: victoria-metrics-cluster
+    version: 0.9.61
+    repository: https://victoriametrics.github.io/helm-charts/
