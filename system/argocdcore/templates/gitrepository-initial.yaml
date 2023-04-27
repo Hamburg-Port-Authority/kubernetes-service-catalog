@@ -10,7 +10,7 @@ stringData:
   url: {{ .Values.init.repository.url }}
   password: {{ .Values.init.repository.password }}
   username: {{ .Values.init.repository.username }}
-  insecure: {{ .Values.init.repository.insecure }}
-  forceHttpBasicAuth: {{ .Values.init.repository.forceHttpBasicAuth }}
-  enableLfs: true
+  insecure: "{{ .Values.init.repository.insecure }}"
+  forceHttpBasicAuth: "{{ .Values.init.repository.forceHttpBasicAuth }}"
+  enableLfs: "true"
 {{- end -}}
