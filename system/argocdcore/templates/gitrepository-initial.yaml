@@ -12,5 +12,5 @@ stringData:
   username: {{ .Values.init.repository.username }}
   insecure: {{ .Values.init.repository.insecure }}
   forceHttpBasicAuth: {{ .Values.init.repository.forceHttpBasicAuth }}
-  enableLfs: "true"
+  enableLfs: true
 {{- end -}}
