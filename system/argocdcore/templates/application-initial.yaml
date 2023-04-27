@@ -1,0 +1,44 @@
+{{- if eq .Values.init.repository.enabled "true" -}}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: application-initializer
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  labels:
+    name: initializer
+spec:
+  project: default
+
+  source:
+    repoURL: {{ .Values.init.repository.url }}
+    targetRevision: {{ .Values.init.application.targetRevision }}
+    path: {{ .Values.init.application.path }}
+
+    directory:
+      recurse: true
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
+      allowEmpty: false
+    syncOptions:
+      - Validate=false
+      - CreateNamespace=true
+      - PrunePropagationPolicy=foreground
+      - PruneLast=true
+    retry:
+      limit: 5
+      backoff:
+        duration: 5s 
+        factor: 2
+        maxDuration: 3m
+
+  revisionHistoryLimit: 10
+{{- end -}}

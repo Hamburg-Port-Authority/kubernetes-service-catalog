@@ -1,3 +1,24 @@
+psp:
+  privileged: overlay_me
+
+init:
+  enabled: "true"
+  application:
+    path: "./argocd-applicationsets/env/development"
+    targetRevision: "main"
+  repository:
+    url: https://github.com/Hamburg-Port-Authority/kubernetes-service-catalog
+    username: "overlay_me"
+    password: "overlay_me"
+    insecure: "false"
+    forceHttpBasicAuth: "false"
+
+ingress:
+  enabled: "true"
+  host: "overlay_me"
+  issuer: "overlay_me"
+  className: "nginx"
+
 argo-cd:
   redis:
     metrics:
