@@ -1,3 +1,6 @@
+psp:
+  privileged: overlay_me
+
 argo-cd:
   redis:
     metrics:
