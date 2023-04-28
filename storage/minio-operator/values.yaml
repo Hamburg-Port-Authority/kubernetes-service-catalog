@@ -1,0 +1,25 @@
+operator:
+  operator:
+    replicaCount: 2
+    securityContext:
+      runAsUser: 1000
+      runAsGroup: 1000
+      runAsNonRoot: true
+      fsGroup: 1000
+    containerSecurityContext:
+      runAsUser: 1000
+      runAsGroup: 1000
+      runAsNonRoot: true
+    resources:
+      requests:
+        cpu: 200m
+        memory: 256Mi
+        ephemeral-storage: 500Mi
+
+  console:
+    securityContext:
+      runAsUser: 1000
+      runAsNonRoot: true
+    containerSecurityContext:
+      runAsUser: 1000
+      runAsNonRoot: true

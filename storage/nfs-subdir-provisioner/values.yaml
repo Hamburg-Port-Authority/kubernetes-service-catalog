@@ -1,0 +1,36 @@
+nfs-subdir-external-provisioner:  
+  nfs:
+    volumeName: nfs-backup-share
+    reclaimPolicy: Retain
+  
+  storageClass:
+    create: true
+    provisionerName: k8s-sigs.io/nfs-backup-share
+    defaultClass: false
+    name: nfs-backup-share
+    allowVolumeExpansion: true
+    reclaimPolicy: Retain
+    archiveOnDelete: true
+    pathPattern: "${.PVC.namespace}-${.PVC.name}"
+    accessModes: ReadWriteOnce
+
+  leaderElection:
+    enabled: true
+
+  rbac:
+    create: true
+  
+  podSecurityPolicy:
+    enabled: true
+  
+  serviceAccount:
+    create: true
+    name: sa-nfs-backup-share
+
+  resources: 
+    limits:
+      cpu: 256m
+      memory: 512Mi
+    requests:
+      cpu: 100m
+      memory: 64Mi
