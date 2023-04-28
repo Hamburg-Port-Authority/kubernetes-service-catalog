@@ -92,4 +92,12 @@ dependencies:
     repository:
       type: artifacthub
       name: bitnami-labs/sealed-secrets
+  - name: "NFS Subdir Provisioner"
+    source:
+      file: storage/nfs-subdir-provisioner/Chart.yaml
+      path: .dependencies[0].version
+    repository:
+      type: artifacthub
+      name: nfs-subdir-external-provisioner/nfs-subdir-external-provisioner
       
+
