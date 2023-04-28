@@ -1,3 +1,6 @@
+metrics:
+  tenantName: overlay_me
+
 tenant:
   tenant:
     metrics:

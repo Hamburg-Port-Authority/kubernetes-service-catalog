@@ -1,0 +1,10 @@
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMServiceScrape
+metadata:
+  name: minio-tenant-service-scrape
+spec:
+  selector:
+    matchLabels:
+      v1.min.io/tenant: {{ .Values.metrics.tenantName}}
+  endpoints:
+    - port: https-minio
