@@ -24,7 +24,10 @@ jobs:
         uses: hckops/actions/helm-dependencies-action@v0.10.2
         with:
           config-path: dependencies.yaml
-          user-email: "hckbot@users.noreply.github.com"
-          user-name: "hckbot"
+          user-email: "meep-the-helm-bot@users.noreply.github.com"
+          user-name: "Meep"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GIT_DEFAULT_BRANCH: development
+          GIT_USER_EMAIL: meep-the-helm-bot@users.noreply.github.com
+          GIT_USER_NAME: Meep
