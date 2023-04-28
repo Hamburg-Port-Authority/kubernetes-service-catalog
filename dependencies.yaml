@@ -85,5 +85,11 @@ dependencies:
     repository:
       type: artifacthub
       name: argo/argo-cd
-
+  - name: "Sealed Secrets"
+    source:
+      file: security/sealed-secrets/Chart.yaml
+      path: .dependencies[0].version
+    repository:
+      type: artifacthub
+      name: bitnami-labs/sealed-secrets
       
