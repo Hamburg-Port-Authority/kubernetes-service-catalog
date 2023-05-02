@@ -4,10 +4,6 @@ metadata:
   name: vmagent-additional-scrape-configs
 stringData:
   additional-scrape-configs.yaml: |
-    - job_name: vmagent
-      static_configs:
-        - targets: ["localhost:8429"]
-
       ## COPY from Prometheus helm chart https://github.com/helm/charts/blob/master/stable/prometheus/values.yaml
 
       # Scrape config for API servers.
