@@ -8,3 +8,4 @@ spec:
       v1.min.io/tenant: {{ .Values.metrics.tenantName}}
   endpoints:
     - port: https-minio
+      scheme: https
