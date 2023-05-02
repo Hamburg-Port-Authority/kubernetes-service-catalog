@@ -12,6 +12,9 @@ spec:
     loggerFormat: json
     promscrape.maxScrapeSize: "167772160"
     promscrape.streamParse: "true"
+  additionalScrapeConfigs:
+    name: vmagent-additional-scrape-configs
+    key: additional-scrape-configs.yaml
   remoteWrite:
     - url: {{ .Values.agent.remoteWriteUrl }}
   scrapeInterval: 10s
