@@ -7,7 +7,8 @@ spec:
     matchLabels:
       v1.min.io/tenant: {{ .Values.metrics.tenantName}}
   endpoints:
-    - port: https-minio
+    - port: http-minio
       scheme: https
+      path: /minio/v2/metrics/cluster
       tlsConfig:
         insecureSkipVerify: true
