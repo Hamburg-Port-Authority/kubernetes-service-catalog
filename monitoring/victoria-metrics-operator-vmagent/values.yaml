@@ -2,3 +2,8 @@ image:
   repository: victoriametrics/vmagent
 agent:
   remoteWriteUrl: http://victoria-metrics-cluster-vminsert.default:8480/insert/0/prometheus
+ingress:
+  enabled: false
+  className: overlay_me
+  issuer: overlay_me
+  host: overlay_me
