@@ -9,3 +9,5 @@ spec:
   endpoints:
     - port: https-minio
       scheme: https
+      tlsConfig:
+        insecureSkipVerify: true
