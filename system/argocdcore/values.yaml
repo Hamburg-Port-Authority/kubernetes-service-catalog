@@ -18,7 +18,7 @@ ingress:
   host: "overlay_me"
   issuer: "overlay_me"
   className: "nginx"
-  sercetName: ""
+  secretName: ""
 
 argo-cd:
   redis:
