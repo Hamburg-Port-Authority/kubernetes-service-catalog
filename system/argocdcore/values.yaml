@@ -18,6 +18,7 @@ ingress:
   host: "overlay_me"
   issuer: "overlay_me"
   className: "nginx"
+  sercetName: ""
 
 argo-cd:
   redis:
@@ -27,7 +28,6 @@ argo-cd:
         enabled: true
     serviceAccount:
       create: true
-
 
   controller:
     replicas: 1

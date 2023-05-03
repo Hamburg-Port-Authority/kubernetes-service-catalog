@@ -27,5 +27,5 @@ spec:
   tls:
     - hosts:
         - {{ .Values.ingress.host }}
-      secretName: argocd-secret # do not change, this is provided by Argo CD
+      secretName: {{ .Values.ingress.sercetName | default "argocd-secret" }}  # do not change, this is provided by Argo CD
 {{- end -}}
