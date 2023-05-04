@@ -29,7 +29,7 @@ spec:
           labels:
             infrastructure: info
           annotations:
-            summary: Kubernetes CronJob suspended (instance {{ $labels.instance }})
+            summary: Kubernetes CronJob suspended (instance {{ printf "{{ $labels.instance }}" }})
             description: "CronJob {{ printf "{{ $labels.namespace }}" }}/{{ printf "{{ $labels.cronjob }}" }} is suspended\n  VALUE = {{ printf "{{ $value }}" }}\n  LABELS = {{ printf "{{ $labels }}" }}"
         - alert: KubernetesDiskPressure
           expr: kube_node_status_condition{condition="DiskPressure",status="true"} == 1
@@ -37,7 +37,7 @@ spec:
           labels:
             infrastructure: critical
           annotations:
-            summary: Kubernetes disk pressure (instance {{ $labels.instance }})
+            summary: Kubernetes disk pressure (instance {{ printf "{{ $labels.instance }}" }})
             description: "{{ printf "{{ $labels.node }}" }} has DiskPressure condition\n  VALUE = {{ printf "{{ $value }}" }}\n  LABELS = {{ printf "{{ $labels }}" }}"
         - alert: KubernetesJobFailed
           expr: kube_job_status_failed > 0
@@ -45,7 +45,7 @@ spec:
           labels:
             infrastructure: info
           annotations:
-            summary: Kubernetes Job failed (instance {{ $labels.instance }})
+            summary: Kubernetes Job failed (instance {{ printf "{{ $labels.instance }}" }})
             description: "Job {{ printf "{{$labels.namespace}}" }}/{{ printf "{{$labels.exported_job}}" }} failed to complete\n  VALUE = {{ printf "{{ $value }}" }}\n  LABELS = {{ printf "{{ $labels }}" }}"
         - alert: KubernetesVolumeOutOfDiskSpace
           expr: kubelet_volume_stats_available_bytes / kubelet_volume_stats_capacity_bytes * 100 < 10
@@ -53,7 +53,7 @@ spec:
           labels:
             infrastructure: critical
           annotations:
-            summary: Kubernetes Volume out of disk space (instance {{ $labels.instance }})
+            summary: Kubernetes Volume out of disk space (instance {{ printf "{{ $labels.instance }}" }})
             description: "Volume is almost full (< 10% left)\n  VALUE = {{ printf "{{ $value }}" }}\n  LABELS = {{ printf "{{ $labels }}" }}"
         - alert: KubernetesMemoryPressure
           expr: kube_node_status_condition{condition="MemoryPressure",status="true"} == 1
