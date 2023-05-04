@@ -19,6 +19,7 @@ ingress:
   issuer: "overlay_me"
   className: "nginx"
   secretName: ""
+  sslPassthrough: ""
 
 argo-cd:
   redis:
