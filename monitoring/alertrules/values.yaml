@@ -1,0 +1,8 @@
+diskalerts:
+  enabled: "true"
+hostalerts:
+  enabled: "true"
+kubernetesalerts:
+  enabled: "true"
+podalerts:
+  enabled: "true"
