@@ -113,4 +113,10 @@ dependencies:
     repository:
       type: artifacthub
       name: grafana/loki
-
+  - name: "Grafana Promtail"
+    source:
+      file: monitoring/grafana-promtail/Chart.yaml
+      path: .dependencies[0].version
+    repository:
+      type: artifacthub
+      name: grafana/promtail

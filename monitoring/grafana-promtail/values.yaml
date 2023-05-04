@@ -1,0 +1,199 @@
+promtail:
+  daemonset:
+    enabled: true
+  deployment:
+    enabled: false
+
+  podAnnotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "http-metrics"
+
+  resources:
+    limits:
+      cpu: 200m
+      memory: 128Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi
+
+  podSecurityContext:
+    runAsUser: 0
+    runAsGroup: 0
+
+  containerSecurityContext:
+    readOnlyRootFilesystem: true
+    capabilities:
+      drop:
+        - ALL
+    allowPrivilegeEscalation: false
+
+  rbac:
+    create: true
+    pspEnabled: true
+
+
+  serviceAccount:
+    create: true
+
+  serviceMonitor:
+    enabled: true
+    prometheusRule:
+      enabled: false
+      
+  podSecurityPolicy:
+    privileged: true
+    allowPrivilegeEscalation: true
+    volumes:
+      - 'secret'
+      - 'hostPath'
+      - 'downwardAPI'
+    hostNetwork: false
+    hostIPC: false
+    hostPID: false
+    runAsUser:
+      rule: 'RunAsAny'
+    seLinux:
+      rule: 'RunAsAny'
+    supplementalGroups:
+      rule: 'RunAsAny'
+    fsGroup:
+      rule: 'RunAsAny'
+    readOnlyRootFilesystem: true
+    requiredDropCapabilities:
+      - ALL
+
+  config:
+    logLevel: info
+    serverPort: 3101
+    clients:
+      - url: http://loki.loki:3100/loki/api/v1/push
+    snippets:
+      pipelineStages:
+        - cri: {}
+      common:
+        - action: replace
+          source_labels:
+            - __meta_kubernetes_pod_node_name
+          target_label: node_name
+        - action: replace
+          source_labels:
+            - __meta_kubernetes_namespace
+          target_label: namespace
+        - action: replace
+          replacement: $1
+          separator: /
+          source_labels:
+            - namespace
+            - app
+          target_label: job
+        - action: replace
+          source_labels:
+            - __meta_kubernetes_pod_name
+          target_label: pod
+        - action: replace
+          source_labels:
+            - __meta_kubernetes_pod_container_name
+          target_label: container
+        - action: replace
+          replacement: /var/log/pods/*$1/*.log
+          separator: /
+          source_labels:
+            - __meta_kubernetes_pod_uid
+            - __meta_kubernetes_pod_container_name
+          target_label: __path__
+        - action: replace
+          replacement: /var/log/pods/*$1/*.log
+          regex: true/(.*)
+          separator: /
+          source_labels:
+            - __meta_kubernetes_pod_annotationpresent_kubernetes_io_config_hash
+            - __meta_kubernetes_pod_annotation_kubernetes_io_config_hash
+            - __meta_kubernetes_pod_container_name
+          target_label: __path__
+      addScrapeJobLabel: false
+      scrapeConfigs: |
+        # See also https://github.com/grafana/loki/blob/master/production/ksonnet/promtail/scrape_config.libsonnet for reference
+        - job_name: kubernetes-pods
+          pipeline_stages:
+            {{- toYaml .Values.config.snippets.pipelineStages | nindent 4 }}
+          kubernetes_sd_configs:
+            - role: pod
+          relabel_configs:
+            - source_labels:
+                - __meta_kubernetes_pod_controller_name
+              regex: ([0-9a-z-.]+?)(-[0-9a-f]{8,10})?
+              action: replace
+              target_label: __tmp_controller_name
+            - source_labels:
+                - __meta_kubernetes_pod_label_app_kubernetes_io_name
+                - __meta_kubernetes_pod_label_app
+                - __tmp_controller_name
+                - __meta_kubernetes_pod_name
+              regex: ^;*([^;]+)(;.*)?$
+              action: replace
+              target_label: app
+            - source_labels:
+                - __meta_kubernetes_pod_label_app_kubernetes_io_instance
+                - __meta_kubernetes_pod_label_release
+              regex: ^;*([^;]+)(;.*)?$
+              action: replace
+              target_label: instance
+            - source_labels:
+                - __meta_kubernetes_pod_label_app_kubernetes_io_component
+                - __meta_kubernetes_pod_label_component
+              regex: ^;*([^;]+)(;.*)?$
+              action: replace
+              target_label: component
+            {{- if .Values.config.snippets.addScrapeJobLabel }}
+            - replacement: kubernetes-pods
+              target_label: scrape_job
+            {{- end }}
+            {{- toYaml .Values.config.snippets.common | nindent 4 }}
+            {{- with .Values.config.snippets.extraRelabelConfigs }}
+            {{- toYaml . | nindent 4 }}
+            {{- end }}
+
+    file: |
+      server:
+        log_level: {{ .Values.config.logLevel }}
+        http_listen_port: {{ .Values.config.serverPort }}
+        {{- with .Values.httpPathPrefix }}
+        http_path_prefix: {{ . }}
+        {{- end }}
+        {{- tpl .Values.config.snippets.extraServerConfigs . | nindent 2 }}
+
+      clients:
+        {{- tpl (toYaml .Values.config.clients) . | nindent 2 }}
+
+      positions:
+        filename: /run/promtail/positions.yaml
+
+      scrape_configs:
+        {{- tpl .Values.config.snippets.scrapeConfigs . | nindent 2 }}
+        {{- tpl .Values.config.snippets.extraScrapeConfigs . | nindent 2 }}
+
+      limits_config:
+        {{- tpl .Values.config.snippets.extraLimitsConfig . | nindent 2 }}
+
+  networkPolicy:
+    enabled: false
+
+  sidecar:
+    configReloader:
+      enabled: true
+      image:
+        registry: docker.io
+        repository: jimmidyson/configmap-reload
+        tag: v0.8.0
+        pullPolicy: IfNotPresent
+    
+      containerSecurityContext:
+        readOnlyRootFilesystem: true
+        capabilities:
+          drop:
+            - ALL
+        allowPrivilegeEscalation: false
+      config:
+        serverPort: 9533
+      serviceMonitor:
+        enabled: true
