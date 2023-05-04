@@ -15,7 +15,7 @@ spec:
             infrastructure: critical
             alert_with_resolve: "true"
           annotations:
-            summary: "Disk full in four days (instance {{ $labels.instance }})"
+            summary: "Disk full in four days (instance {{ printf "{{ $labels.instance }}" }})"
             description: "{{ printf "{{ $labels.volume }}" }} is expected to fill up within four days. Currently {{ printf "{{ $value | humanize }}" }}% is available.\n VALUE = {{ printf "{{ $value }}" }}\n LABELS: {{ printf "{{ $labels }}" }}"
         - alert: DiskSpaceUsage
           expr: 100.0 - 100 * (node_filesystem_avail_bytes  / node_filesystem_size_bytes) > 95
