@@ -11,20 +11,20 @@ spec:
           expr: 100 * (node_filesystem_avail_bytes / node_filesystem_size_bytes) < 15 and predict_linear(node_filesystem_avail_bytes[6h], 4 * 24 * 3600) < 0
           for: 10m
           labels:
-            env: "{{ $labels.kubernetes_namespace }}"
+            env: "{{ printf "{{ $labels.kubernetes_namespace }}" }}"
             infrastructure: critical
             alert_with_resolve: "true"
           annotations:
             summary: "Disk full in four days (instance {{ $labels.instance }})"
-            description: "{{ $labels.volume }} is expected to fill up within four days. Currently {{ $value | humanize }}% is available.\n VALUE = {{ $value }}\n LABELS: {{ $labels }}"
+            description: "{{ printf "{{ $labels.volume }}" }} is expected to fill up within four days. Currently {{ printf "{{ $value | humanize }}" }}% is available.\n VALUE = {{ printf "{{ $value }}" }}\n LABELS: {{ printf "{{ $labels }}" }}"
         - alert: DiskSpaceUsage
           expr: 100.0 - 100 * (node_filesystem_avail_bytes  / node_filesystem_size_bytes) > 95
           for: 10m
           labels:
-            env: "{{ $labels.kubernetes_namespace }}"
+            env: "{{ printf "{{ $labels.kubernetes_namespace }}" }}"
             infrastructure: critical
             alert_with_resolve: "true"
           annotations:
-            summary: "Disk Space Usage (instance {{ $labels.instance }})"
-            description: "Disk Space on Drive is used more than 95%\n  VALUE = {{ $value }}\n  LABELS: {{ $labels }}"
+            summary: "Disk Space Usage (instance {{ printf "{{ $labels.instance }}" }})"
+            description: "Disk Space on Drive is used more than 95%\n  VALUE = {{ printf "{{ $value }}" }}\n  LABELS: {{ printf "{{ $labels }}" }}"
 {{- end -}}
