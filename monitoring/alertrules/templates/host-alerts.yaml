@@ -13,28 +13,28 @@ spec:
           labels:
             infrastructure: warning
           annotations:
-            summary: Host memory under memory pressure (instance {{ $labels.instance }})
-            description: "The node is under heavy memory pressure. High rate of major page faults\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+            summary: Host memory under memory pressure (instance {{ printf "{{ $labels.instance }}" }})
+            description: "The node is under heavy memory pressure. High rate of major page faults\n  VALUE = {{ printf "{{ $value }}" }}\n  LABELS = {{ printf "{{ $labels }}" }}"
         - alert: HostOutOfMemory
           expr: node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes * 100 < 10
           for: 2m
           labels:
             infrastructure: critical
           annotations:
-            summary: Host out of memory (instance {{ $labels.instance }})
-            description: "Node memory is filling up (< 10% left)\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+            summary: Host out of memory (instance {{ printf "{{ $labels.instance }}" }})
+            description: "Node memory is filling up (< 10% left)\n  VALUE = {{ printf "{{ $value }}" }}\n  LABELS = {{ printf "{{ $labels }}" }}"
         - alert: HostOutOfInodes
           expr: node_filesystem_files_free / node_filesystem_files * 100 < 10 and ON (instance, device, mountpoint) node_filesystem_readonly == 0
           for: 2m
           labels:
             infrastructure: warning
           annotations:
-            summary: Host out of inodes (instance {{ $labels.instance }})
-            description: "Disk is almost running out of available inodes (< 10% left)\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+            summary: Host out of inodes (instance {{ printf "{{ $labels.instance }}" }})
+            description: "Disk is almost running out of available inodes (< 10% left)\n  VALUE = {{ printf "{{ $value }}" }}\n  LABELS = {{ printf "{{ $labels }}" }}"
         - alert: NodeHasRebooted #check if reboot-time < 10 min
           annotations:
             description: Node has rebooted
-            summary: Node {{ (or $labels.node $labels.instance) }} has rebooted {{ $value }} seconds ago.
+            summary: Node {{ printf "{{ (or $labels.node $labels.instance) }}" }} has rebooted {{ printf "{{ $value }}" }} seconds ago.
           expr: |
                   (time() - node_boot_time_seconds < 600) and (time() - 600 - (node_boot_time_seconds offset 10m) > 600)
           labels:
@@ -42,7 +42,7 @@ spec:
         - alert: NodeHasRebooted # check reboot time < 1h
           annotations:
             description: Node has rebooted
-            summary: Node {{ (or $labels.node $labels.instance) }} has rebooted {{ $value }} seconds ago.
+            summary: Node {{ printf "{{ (or $labels.node $labels.instance) }}" }} has rebooted {{ printf "{{ $value }}" }} seconds ago.
           expr: |
                   (time() - node_boot_time_seconds < 3600) and (time() - 3600 - (node_boot_time_seconds offset 60m) > 3600)
           labels:
