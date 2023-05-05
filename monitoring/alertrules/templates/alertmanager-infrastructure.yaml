@@ -1,0 +1,28 @@
+apiVersion: monitoring.coreos.com/v1alpha1
+kind: AlertmanagerConfig
+metadata:
+  name: infrastructure-alarms
+  labels:
+    alertmanagerConfig: infrastructure
+spec:
+  route:
+    groupBy: ["alertname"]
+    groupWait: 30s
+    groupInterval: 5m
+    repeatInterval: 1h
+    receiver: "email"
+    routes:
+      - receiver: email
+        matchers: 
+        - name: infrastructure
+          matchType: =
+          value: critical
+  receivers:
+    - name: 'email'
+      emailConfigs:
+      - to: {{ .Values.emailConfiguration.to }}
+        from: {{ .Values.emailConfiguration.from }}
+        smarthost: {{ .Values.emailConfiguration.smarthost }}
+        tlsConfig:
+          insecureSkipVerify: {{ .Values.emailConfiguration.insecureSkipVerify }}
+        requireTLS: {{ .Values.emailConfiguration.requireTLS }}
