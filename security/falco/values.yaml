@@ -1,5 +1,5 @@
 psp:
-  enabled: false
+  enabled: "false"
   privileged: overlay_me
 
 falco:
