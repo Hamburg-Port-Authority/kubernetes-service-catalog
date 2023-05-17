@@ -1,3 +1,7 @@
+psp:
+  enabled: "false"
+  privileged: overlay_me
+
 falco:
   scc:
     create: false
