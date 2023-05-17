@@ -17,6 +17,8 @@ operator:
         ephemeral-storage: 500Mi
 
   console:
+    ingress:
+      ingressClassName: nginx
     securityContext:
       runAsUser: 1000
       runAsNonRoot: true
