@@ -126,4 +126,4 @@ dependencies:
       path: .dependencies[0].version
     repository:
       type: artifacthub
-      name: external-secrets/external-secrets
+      name: external-secrets-operator/external-secrets
