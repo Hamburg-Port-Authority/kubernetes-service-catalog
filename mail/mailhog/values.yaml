@@ -1,4 +1,5 @@
 ingress:
+  enabled: true
   host: overlay_me
   certificateIssuer: overlay_me
   className: overlay_me
