@@ -27,3 +27,4 @@ spec:
       - {{ .Values.ingress.host }}
       secretName: {{ .Values.ingress.host }}
 {{- end }}
+
