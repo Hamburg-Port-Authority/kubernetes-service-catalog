@@ -2,7 +2,7 @@ alertmanager:
   ingress:
     enabled: true
     className: nginx
-    
+
   resources:
     limits:
       cpu: 100m
