@@ -110,7 +110,7 @@ loki:
               topologyKey: failure-domain.beta.kubernetes.io/zone
   read:
     replicas: 3
-    podManagementPolicy: OrderedReady
+    podManagementPolicy: Parallel
     autoscaling:
       enabled: false
       minReplicas: 1
