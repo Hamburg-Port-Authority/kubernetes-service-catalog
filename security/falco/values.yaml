@@ -5,3 +5,19 @@ psp:
 falco:
   scc:
     create: false
+
+falcoexporter:
+  podSecurityPolicy:
+    create: false
+
+  podSecurityContext:
+    fsGroup: 2000
+
+  serviceMonitor:
+    enabled: true
+
+  grafanaDashboard:
+    enabled: true
+    namespace: falco
+    folder: /falco
+    prometheusDatasourceName: victoria-metrics
