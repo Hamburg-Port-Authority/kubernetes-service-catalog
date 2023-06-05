@@ -6,7 +6,7 @@ falco:
   scc:
     create: false
 
-falcoexporter:
+falco-exporter:
   podSecurityPolicy:
     create: false
 
