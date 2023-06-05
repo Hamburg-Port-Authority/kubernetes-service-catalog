@@ -10,6 +10,9 @@ falco-exporter:
   podSecurityPolicy:
     create: false
 
+  serviceAccount:
+    name: falco-exporter
+
   podSecurityContext:
     fsGroup: 2000
 
