@@ -4,5 +4,5 @@ version: 1.0.0
 description: This Chart deploys prometheus-alertmanager.
 dependencies:
   - name: alertmanager
-    version: 0.31.1
+    version: 0.32.1
     repository: https://prometheus-community.github.io/helm-charts
