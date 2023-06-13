@@ -13,6 +13,6 @@ spec:
           labels:
             severity: warning
           annotations:
-            description: "Pod {{ printf "{{ $labels.namespace }}" }}/{{ printf "{{ $labels.pod }}" }} ({{ printf "{{ $labels.container }}" }}) is restarting {{ printf "{{ printf '%.2f' $value }}" }} times / 5 minutes."
+            description: "Pod {{ printf "{{ $labels.namespace }}" }}/{{ printf "{{ $labels.pod }}" }} ({{ printf "{{ $labels.container }}" }}) is restarting {{ printf "{{ $value }}" }} times / 5 minutes."
             summary: Pod is crash looping.
 {{- end -}}

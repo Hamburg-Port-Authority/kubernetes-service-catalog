@@ -11,4 +11,7 @@ subjects:
   - kind: ServiceAccount
     name: falco
     namespace: falco
+  - kind: ServiceAccount
+    name: falco-exporter
+    namespace: falco
 {{- end -}}

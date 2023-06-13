@@ -120,3 +120,24 @@ dependencies:
     repository:
       type: artifacthub
       name: grafana/promtail
+  - name: "External Secrets"
+    source:
+      file: security/external-secrets/Chart.yaml
+      path: .dependencies[0].version
+    repository:
+      type: artifacthub
+      name: external-secrets-operator/external-secrets
+  - name: "Falco"
+    source:
+      file: security/falco/Chart.yaml
+      path: .dependencies[0].version
+    repository:
+      type: artifacthub
+      name: falcosecurity/falco
+  - name: "Falco Exporter"
+    source:
+      file: security/falco/Chart.yaml
+      path: .dependencies[1].version
+    repository:
+      type: artifacthub
+      name: falcosecurity/falco-exporter

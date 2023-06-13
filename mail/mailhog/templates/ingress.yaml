@@ -26,3 +26,4 @@ spec:
                 port:
                   number: 8025
 {{- end }}
+
