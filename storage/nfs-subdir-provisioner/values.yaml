@@ -1,6 +1,5 @@
 nfs-subdir-external-provisioner:  
   nfs:
-    volumeName: nfs-backup-share
     reclaimPolicy: Retain
   
   storageClass:
