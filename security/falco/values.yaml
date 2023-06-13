@@ -5,6 +5,12 @@ psp:
 falco:
   scc:
     create: false
+  falco:
+    grpc:
+      enabled: true
+      bind_address: "unix:///run/falco/falco.sock"
+      threadiness: 0
+
 
 falco-exporter:
   podSecurityPolicy:
