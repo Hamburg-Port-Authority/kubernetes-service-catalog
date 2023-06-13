@@ -24,6 +24,10 @@ falco-exporter:
 
   serviceMonitor:
     enabled: true
+    additionalLabels:
+      app.kubernetes.io/component: monitoring
+      app.kubernetes.io/instance: falco
+      app.kubernetes.io/name: falco
 
   grafanaDashboard:
     enabled: true
