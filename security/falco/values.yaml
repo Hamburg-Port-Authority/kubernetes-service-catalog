@@ -9,24 +9,7 @@ falco:
     grpc:
       enabled: true
       bind_address: "unix:///run/falco/falco.sock"
-      threadiness: 0
+      threadiness: 8
 
-
-falco-exporter:
-  podSecurityPolicy:
-    create: false
-
-  serviceAccount:
-    name: falco-exporter
-
-  podSecurityContext:
-    fsGroup: 2000
-
-  serviceMonitor:
-    enabled: true
-
-  grafanaDashboard:
-    enabled: true
-    namespace: falco
-    folder: /falco
-    prometheusDatasourceName: victoria-metrics
+    grpc_output:
+      enabled: true
