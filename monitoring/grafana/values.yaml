@@ -103,6 +103,10 @@ grafana:
         gnetId: 1860
         revision: 30
         datasource: victoriametrics
+      falco-exporter:
+        gnetId: 11914
+        revision: 1
+        datasource: victoriametrics
 
 
   grafana.ini:
