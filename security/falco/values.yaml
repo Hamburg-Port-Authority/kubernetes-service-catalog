@@ -9,4 +9,7 @@ falco:
     grpc:
       enabled: true
       bind_address: "unix:///run/falco/falco.sock"
-      threadiness: 0
+      threadiness: 8
+
+    grpc_output:
+      enabled: true
