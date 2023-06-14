@@ -20,4 +20,4 @@ spec:
   scrapeInterval: 10s
   selectAllByDefault: true
   serviceAccountName: victoria-metrics-agent
-  shardCount: 2
+  replicaCount: 1
