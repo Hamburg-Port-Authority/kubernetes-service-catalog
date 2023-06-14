@@ -13,10 +13,14 @@ falco-exporter:
     fsGroup: 2000
 
   serviceMonitor:
-    enabled: true
+    enabled: false
 
   grafanaDashboard:
     enabled: true
     namespace: falco
     folder: /falco
     prometheusDatasourceName: victoria-metrics
+
+  service:
+    annotations:
+      prometheus.io/scrape: "false"
