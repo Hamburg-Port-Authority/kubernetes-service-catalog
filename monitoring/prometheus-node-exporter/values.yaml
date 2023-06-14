@@ -1,8 +1,8 @@
 prometheus-node-exporter:
   
   prometheus:
-    podMonitor:
-      enabled: false
+    monitor:
+      enabled: true
 
   service:
     type: ClusterIP
