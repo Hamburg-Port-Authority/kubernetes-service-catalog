@@ -1,4 +1,4 @@
-falcosecurity:
+falco-exporter:
   # Default values for falco-exporter.
   # This is a YAML-formatted file.
   # Declare variables to be passed into your templates.
