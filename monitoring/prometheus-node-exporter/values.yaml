@@ -1,5 +1,8 @@
 prometheus-node-exporter:
   
+  labels:
+    app.kubernetes.io/instance: prometheus-node-exporter
+
   prometheus:
     monitor:
       enabled: true
