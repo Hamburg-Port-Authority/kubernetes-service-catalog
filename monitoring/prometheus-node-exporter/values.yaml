@@ -14,7 +14,7 @@ prometheus-node-exporter:
     annotations: {}
 
   networkPolicy:
-    enabled: true
+    enabled: false
 
   updateStrategy:
     type: RollingUpdate
