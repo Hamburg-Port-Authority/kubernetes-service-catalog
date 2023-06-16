@@ -9,9 +9,9 @@ prometheus-node-exporter:
     port: 9100
     targetPort: 9100
     nodePort:
-      portName: metrics
-      listenOnAllInterfaces: true
-      annotations: {}
+    portName: metrics
+    listenOnAllInterfaces: true
+    annotations: {}
 
   networkPolicy:
     enabled: true
