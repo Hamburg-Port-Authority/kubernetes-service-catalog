@@ -6,15 +6,15 @@ prometheus-node-exporter:
 
   service:
     type: ClusterIP
-    port: 9100
-    targetPort: 9100
+    port: 30001
+    targetPort: 30001
     nodePort:
-      portName: metrics
-      listenOnAllInterfaces: true
-      annotations: {}
+    portName: metrics
+    listenOnAllInterfaces: true
+    annotations: {}
 
   networkPolicy:
-    enabled: true
+    enabled: false
 
   updateStrategy:
     type: RollingUpdate
