@@ -1,8 +1,9 @@
-{{- if .Values.init.application.enabled -}}
+{{- range .Values.init.application }}
+---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: application-initializer
+  name: application-{{ .manifestId }}
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -12,9 +13,9 @@ spec:
   project: default
 
   source:
-    repoURL: {{ .Values.init.repository.url }}
-    targetRevision: {{ .Values.init.application.targetRevision }}
-    path: {{ .Values.init.application.path }}
+    repoURL: {{ .repository }}
+    targetRevision: {{ .targetRevision }}
+    path: {{ .path }}
 
     directory:
       recurse: true
@@ -41,4 +42,4 @@ spec:
         maxDuration: 3m
 
   revisionHistoryLimit: 10
-{{- end -}}
+{{- end }}
