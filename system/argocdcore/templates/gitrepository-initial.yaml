@@ -1,16 +1,17 @@
-{{- if .Values.init.repository.enabled -}}
+{{- range .Values.init.repository }}
+---
 apiVersion: v1
 kind: Secret
 metadata:
-  name: initializer
+  name: initializer-{{ .manifestId }}
   namespace: argocd
   labels:
     argocd.argoproj.io/secret-type: repository
 stringData:
-  url: {{ .Values.init.repository.url }}
-  password: {{ .Values.init.repository.password }}
-  username: {{ .Values.init.repository.username }}
-  insecure: "{{ .Values.init.repository.insecure }}"
-  forceHttpBasicAuth: "{{ .Values.init.repository.forceHttpBasicAuth }}"
+  url: {{ .url }}
+  password: {{ .password }}
+  username: {{ .username }}
+  insecure: "{{ .insecure }}"
+  forceHttpBasicAuth: "{{ .forceHttpBasicAuth }}"
   enableLfs: "true"
-{{- end -}}
+{{- end }}
