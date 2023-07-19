@@ -3,8 +3,8 @@ grafana:
     create: true
     pspEnabled: true
     pspUseAppArmor: true
-    namespaced: true
-    
+    namespaced: false
+
   serviceAccount:
     create: true
     autoMount: true
@@ -20,7 +20,6 @@ grafana:
   deploymentStrategy:
     type: Recreate
 
-  
   serviceMonitor:
     enabled: true
     path: /metrics
@@ -29,7 +28,6 @@ grafana:
     enabled: true
     ingressClassName: nginx
 
-    
   resources:
     limits:
       cpu: 1000m
@@ -38,14 +36,13 @@ grafana:
       cpu: 1000m
       memory: 1024Mi
 
-
   initChownData:
     enabled: false
 
   plugins:
     - digrich-bubblechart-panel
     - grafana-clock-panel
-  
+
   datasources:
     datasources.yaml:
       apiVersion: 1
@@ -73,17 +70,17 @@ grafana:
             maxLines: 1000
 
   dashboardProviders:
-   dashboardproviders.yaml:
-     apiVersion: 1
-     providers:
-     - name: 'default'
-       orgId: 1
-       folder: ''
-       type: file
-       disableDeletion: true
-       editable: true
-       options:
-         path: /var/lib/grafana/dashboards/default
+    dashboardproviders.yaml:
+      apiVersion: 1
+      providers:
+        - name: "default"
+          orgId: 1
+          folder: ""
+          type: file
+          disableDeletion: true
+          editable: true
+          options:
+            path: /var/lib/grafana/dashboards/default
 
   dashboards:
     default:
@@ -107,7 +104,6 @@ grafana:
         gnetId: 11914
         revision: 1
         datasource: victoriametrics
-
 
   grafana.ini:
     snapshots:
@@ -142,7 +138,7 @@ grafana:
       watchMethod: WATCH
       folderAnnotation: grafana-folder
       provider:
-        folder: '/tmp/dashboards'
+        folder: "/tmp/dashboards"
         foldersFromFilesStructure: true
     datasources:
       enabled: false
