@@ -31,7 +31,6 @@ promtail:
     create: true
     pspEnabled: true
 
-
   serviceAccount:
     create: true
 
@@ -39,25 +38,25 @@ promtail:
     enabled: true
     prometheusRule:
       enabled: false
-      
+
   podSecurityPolicy:
     privileged: true
     allowPrivilegeEscalation: true
     volumes:
-      - 'secret'
-      - 'hostPath'
-      - 'downwardAPI'
+      - "secret"
+      - "hostPath"
+      - "downwardAPI"
     hostNetwork: false
     hostIPC: false
     hostPID: false
     runAsUser:
-      rule: 'RunAsAny'
+      rule: "RunAsAny"
     seLinux:
-      rule: 'RunAsAny'
+      rule: "RunAsAny"
     supplementalGroups:
-      rule: 'RunAsAny'
+      rule: "RunAsAny"
     fsGroup:
-      rule: 'RunAsAny'
+      rule: "RunAsAny"
     readOnlyRootFilesystem: true
     requiredDropCapabilities:
       - ALL
@@ -66,7 +65,8 @@ promtail:
     logLevel: info
     serverPort: 3101
     clients:
-      - url: http://loki.loki:3100/loki/api/v1/push
+      - url: http://loki-gateway/loki/api/v1/push
+        tenant_id: 1
     snippets:
       pipelineStages:
         - cri: {}
@@ -186,7 +186,7 @@ promtail:
         repository: jimmidyson/configmap-reload
         tag: v0.8.0
         pullPolicy: IfNotPresent
-    
+
       containerSecurityContext:
         readOnlyRootFilesystem: true
         capabilities:

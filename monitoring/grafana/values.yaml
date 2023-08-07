@@ -65,9 +65,12 @@ grafana:
         - name: Loki
           type: loki
           access: proxy
-          url: http://loki.victoria-metrics:3100
+          url: http://loki-gateway.loki
           jsonData:
             maxLines: 1000
+            httpHeaderName1: "X-Scope-OrgID"
+          secureJsonData:
+            httpHeaderValue1: "1"
 
   dashboardProviders:
     dashboardproviders.yaml:
