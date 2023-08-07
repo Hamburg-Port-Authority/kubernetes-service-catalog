@@ -66,6 +66,7 @@ promtail:
     serverPort: 3101
     clients:
       - url: http://loki-gateway/loki/api/v1/push
+        tenant_id: 1
     snippets:
       pipelineStages:
         - cri: {}
