@@ -1,162 +1,93 @@
 dependencies:
   - name: "External DNS"
-    source:
-      file: dns/external-dns/Chart.yaml
-      path: .dependencies[0].version
-    repository:
-      name: bitnami/external-dns
-      path: .dependencies[0].repository
+    arrayPosition: 0
+    sourcePath: dns/external-dns
+    repositoryName: bitnami/external-dns
   - name: "Mailhog"
-    source:
-      file: mail/mailhog/Chart.yaml
-      path: .dependencies[0].version
-    repository:
-      name: codecentric/mailhog
-      path: .dependencies[0].repository
+    arrayPosition: 0
+    sourcePath: mail/mailhog
+    repositoryName: codecentric/mailhog
   - name: "MS Teams Proxy"
-    source:
-      file: monitoring/msteams-proxy/Chart.yaml
-      path: .dependencies[0].version
-    repository:
-      name: prometheus-msteams/prometheus-msteams
-      path: .dependencies[0].repository
+    arrayPosition: 0
+    sourcePath: monitoring/msteams-proxy
+    repositoryName: prometheus-msteams/prometheus-msteams
   - name: "Nginx Ingress"
-    source:
-      file: networking/ingress-nginx/Chart.yaml
-      path: .dependencies[0].version
-    repository:
-      name: ingress-nginx/ingress-nginx
-      path: .dependencies[0].repository
+    arrayPosition: 0
+    sourcePath: networking/ingress-nginx
+    repositoryName: ingress-nginx/ingress-nginx
   - name: "Cert Manager"
-    source:
-      file: security/cert-manager/Chart.yaml
-      path: .dependencies[0].version
-    repository:
-      name: cert-manager/cert-manager
-      path: .dependencies[0].repository
+    arrayPosition: 0
+    sourcePath: security/cert-manager
+    repositoryName: cert-manager/cert-manager
   - name: "Prometheus Node Exporter"
-    source:
-      file: monitoring/prometheus-node-exporter/Chart.yaml
-      path: .dependencies[0].version
-    repository:
-      name: prometheus-community/prometheus-node-exporter
-      path: .dependencies[0].repository
+    arrayPosition: 0
+    sourcePath: monitoring/prometheus-node-exporter
+    repositoryName: prometheus-community/prometheus-node-exporter
   - name: "Prometheus Operator CRDs"
-    source:
-      file: monitoring/prometheus-operator-crds/Chart.yaml
-      path: .dependencies[0].version
-    repository:
-      name: prometheus-community/prometheus-operator-crds
-      path: .dependencies[0].repository
+    arrayPosition: 0
+    sourcePath: monitoring/prometheus-operator-crds
+    repositoryName: prometheus-community/prometheus-operator-crds
   - name: "Prometheus Alertmanager"
-    source:
-      file: monitoring/prometheus-alertmanager/Chart.yaml
-      path: .dependencies[0].version
-    repository:
-      name: prometheus-community/alertmanager
-      path: .dependencies[0].repository
+    arrayPosition: 0
+    sourcePath: monitoring/prometheus-alertmanager
+    repositoryName: prometheus-community/alertmanager
   - name: "VCLUSTER"
-    source:
-      file: optimization/vcluster/Chart.yaml
-      path: .dependencies[0].version
-    repository:
-      name: loft/vcluster
-      path: .dependencies[0].repository
+    arrayPosition: 0
+    sourcePath: optimization/vcluster
+    repositoryName: loft-sh/vcluster
   - name: "Kyverno"
-    source:
-      file: security/kyverno/Chart.yaml
-      path: .dependencies[0].version
-    repository:
-      name: kyverno/kyverno
-      path: .dependencies[0].repository
+    arrayPosition: 0
+    sourcePath: security/kyverno
+    repositoryName: kyverno/kyverno
   - name: "Victoria Metrics Operator"
-    source:
-      file: monitoring/victoria-metrics-operator/Chart.yaml
-      path: .dependencies[0].version
-    repository:
-      name: victoriametrics/victoria-metrics-operator
-      path: .dependencies[0].repository
+    arrayPosition: 0
+    sourcePath: monitoring/victoria-metrics-operator
+    repositoryName: victoriametrics/victoria-metrics-operator
   - name: "Victoria Metrics Cluster"
-    source:
-      file: monitoring/victoria-metrics-cluster/Chart.yaml
-      path: .dependencies[0].version
-    repository:
-      name: victoriametrics/victoria-metrics-cluster
-      path: .dependencies[0].repository
+    arrayPosition: 0
+    sourcePath: monitoring/victoria-metrics-cluster
+    repositoryName: victoriametrics/victoria-metrics-cluster
   - name: "ArgoCD Core"
-    source:
-      file: system/argocdcore/Chart.yaml
-      path: .dependencies[0].version
-    repository:
-      name: argo/argo-cd
-      path: .dependencies[0].repository
+    arrayPosition: 0
+    sourcePath: system/argocdcore
+    repositoryName: argoproj/argo-cd
   - name: "Sealed Secrets"
-    source:
-      file: security/sealed-secrets/Chart.yaml
-      path: .dependencies[0].version
-    repository:
-      name: bitnami-labs/sealed-secrets
-      path: .dependencies[0].repository
+    arrayPosition: 0
+    sourcePath: security/sealed-secrets
+    repositoryName: bitnami-labs/sealed-secrets
   - name: "NFS Subdir Provisioner"
-    source:
-      file: storage/nfs-subdir-provisioner/Chart.yaml
-      path: .dependencies[0].version
-    repository:
-      name: nfs-subdir-external-provisioner/nfs-subdir-external-provisioner
-      path: .dependencies[0].repository
+    arrayPosition: 0
+    sourcePath: storage/nfs-subdir-provisioner
+    repositoryName: nfs-subdir-external-provisioner/nfs-subdir-external-provisioner
   - name: "Grafana"
-    source:
-      file: monitoring/grafana/Chart.yaml
-      path: .dependencies[0].version
-    repository:
-      name: grafana/grafana
-      path: .dependencies[0].repository
+    arrayPosition: 0
+    sourcePath: monitoring/grafana
+    repositoryName: grafana/grafana
   - name: "Grafana Loki"
-    source:
-      file: monitoring/grafana-loki/Chart.yaml
-      path: .dependencies[0].version
-    repository:
-      name: grafana/loki
-      path: .dependencies[0].repository
+    arrayPosition: 0
+    sourcePath: monitoring/grafana-loki
+    repositoryName: grafana/loki
   - name: "Grafana Promtail"
-    source:
-      file: monitoring/grafana-promtail/Chart.yaml
-      path: .dependencies[0].version
-    repository:
-      name: grafana/promtail
-      path: .dependencies[0].repository
+    arrayPosition: 0
+    sourcePath: monitoring/grafana-promtail
+    repositoryName: grafana/promtail
   - name: "External Secrets"
-    source:
-      file: security/external-secrets/Chart.yaml
-      path: .dependencies[0].version
-    repository:
-      name: external-secrets/external-secrets
-      path: .dependencies[0].repository
+    arrayPosition: 0
+    sourcePath: security/external-secrets
+    repositoryName: external-secrets/external-secrets
   - name: "Falco"
-    source:
-      file: security/falco/Chart.yaml
-      path: .dependencies[0].version
-    repository:
-      name: falcosecurity/falco
-      path: .dependencies[0].repository
+    arrayPosition: 0
+    sourcePath: security/falco
+    repositoryName: falcosecurity/falco
   - name: "Falco Exporter"
-    source:
-      file: monitoring/falco-exporter/Chart.yaml
-      path: .dependencies[0].version
-    repository:
-      name: falcosecurity/falco-exporter
-      path: .dependencies[0].repository
+    arrayPosition: 0
+    sourcePath: monitoring/falco-exporter
+    repositoryName: falcosecurity/falco-exporter
   - name: "minIO Operator"
-    source:
-      file: storage/minio-operator/Chart.yaml
-      path: .dependencies[0].version
-    repository:
-      name: minio-operator/operator
-      path: .dependencies[0].repository
+    arrayPosition: 0
+    repositoryName: minio-operator/operator
+    sourcePath: storage/minio-operator
   - name: "minIO Tenant"
-    source:
-      file: storage/minio-tenant/Chart.yaml
-      path: .dependencies[0].version
-    repository:
-      name: minio-tenant/tenant
-      path: .dependencies[0].repository
+    arrayPosition: 0
+    repositoryName: minio-tenant/tenant
+    sourcePath: storage/minio-tenant
