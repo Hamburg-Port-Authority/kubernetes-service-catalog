@@ -1,150 +1,93 @@
-version: 1
-
 dependencies:
   - name: "External DNS"
-    source:
-      file: dns/external-dns/Chart.yaml
-      path: .dependencies[0].version
-    repository:
-      type: artifacthub
-      name: bitnami/external-dns
+    arrayPosition: 0
+    sourcePath: dns/external-dns
+    repositoryName: bitnami/external-dns
   - name: "Mailhog"
-    source:
-      file: mail/mailhog/Chart.yaml
-      path: .dependencies[0].version
-    repository:
-      type: artifacthub
-      name: codecentric/mailhog
+    arrayPosition: 0
+    sourcePath: mail/mailhog
+    repositoryName: codecentric/mailhog
   - name: "MS Teams Proxy"
-    source:
-      file: monitoring/msteams-proxy/Chart.yaml
-      path: .dependencies[0].version
-    repository:
-      type: artifacthub
-      name: prometheus-msteams/prometheus-msteams
+    arrayPosition: 0
+    sourcePath: monitoring/msteams-proxy
+    repositoryName: prometheus-msteams/prometheus-msteams
   - name: "Nginx Ingress"
-    source:
-      file: networking/ingress-nginx/Chart.yaml
-      path: .dependencies[0].version
-    repository:
-      type: artifacthub
-      name: ingress-nginx/ingress-nginx
+    arrayPosition: 0
+    sourcePath: networking/ingress-nginx
+    repositoryName: ingress-nginx/ingress-nginx
   - name: "Cert Manager"
-    source:
-      file: security/cert-manager/Chart.yaml
-      path: .dependencies[0].version
-    repository:
-      type: artifacthub
-      name: cert-manager/cert-manager
+    arrayPosition: 0
+    sourcePath: security/cert-manager
+    repositoryName: cert-manager/cert-manager
   - name: "Prometheus Node Exporter"
-    source:
-      file: monitoring/prometheus-node-exporter/Chart.yaml
-      path: .dependencies[0].version
-    repository:
-      type: artifacthub
-      name: prometheus-community/prometheus-node-exporter
+    arrayPosition: 0
+    sourcePath: monitoring/prometheus-node-exporter
+    repositoryName: prometheus-community/prometheus-node-exporter
   - name: "Prometheus Operator CRDs"
-    source:
-      file: monitoring/prometheus-operator-crds/Chart.yaml
-      path: .dependencies[0].version
-    repository:
-      type: artifacthub
-      name: prometheus-community/prometheus-operator-crds
+    arrayPosition: 0
+    sourcePath: monitoring/prometheus-operator-crds
+    repositoryName: prometheus-community/prometheus-operator-crds
   - name: "Prometheus Alertmanager"
-    source:
-      file: monitoring/prometheus-alertmanager/Chart.yaml
-      path: .dependencies[0].version
-    repository:
-      type: artifacthub
-      name: prometheus-community/alertmanager
+    arrayPosition: 0
+    sourcePath: monitoring/prometheus-alertmanager
+    repositoryName: prometheus-community/alertmanager
   - name: "VCLUSTER"
-    source:
-      file: optimization/vcluster/Chart.yaml
-      path: .dependencies[0].version
-    repository:
-      type: artifacthub
-      name: loft/vcluster
+    arrayPosition: 0
+    sourcePath: optimization/vcluster
+    repositoryName: loft-sh/vcluster
   - name: "Kyverno"
-    source:
-      file: security/kyverno/Chart.yaml
-      path: .dependencies[0].version
-    repository:
-      type: artifacthub
-      name: kyverno/kyverno
+    arrayPosition: 0
+    sourcePath: security/kyverno
+    repositoryName: kyverno/kyverno
   - name: "Victoria Metrics Operator"
-    source:
-      file: monitoring/victoria-metrics-operator/Chart.yaml
-      path: .dependencies[0].version
-    repository:
-      type: artifacthub
-      name: victoriametrics/victoria-metrics-operator
+    arrayPosition: 0
+    sourcePath: monitoring/victoria-metrics-operator
+    repositoryName: victoriametrics/victoria-metrics-operator
   - name: "Victoria Metrics Cluster"
-    source:
-      file: monitoring/victoria-metrics-cluster/Chart.yaml
-      path: .dependencies[0].version
-    repository:
-      type: artifacthub
-      name: victoriametrics/victoria-metrics-cluster
+    arrayPosition: 0
+    sourcePath: monitoring/victoria-metrics-cluster
+    repositoryName: victoriametrics/victoria-metrics-cluster
   - name: "ArgoCD Core"
-    source:
-      file: system/argocdcore/Chart.yaml
-      path: .dependencies[0].version
-    repository:
-      type: artifacthub
-      name: argo/argo-cd
+    arrayPosition: 0
+    sourcePath: system/argocdcore
+    repositoryName: argoproj/argo-cd
   - name: "Sealed Secrets"
-    source:
-      file: security/sealed-secrets/Chart.yaml
-      path: .dependencies[0].version
-    repository:
-      type: artifacthub
-      name: bitnami-labs/sealed-secrets
+    arrayPosition: 0
+    sourcePath: security/sealed-secrets
+    repositoryName: bitnami-labs/sealed-secrets
   - name: "NFS Subdir Provisioner"
-    source:
-      file: storage/nfs-subdir-provisioner/Chart.yaml
-      path: .dependencies[0].version
-    repository:
-      type: artifacthub
-      name: nfs-subdir-external-provisioner/nfs-subdir-external-provisioner
+    arrayPosition: 0
+    sourcePath: storage/nfs-subdir-provisioner
+    repositoryName: nfs-subdir-external-provisioner/nfs-subdir-external-provisioner
   - name: "Grafana"
-    source:
-      file: monitoring/grafana/Chart.yaml
-      path: .dependencies[0].version
-    repository:
-      type: artifacthub
-      name: grafana/grafana
+    arrayPosition: 0
+    sourcePath: monitoring/grafana
+    repositoryName: grafana/grafana
   - name: "Grafana Loki"
-    source:
-      file: monitoring/grafana-loki/Chart.yaml
-      path: .dependencies[0].version
-    repository:
-      type: artifacthub
-      name: grafana/loki
+    arrayPosition: 0
+    sourcePath: monitoring/grafana-loki
+    repositoryName: grafana/loki
   - name: "Grafana Promtail"
-    source:
-      file: monitoring/grafana-promtail/Chart.yaml
-      path: .dependencies[0].version
-    repository:
-      type: artifacthub
-      name: grafana/promtail
+    arrayPosition: 0
+    sourcePath: monitoring/grafana-promtail
+    repositoryName: grafana/promtail
   - name: "External Secrets"
-    source:
-      file: security/external-secrets/Chart.yaml
-      path: .dependencies[0].version
-    repository:
-      type: artifacthub
-      name: external-secrets-operator/external-secrets
+    arrayPosition: 0
+    sourcePath: security/external-secrets
+    repositoryName: external-secrets/external-secrets
   - name: "Falco"
-    source:
-      file: security/falco/Chart.yaml
-      path: .dependencies[0].version
-    repository:
-      type: artifacthub
-      name: falcosecurity/falco
+    arrayPosition: 0
+    sourcePath: security/falco
+    repositoryName: falcosecurity/falco
   - name: "Falco Exporter"
-    source:
-      file: monitoring/falco-exporter/Chart.yaml
-      path: .dependencies[0].version
-    repository:
-      type: artifacthub
-      name: falcosecurity/falco-exporter
+    arrayPosition: 0
+    sourcePath: monitoring/falco-exporter
+    repositoryName: falcosecurity/falco-exporter
+  - name: "minIO Operator"
+    arrayPosition: 0
+    repositoryName: minio-operator/operator
+    sourcePath: storage/minio-operator
+  - name: "minIO Tenant"
+    arrayPosition: 0
+    repositoryName: minio-tenant/tenant
+    sourcePath: storage/minio-tenant
