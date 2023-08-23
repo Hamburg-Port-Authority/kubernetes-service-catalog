@@ -5,5 +5,5 @@ description: This Chart deploys vcluster k3s by default.
 #vcluster use default k3s
 dependencies:
   - name: vcluster
-    version: 0.15.5
+    version: 0.15.6
     repository: https://charts.loft.sh
