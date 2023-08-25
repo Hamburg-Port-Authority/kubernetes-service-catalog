@@ -19,9 +19,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          ref: development
 
       - name: Helm Dependencies
-        uses: la-cc/gh-actions/helm-dependencies@v0.0.5
+        uses: la-cc/gh-actions/helm-dependencies@v0.0.8
         with:
           config-path: dependencies.yaml
           user-email: "meep-the-helm-bot@users.noreply.github.com"
