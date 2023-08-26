@@ -4,5 +4,5 @@ version: 1.0.0
 description: This Chart deploys vcluster k3s by default.
 dependencies:
   - name: argo-cd
-    version: 5.43.4
+    version: 5.43.7
     repository: https://argoproj.github.io/argo-helm
