@@ -89,7 +89,7 @@ loki:
                 {{- include "loki.writeSelectorLabels" . | nindent 10 }}
             topologyKey: kubernetes.io/hostname
     persistence:
-      enableStatefulSetAutoDeletePVC: false
+      enableStatefulSetAutoDeletePVC: true
       size: 5Gi
   tableManager:
     enabled: false
