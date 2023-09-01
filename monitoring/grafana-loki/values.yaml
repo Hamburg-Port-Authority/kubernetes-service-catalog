@@ -10,7 +10,6 @@ loki:
       reject_old_samples_max_age: 168h
       max_cache_freshness_per_query: 10m
       split_queries_by_interval: 15m
-      max_entries_limit: 15000
       retention_period: 192h
     # -- Provides a reloadable runtime configuration file for some specific configuration
     runtimeConfig: {}
@@ -97,7 +96,7 @@ loki:
                 {{- include "loki.writeSelectorLabels" . | nindent 10 }}
             topologyKey: kubernetes.io/hostname
     persistence:
-      enableStatefulSetAutoDeletePVC: true
+      enableStatefulSetAutoDeletePVC: false
       size: 5Gi
   tableManager:
     enabled: false
