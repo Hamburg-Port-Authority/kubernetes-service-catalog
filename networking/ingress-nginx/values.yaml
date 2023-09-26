@@ -2,6 +2,7 @@ ingress-nginx:
   podSecurityPolicy:
     enabled: true
   controller:
+    allowSnippetAnnotations: true
     resources:
       requests:
         memory: 250Mi
