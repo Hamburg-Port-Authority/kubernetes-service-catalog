@@ -50,7 +50,7 @@ stringData:
               __meta_kubernetes_service_name,
             ]
           action: keep
-          regex: default;kubernetes;https
+          regex: default;kubernetes
     - job_name: "kubernetes-nodes"
       scrape_interval: 1m
       scrape_offset: 10s
