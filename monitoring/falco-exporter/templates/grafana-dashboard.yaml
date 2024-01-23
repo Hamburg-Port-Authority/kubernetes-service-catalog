@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: falco-dashboard
   labels:
-    grafana-dashboard: "1"
+    grafana_dashboard: "1"
   annotations:
     argocd.argoproj.io/sync-options: Replace=true
     dashboard-application: grafana
