@@ -1,0 +1,8 @@
+apiVersion: v2
+name: kube-state-metrics
+version: 1.0.0
+description: This Chart deploys kube-state-metrics and friends.
+dependencies:
+  - name: kube-state-metrics
+    version: 5.16.0
+    repository: https://prometheus-community.github.io/helm-charts
