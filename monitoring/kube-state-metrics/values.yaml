@@ -1,0 +1,7 @@
+kube-state-metrics:
+  image:
+    registry: registry.k8s.io
+    repository: kube-state-metrics/kube-state-metrics
+  autosharding:
+    enabled: false
+  revisionHistoryLimit: 2

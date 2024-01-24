@@ -12,6 +12,10 @@ ingress-nginx:
         cpu: 500m
     metrics:
       enabled: true
+      service:
+        annotations:
+          prometheus.io/scrape: "true"
+          prometheus.io/port: "10254"
       serviceMonitor:
         enabled: false
     setAsDefaultIngress: true
