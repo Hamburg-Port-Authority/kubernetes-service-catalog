@@ -5,3 +5,8 @@ kube-state-metrics:
   autosharding:
     enabled: false
   revisionHistoryLimit: 2
+  prometheus:
+    monitor:
+      enabled: true
+  selfMonitor:
+    enabled: true
