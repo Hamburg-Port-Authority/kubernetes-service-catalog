@@ -10,6 +10,7 @@ loki:
       reject_old_samples_max_age: 168h
       max_cache_freshness_per_query: 10m
       split_queries_by_interval: 15m
+      retention_period: 192h
     # -- Provides a reloadable runtime configuration file for some specific configuration
     runtimeConfig: {}
     # -- Check https://grafana.com/docs/loki/latest/configuration/#common_config for more info on how to provide a common configuration
@@ -34,6 +35,12 @@ loki:
         insecure: true
         http_config:
           insecure_skip_verify: true
+    compactor:
+      retention_enabled: true
+      retention_delete_delay: 2h
+      compaction_interval: 10m
+      retention_delete_worker_count: 150
+
   serviceAccount:
     create: true
     automountServiceAccountToken: true
@@ -128,7 +135,7 @@ loki:
                 {{- include "loki.readSelectorLabels" . | nindent 10 }}
             topologyKey: kubernetes.io/hostname
     persistence:
-      enableStatefulSetAutoDeletePVC: false
+      enableStatefulSetAutoDeletePVC: true
       size: 10Gi
   backend:
     replicas: 3
