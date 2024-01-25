@@ -1,0 +1,8 @@
+apiVersion: v2
+name: kubeclarity
+version: 1.0.0
+description: This Chart deploys kubeclarity.
+dependencies:
+  - name: kubeclarity
+    version: kubeclarity-v2.23.1-helm
+    repository: https://openclarity.github.io/kubeclarity
