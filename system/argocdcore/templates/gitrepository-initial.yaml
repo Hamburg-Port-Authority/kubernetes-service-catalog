@@ -1,5 +1,5 @@
 {{- range .Values.init.repository }}
-{{- if .externalSecret.enabled -}}
+{{- if .externalSecret.enabled and .enabled -}}
 ---
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
@@ -26,7 +26,7 @@ spec:
       remoteRef:
         key: sshPrivateKey
         decodingStrategy: Base64
-{{- else -}}
+{{- else if .enabled -}}
 ---
 apiVersion: v1
 kind: Secret
@@ -42,5 +42,8 @@ stringData:
   insecure: "{{ .insecure }}"
   forceHttpBasicAuth: "{{ .forceHttpBasicAuth }}"
   enableLfs: "true"
+{{- else -}}
+---
+
 {{- end -}}
 {{- end }}
