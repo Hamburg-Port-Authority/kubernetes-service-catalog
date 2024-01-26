@@ -13,6 +13,8 @@ init:
     password: "overlay_me"
     insecure: "false"
     forceHttpBasicAuth: "false"
+    externalSecretEnabled: true
+    manifestId: "test"
     secretStore: "secret-store"
   externalSecret:
     enabled: false
