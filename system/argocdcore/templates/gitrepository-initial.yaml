@@ -1,5 +1,5 @@
 {{- range .Values.init.repository }}
-{{- if .externalSecret.enabled and .enabled -}}
+{{- if .externalSecretEnabled and .repositoryEnabled -}}
 ---
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
@@ -26,7 +26,7 @@ spec:
       remoteRef:
         key: sshPrivateKey
         decodingStrategy: Base64
-{{- else if .enabled -}}
+{{- else if .repositoryEnabled -}}
 ---
 apiVersion: v1
 kind: Secret

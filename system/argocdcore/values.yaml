@@ -13,8 +13,7 @@ init:
     password: "overlay_me"
     insecure: "false"
     forceHttpBasicAuth: "false"
-    externalSecret:
-      enabled: false
+    externalSecretEnabled: false
   externalSecret:
     enabled: false
 
