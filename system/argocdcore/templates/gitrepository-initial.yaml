@@ -16,7 +16,7 @@ spec:
     # This template will be deep merged without mutating any existing fields. For example: you cannot override metadata.name.
     template:
       data:
-        sshPrivateKey: "{{ .sshPrivateKey }}"
+        sshPrivateKey: '{{"{{"}}.sshPrivateKey{{"}}"}}'
         url: "{{ .url }}"
       metadata:
         labels:
