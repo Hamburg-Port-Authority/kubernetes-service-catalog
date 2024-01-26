@@ -91,3 +91,7 @@ dependencies:
     arrayPosition: 0
     repositoryName: minio-tenant/tenant
     sourcePath: storage/minio-tenant
+  - name: "kubeclarity"
+    arrayPosition: 0
+    sourcePath: security/kubeclarity
+    repositoryName: kubeclarity/kubeclarity
