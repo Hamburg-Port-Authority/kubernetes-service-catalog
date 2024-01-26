@@ -1,5 +1,32 @@
 {{- range .Values.init.repository }}
-{{ if .repositoryEnabled}}
+{{ if and .externalSecretEnabled .repositoryEnabled }}
+---
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: initializer-{{ .manifestId }}
+spec:
+  refreshInterval: 1h
+  secretStoreRef:
+    kind: ClusterSecretStore
+    name: {{ .secretStore }}
+  target:
+    name: initializer-{{ .manifestId }}
+    # optional: specify a template with any additional markup you would like added to the downstream Secret resource.
+    # This template will be deep merged without mutating any existing fields. For example: you cannot override metadata.name.
+    template:
+      data:
+        sshPrivateKey: '{{"{{"}}.sshPrivateKey{{"}}"}}'
+        url: "{{ .url }}"
+      metadata:
+        labels:
+          argocd.argoproj.io/secret-type: repository
+  data:
+    - secretKey: sshPrivateKey
+      remoteRef:
+        key: sshPrivateKey
+        decodingStrategy: Base64
+{{- else if .repositoryEnabled -}}
 ---
 apiVersion: v1
 kind: Secret
