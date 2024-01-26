@@ -1,5 +1,5 @@
 {{- range .Values.init.repository }}
-{{- if .externalSecretEnabled and .repositoryEnabled -}}
+{{ if and .externalSecretEnabled .repositoryEnabled }}
 ---
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret

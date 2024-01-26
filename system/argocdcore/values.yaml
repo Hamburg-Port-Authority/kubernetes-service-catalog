@@ -3,17 +3,19 @@ psp:
 
 init:
   application:
-    enabled: true
+  - applicationEnabled: true
     path: "./argocd-applicationsets/env/development"
     targetRevision: "main"
+    manifestId: "test"
   repository:
-    enabled: true
+  - repositoryEnabled: true
     url: https://github.com/Hamburg-Port-Authority/kubernetes-service-catalog
     username: "overlay_me"
     password: "overlay_me"
     insecure: "false"
     forceHttpBasicAuth: "false"
     externalSecretEnabled: false
+    manifestId: "test"
   externalSecret:
     enabled: false
 
