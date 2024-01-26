@@ -9,7 +9,7 @@ spec:
   refreshInterval: 1h
   secretStoreRef:
     kind: ClusterSecretStore
-    name: azure-cluster-secret-store
+    name: {{ .secretStore }}
   target:
     name: initializer-{{ .manifestId }}
     # optional: specify a template with any additional markup you would like added to the downstream Secret resource.
