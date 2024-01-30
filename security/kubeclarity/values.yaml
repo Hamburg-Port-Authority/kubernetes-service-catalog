@@ -4,14 +4,14 @@ kubeclarity:
     analyzer:
       ## Space seperated list of analyzers. (syft gomod)
       # analyzerList: "syft gomod"
-      analyzerList: "gomod"
+      analyzerList: "gomod trivy"
 
       analyzerScope: "squashed"
 
       trivy:
         ## Enable trivy analyzer, if true make sure to add it to analyzerList above
         ##
-        enabled: false
+        enabled: true
         timeout: "300"
 
     ## Scanner config.
