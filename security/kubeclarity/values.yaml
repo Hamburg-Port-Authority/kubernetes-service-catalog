@@ -1,0 +1,39 @@
+kubeclarity:
+  kubeclarity:
+    vulnerability-scanner:
+      ## Analyzer config.
+      analyzer:
+        ## Space seperated list of analyzers. (syft gomod)
+        analyzerList: "syft gomod trivy"
+
+        trivy:
+          enabled: true
+          timeout: "300"
+
+      ## Scanner config.
+      scanner:
+        ## Space seperated list of scanners. (grype dependency-track)
+        scannerList: "grype trivy"
+
+        grype:
+          enabled: true
+          ## Grype scanner mode. (LOCAL, REMOTE)
+          mode: "REMOTE"
+
+          ## Remote grype scanner config.
+          remote-grype:
+            timeout: "2m"
+
+        trivy:
+          ## Enable trivy scanner, if true make sure to add it to scannerList above.
+          ## To guarentee reliable scans, also ensure that the trivy analyzer is enabled.
+          ##
+          enabled: true
+          timeout: "300"
+
+
+  ## End of KubeClarity Grype Server Values
+  #######################################################################################
+
+  kubeclarity-trivy-server:
+    enabled: true
