@@ -3,7 +3,8 @@ kubeclarity:
     ## Analyzer config.
     analyzer:
       ## Space seperated list of analyzers. (syft gomod)
-      analyzerList: "syft gomod"
+      # analyzerList: "syft gomod"
+      analyzerList: "gomod"
 
       analyzerScope: "squashed"
 
