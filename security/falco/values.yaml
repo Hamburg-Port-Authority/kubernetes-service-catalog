@@ -8,10 +8,8 @@ falco:
   customRules:
     CVE-2024-21626.yaml: |-
       - rule: CVE-2024-21626 (runC escape through /proc/[PID]/cwd) exploited
-        desc: >
-          Detect CVE-2024-21626, runC escape vulerability through /proc/[PID]/cwd.
-        condition: >
-          container and ((evt.type = execve and proc.cwd startswith "/proc/self/fd") or (evt.type in (open, openat, openat2) and fd.name glob "/proc/*/cwd/*") or (evt.type in (symlink, symlinkat) and fs.path.target startswith "/proc/self/fd/")) and proc.name != "runc:[1:CHILD]"
+        desc: Detect CVE-2024-21626, runC escape vulerability through /proc/[PID]/cwd.
+        condition: container and ((evt.type = execve and proc.cwd startswith "/proc/self/fd") or (evt.type in (open, openat, openat2) and fd.name glob "/proc/*/cwd/*") or (evt.type in (symlink, symlinkat) and fs.path.target startswith "/proc/self/fd/")) and proc.name != "runc:[1:CHILD]"
         output: CVE-2024-21626 exploited (%container.info evt_type=%evt.type process=%proc.name command=%proc.cmdline target=%fs.path.targetraw)
         priority: CRITICAL
   falco:
