@@ -3,8 +3,8 @@ psp:
   privileged: overlay_me
 
 alertrules:
-  warningEnabled: true 
-  alertsEnabled: true
+  criticalEnabled: true 
+  errorsEnabled: true
 
 falco-exporter:
   podSecurityPolicy:

@@ -1,0 +1,28 @@
+# Levels of falco (https://github.com/falcosecurity/falco-exporter?tab=readme-ov-file#event-priority)
+# 7 = debug (ignorable)
+# 6 = information (ignorable)
+# 5 = notice (ignorable)
+# 4 = warning (ignorable)
+# 3 = error
+# 2 = critical
+# 1 = alert
+# 0 = emergency
+---
+{{- if .Values.alertrules.errorsEnabled}}
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: falco-level-error
+spec:
+  groups:
+    - name: falco-level-error
+      rules:
+        - alert: Falco Event Level Error
+          expr: |
+            rate(falco_events{priority="3"}[5m])
+          labels:
+            falco: error
+          annotations:
+            description: "Pod {{ printf "{{ $labels.k8s_ns_name }}" }} / {{ printf "{{ $labels.k8s_pod_name }}" }} is conflicting rule {{ printf "{{ $labels.source }}" }} / {{ printf "{{ $labels.rule }}" }} with tags {{ printf "{{ $labels.tags }}" }}"
+            summary: Pod is violating a rule.
+{{- end}}
