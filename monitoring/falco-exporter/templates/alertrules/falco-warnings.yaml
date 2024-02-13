@@ -21,10 +21,10 @@ spec:
       rules:
         - alert: Falco Event Shell in Container
           expr: |
-            rate(falco_events{priority="4", rule="shell_in_container"}[1m])
+            falco_events{priority="4", rule="shell_in_container"}
           labels:
             falco: "warning"
-            teamsAlert: "true"
+            infrastructureTeamsAlert: "true"
           annotations:
             description: "There was a shell created in pod {{ printf "{{ $labels.k8s_ns_name }}" }} / {{ printf "{{ $labels.k8s_pod_name }}" }}. Source: {{ printf "{{ $labels.source }}" }} / {{ printf "{{ $labels.rule }}" }} with tags {{ printf "{{ $labels.tags }}" }}"
             summary: A shell was created within a pod.
