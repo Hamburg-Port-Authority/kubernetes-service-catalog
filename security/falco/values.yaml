@@ -55,6 +55,20 @@ falco:
         priority: ALERT
         tags: [container]
 
+    BASH-IN-CONTAINER: |-
+      - rule: shell_in_container
+        desc: notice shell activity within a container
+        condition: >
+          spawned_process and 
+          container and 
+          proc.name = bash    
+        output: >
+          shell in a container
+          (user=%user.name container_id=%container.id container_name=%container.name 
+          shell=%proc.name parent=%proc.pname cmdline=%proc.cmdline)    
+        priority: WARNING
+        tags: [container, shell, host]
+
   falco:
     grpc:
       enabled: true
