@@ -2,6 +2,10 @@ psp:
   enabled: "false"
   privileged: overlay_me
 
+alertrules:
+  warningEnabled: true 
+  alertsEnabled: true
+
 falco-exporter:
   podSecurityPolicy:
     create: false
