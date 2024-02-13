@@ -8,6 +8,8 @@ prometheus-msteams:
     - info: https://outlook.office.com/webhook/xxxx/xxxx
     # in alertmanager, this will be used as http://prometheus-msteams.msteams:2000/critical
     - critical: https://outlook.office.com/webhook/xxxx/xxxx
+    # in alertmanager, this will be used as http://prometheus-msteams.msteams:2000/infrastructure
+    - infrastructure: https://outlook.office.com/webhook/xxxx/xxxx
 
   resources:
       limits:
