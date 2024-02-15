@@ -5,6 +5,14 @@ victoria-metrics-operator:
   rbac:
     create: true
     pspEnabled: true
+  securityContext:
+    allowPrivilegeEscalation: false
+    runAsNonRoot: true
+    seccompProfile:
+      type: RuntimeDefault
+    capabilities:
+      drop:
+        - ALL
   operator:
     disable_prometheus_converter: false
     prometheus_converter_add_argocd_ignore_annotations: true
