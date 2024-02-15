@@ -38,5 +38,7 @@ victoria-metrics-operator:
       value: ghcr.io/prometheus-operator/prometheus-config-reloader:v0.64.1
     - name: VM_VMALERTMANAGER_CONFIGRELOADERIMAGE
       value: ghcr.io/jimmidyson/configmap-reload:v0.11.0
+    - name: VM_ENABLESTRICTSECURITY
+      value: true
   serviceMonitor:
     enabled: true
