@@ -21,3 +21,13 @@ spec:
   selectAllByDefault: true
   serviceAccountName: victoria-metrics-agent
   replicaCount: 1
+  securityContext:
+    allowPrivilegeEscalation: false
+    runAsNonRoot: true
+    runAsUser: 1000
+    runAsGroup: 1000
+    seccompProfile:
+      type: RuntimeDefault
+    capabilities:
+      drop:
+        - ALL
