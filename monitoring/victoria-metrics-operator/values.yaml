@@ -41,6 +41,6 @@ victoria-metrics-operator:
     - name: VM_ENABLESTRICTSECURITY
       value: true
     - name: VM_PSPAUTOCREATEENABLED
-      value: true
+      value: false
   serviceMonitor:
     enabled: true
