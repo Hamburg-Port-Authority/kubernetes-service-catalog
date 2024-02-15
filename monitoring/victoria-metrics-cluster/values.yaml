@@ -22,6 +22,16 @@ victoria-metrics-cluster:
       #  prometheus.io/scrape: "true"
       #  prometheus.io/port: "8481"
     replicaCount: 3
+    securityContext:
+      allowPrivilegeEscalation: false
+      runAsNonRoot: true
+      runAsUser: 1000
+      runAsGroup: 1000
+      seccompProfile:
+        type: RuntimeDefault
+      capabilities:
+        drop:
+          - ALL
     resources: {}
       # limits:
       #   cpu: 50m
@@ -81,6 +91,16 @@ victoria-metrics-cluster:
       #  prometheus.io/scrape: "true"
       #  prometheus.io/port: "8480"
     replicaCount: 3
+    securityContext:
+      allowPrivilegeEscalation: false
+      runAsNonRoot: true
+      runAsUser: 1000
+      runAsGroup: 1000
+      seccompProfile:
+        type: RuntimeDefault
+      capabilities:
+        drop:
+          - ALL
     ingress:
       enabled: false
       annotations: {}
@@ -118,6 +138,16 @@ victoria-metrics-cluster:
     env: []
     # -- Data retention period. Supported values 1w, 1d, number without measurement means month, e.g. 2 = 2month
     retentionPeriod: 1
+    securityContext:
+      allowPrivilegeEscalation: false
+      runAsNonRoot: true
+      runAsUser: 1000
+      runAsGroup: 1000
+      seccompProfile:
+        type: RuntimeDefault
+      capabilities:
+        drop:
+          - ALL
     persistentVolume:
       enabled: true
       accessModes:
