@@ -2,19 +2,14 @@ falco:
   scc:
     create: false
 
+  serviceAccount:
+    create: true
+
   driver:
     enabled: true
     kind: ebpf
     ebpf:
       leastPrivileged: true
-
-  podSecurityContext:
-    allowPrivilegeEscalation: false
-    seccompProfile:
-      type: RuntimeDefault
-    capabilities:
-      drop:
-        - ALL
 
   falco:
     grpc:
