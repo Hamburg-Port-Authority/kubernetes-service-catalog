@@ -4,8 +4,8 @@ falco:
 
   driver:
     enabled: true
-    kind: modern_ebpf
-    modernEpbf:
+    kind: ebpf
+    ebpf:
       leastPrivileged: true
 
   podSecurityContext:
