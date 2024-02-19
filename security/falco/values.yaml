@@ -1,10 +1,13 @@
-psp:
-  enabled: "false"
-  privileged: overlay_me
-
 falco:
   scc:
-    create: false
+    create: true
+
+  driver:
+    enabled: true
+    kind: modern_ebpf
+    modernEpbf:
+      leastPrivileged: true
+
   falco:
     grpc:
       enabled: true
