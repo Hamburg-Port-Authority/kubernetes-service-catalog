@@ -10,6 +10,8 @@ falco:
 
   podSecurityContext:
     allowPrivilegeEscalation: false
+    seccompProfile:
+      type: Localhost
     capabilities:
       drop:
         - ALL
