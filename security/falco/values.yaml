@@ -1,6 +1,6 @@
 falco:
   scc:
-    create: true
+    create: false
 
   driver:
     enabled: true
