@@ -8,6 +8,12 @@ falco:
     modernEpbf:
       leastPrivileged: true
 
+  podSecurityContext:
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+        - ALL
+
   falco:
     grpc:
       enabled: true
