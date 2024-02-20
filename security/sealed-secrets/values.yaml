@@ -19,3 +19,4 @@ sealed-secrets:
   containerSecurityContext:
     seccompProfile:
       type: RuntimeDefault
+    allowPrivilegeEscalation: false
