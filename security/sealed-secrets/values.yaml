@@ -13,3 +13,9 @@ sealed-secrets:
     limits:
       memory: 125Mi
       cpu: 250m
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+  containerSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
