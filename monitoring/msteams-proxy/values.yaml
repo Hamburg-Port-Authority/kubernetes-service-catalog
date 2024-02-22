@@ -24,3 +24,11 @@ prometheus-msteams:
       additionalLabels:
         release: msteamsproxy # change this accordingly
       scrapeInterval: 30s
+
+  containerSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+        - ALL
