@@ -26,6 +26,9 @@ nfs-subdir-external-provisioner:
     runAsGroup: 1000
     seccompProfile:
       type: RuntimeDefault
+    capabilities:
+      drop:
+      - ALL
 
   podSecurityPolicy:
     enabled: false
