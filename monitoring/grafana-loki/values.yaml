@@ -1,5 +1,8 @@
 loki:
   loki:
+    containerSecurityContext:
+      seccompProfile:
+        type: RuntimeDefault
     server:
       http_listen_port: 3100
       grpc_listen_port: 9095
@@ -44,9 +47,9 @@ loki:
   serviceAccount:
     create: true
     automountServiceAccountToken: true
-  rbac:
-    pspEnabled: true
-    sccEnabled: false
+  # rbac:
+  #   pspEnabled: true
+  #   sccEnabled: false
   test:
     enabled: false
     prometheusAddress: "http://prometheus:9090"
@@ -204,6 +207,8 @@ loki:
       capabilities:
         drop:
           - ALL
+      seccompProfile:
+        type: RuntimeDefault
       allowPrivilegeEscalation: false
     terminationGracePeriodSeconds: 30
     affinity: |
