@@ -10,6 +10,12 @@ operator:
       runAsUser: 1000
       runAsGroup: 1000
       runAsNonRoot: true
+      allowPrivilegeEscalation: false
+      seccompProfile:
+        type: RuntimeDefault
+      capabilities:
+        drop:
+        - ALL
     resources:
       requests:
         cpu: 200m
@@ -25,3 +31,9 @@ operator:
     containerSecurityContext:
       runAsUser: 1000
       runAsNonRoot: true
+      allowPrivilegeEscalation: false
+      seccompProfile:
+        type: RuntimeDefault
+      capabilities:
+        drop:
+        - ALL
