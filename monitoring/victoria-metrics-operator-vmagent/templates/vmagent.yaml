@@ -6,6 +6,13 @@ metadata:
 spec:
   image:
     repository: {{ .Values.image.repository }}
+  securityContext:
+    runAsUser: 1000
+    fsGroup: 1000
+    runAsGroup: 1000
+    capabilities:
+      drop:
+        - ALL
   extraArgs:
     envflag.enable: "true"
     envflag.prefix: VM_
@@ -21,13 +28,3 @@ spec:
   selectAllByDefault: true
   serviceAccountName: victoria-metrics-agent
   replicaCount: 1
-  securityContext:
-    allowPrivilegeEscalation: false
-    runAsNonRoot: true
-    runAsUser: 1000
-    runAsGroup: 1000
-    seccompProfile:
-      type: RuntimeDefault
-    capabilities:
-      drop:
-        - ALL
