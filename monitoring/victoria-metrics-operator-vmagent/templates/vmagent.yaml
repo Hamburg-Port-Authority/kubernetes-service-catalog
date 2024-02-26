@@ -6,6 +6,7 @@ metadata:
 spec:
   image:
     repository: {{ .Values.image.repository }}
+  useStrictSecurity: true
   securityContext:
     capabilities:
       drop:
