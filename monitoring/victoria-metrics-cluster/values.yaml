@@ -130,6 +130,7 @@ victoria-metrics-cluster:
   vmstorage:
     enabled: true
     name: vmstorage
+    securityContext: {}
     extraArgs:
       envflag.enable: "true"
       envflag.prefix: VM_
@@ -138,17 +139,6 @@ victoria-metrics-cluster:
     env: []
     # -- Data retention period. Supported values 1w, 1d, number without measurement means month, e.g. 2 = 2month
     retentionPeriod: 1
-    securityContext:
-      runAsUser: 1000
-      runAsGroup: 1000
-      fsGroup: 1000
-      runAsNonRoot: true 
-      allowPrivilegeEscalation: false 
-      seccompProfile:
-        type: RuntimeDefault
-      capabilities:
-        drop:
-          - ALL
     persistentVolume:
       enabled: true
       accessModes:
