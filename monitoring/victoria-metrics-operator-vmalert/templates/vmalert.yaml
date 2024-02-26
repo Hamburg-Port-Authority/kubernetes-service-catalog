@@ -4,6 +4,18 @@ kind: VMAlert
 metadata:
   name: victoria-metrics-alert
 spec:
+  useStrictSecurity: true
+  securityContext:
+    capabilities:
+      drop:
+        - ALL
+    allowPrivilegeEscalation: false
+    runAsNonRoot: true
+    runAsUser: 1000
+    fsGroup: 1000
+    runAsGroup: 1000
+    seccompProfile:
+      type: RuntimeDefault
   datasource:
     url: {{ .Values.vmalert.datasource }}
   evaluationInterval: 15s
