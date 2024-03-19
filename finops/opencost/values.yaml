@@ -1,0 +1,34 @@
+opencost:
+  # -- Overwrite the default name of the chart
+  nameOverride: ""
+  # -- Overwrite all resources name created by the chart
+  fullnameOverride: ""
+  # -- Override the deployment namespace
+  namespaceOverride: "opencost"
+
+  opencost:
+    exporter:
+      securityContext: 
+        capabilities:
+          drop:
+          - ALL
+        readOnlyRootFilesystem: true
+        runAsNonRoot: true
+        runAsUser: 1000
+        allowPrivilegeEscalation: false
+        seccompProfile:
+          type: RuntimeDefault
+
+    ui:
+      # -- Enable OpenCost UI
+      enabled: true
+      securityContext: 
+        capabilities:
+          drop:
+          - ALL
+        readOnlyRootFilesystem: true
+        runAsNonRoot: true
+        runAsUser: 1000
+        allowPrivilegeEscalation: false
+        seccompProfile:
+          type: RuntimeDefault
