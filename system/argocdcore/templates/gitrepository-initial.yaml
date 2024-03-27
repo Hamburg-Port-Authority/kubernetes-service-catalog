@@ -44,7 +44,7 @@ spec:
     template:
       data:
         url: "{{ .url }}"
-        password: '{{"{{"}}.password{{"}}"}}'
+        password: '{{"{{"}}.repositoryPat{{"}}"}}'
         username: "{{ .username }}"
         insecure: "{{ .insecure }}"
         forceHttpBasicAuth: "{{ .forceHttpBasicAuth }}"
@@ -53,7 +53,7 @@ spec:
         labels:
           argocd.argoproj.io/secret-type: repository
   data:
-    - secretKey: password
+    - secretKey: repositoryPat
       remoteRef:
         key: repositoryPat
 {{end}}
