@@ -31,7 +31,7 @@ spec:
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
-  name: initializer-{{ .manifestId }}
+  name: initializer-pat-{{ .manifestId }}
 spec:
   refreshInterval: 1h
   secretStoreRef:
