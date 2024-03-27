@@ -1,5 +1,5 @@
 {{- range .Values.init.repository }}
-{{ if and .externalSecretEnabled .repositoryEnabled }}
+{{ if and .isSshConnection .repositoryEnabled }}
 ---
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
@@ -28,19 +28,33 @@ spec:
         decodingStrategy: Base64
 {{- else if .repositoryEnabled -}}
 ---
-apiVersion: v1
-kind: Secret
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
 metadata:
   name: initializer-{{ .manifestId }}
-  namespace: argocd
-  labels:
-    argocd.argoproj.io/secret-type: repository
-stringData:
-  url: {{ .url }}
-  password: {{ .password }}
-  username: {{ .username }}
-  insecure: "{{ .insecure }}"
-  forceHttpBasicAuth: "{{ .forceHttpBasicAuth }}"
-  enableLfs: "true"
+spec:
+  refreshInterval: 1h
+  secretStoreRef:
+    kind: ClusterSecretStore
+    name: {{ .secretStore }}
+  target:
+    name: initializer-pat-{{ .manifestId }}
+    # optional: specify a template with any additional markup you would like added to the downstream Secret resource.
+    # This template will be deep merged without mutating any existing fields. For example: you cannot override metadata.name.
+    template:
+      data:
+        url: "{{ .url }}"
+        password: '{{"{{"}}.password{{"}}"}}'
+        username: "{{ .username }}"
+        insecure: "{{ .insecure }}"
+        forceHttpBasicAuth: "{{ .forceHttpBasicAuth }}"
+        enableLfs: "true"
+      metadata:
+        labels:
+          argocd.argoproj.io/secret-type: repository
+  data:
+    - secretKey: password
+      remoteRef:
+        key: repositoryPat
 {{end}}
 {{- end }}
