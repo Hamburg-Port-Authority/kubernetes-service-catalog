@@ -98,5 +98,6 @@ loki:
     terminationGracePeriodSeconds: 30
 
   chunksCache:
-    # -- Specifies whether memcached based chunks-cache should be enabled
+    # -- Amount of memory allocated to chunks-cache for object storage (in MB).
+    allocatedMemory: 4096
     
