@@ -81,10 +81,3 @@ loki:
       seccompProfile:
         type: RuntimeDefault
     terminationGracePeriodSeconds: 30
-    affinity: |
-      podAntiAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-          - labelSelector:
-              matchLabels:
-                {{- include "loki.gatewaySelectorLabels" . | nindent 10 }}
-            topologyKey: kubernetes.io/hostname
