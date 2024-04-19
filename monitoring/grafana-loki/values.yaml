@@ -15,7 +15,6 @@ loki:
         type: RuntimeDefault
     # -- Limits config
     limits_config:
-      enforce_metric_name: false
       retention_period: 192h
     # -- Storage config. Providing this will automatically populate all necessary storage configs in the templated config.
     storage:
