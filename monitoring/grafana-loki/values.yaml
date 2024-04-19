@@ -99,4 +99,4 @@ loki:
 
   chunksCache:
     # -- Specifies whether memcached based chunks-cache should be enabled
-    enabled: false
+    
