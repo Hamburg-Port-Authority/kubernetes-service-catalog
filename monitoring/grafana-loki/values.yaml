@@ -1,15 +1,15 @@
 loki:
+  # -- Deployment mode lets you specify how to deploy Loki.
+  # There are 3 options:
+  # - SingleBinary: Loki is deployed as a single binary, useful for small installs typically without HA, up to a few tens of GB/day.
+  # - SimpleScalable: Loki is deployed as 3 targets: read, write, and backend. Useful for medium installs easier to manage than distributed, up to a about 1TB/day.
+  # - Distributed: Loki is deployed as individual microservices. The most complicated but most capable, useful for large installs, typically over 1TB/day.
+  # There are also 2 additional modes used for migrating between deployment modes:
+  # - SingleBinary<->SimpleScalable: Migrate from SingleBinary to SimpleScalable (or vice versa)
+  # - SimpleScalable<->Distributed: Migrate from SimpleScalable to Distributed (or vice versa)
+  # Note: SimpleScalable and Distributed REQUIRE the use of object storage.
+  deploymentMode: SimpleScalable
   loki:
-    # -- Deployment mode lets you specify how to deploy Loki.
-    # There are 3 options:
-    # - SingleBinary: Loki is deployed as a single binary, useful for small installs typically without HA, up to a few tens of GB/day.
-    # - SimpleScalable: Loki is deployed as 3 targets: read, write, and backend. Useful for medium installs easier to manage than distributed, up to a about 1TB/day.
-    # - Distributed: Loki is deployed as individual microservices. The most complicated but most capable, useful for large installs, typically over 1TB/day.
-    # There are also 2 additional modes used for migrating between deployment modes:
-    # - SingleBinary<->SimpleScalable: Migrate from SingleBinary to SimpleScalable (or vice versa)
-    # - SimpleScalable<->Distributed: Migrate from SimpleScalable to Distributed (or vice versa)
-    # Note: SimpleScalable and Distributed REQUIRE the use of object storage.
-    deploymentMode: SimpleScalable
     containerSecurityContext:
       seccompProfile:
         type: RuntimeDefault
@@ -34,15 +34,22 @@ loki:
         insecure: true
         http_config:
           insecure_skip_verify: true
-    schema_config:
+    schemaConfig:
       configs:
-      - from: "2022-01-11"
+      - from: "2023-07-01"
         index:
           period: 24h
           prefix: loki_index_
         object_store: s3
-        schema: v12
-        store: boltdb-shipper
+        schema: v13
+        store: tsdb
+      # - from: "2023-07-01"
+      #   store: tsdb
+      #   object_store: s3
+      #   schema: v13
+      #   index:
+      #     prefix: index_
+      #     period: 24h
     
   serviceAccount:
     create: true
