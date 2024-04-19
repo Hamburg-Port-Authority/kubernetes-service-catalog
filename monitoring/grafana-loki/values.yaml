@@ -38,9 +38,6 @@ loki:
   serviceAccount:
     create: true
     automountServiceAccountToken: true
-  rbac:
-   pspAnnotations: 
-    apparmor.security.beta.kubernetes.io/defaultProfileName: 'runtime/default'
   monitoring:
     dashboards:
       enabled: true
@@ -80,19 +77,9 @@ loki:
     enabled: true
     replicas: 2
     verboseLogging: true
-    podSecurityContext:
-      fsGroup: 101
-      runAsGroup: 101
-      runAsNonRoot: true
-      runAsUser: 101
     containerSecurityContext:
-      readOnlyRootFilesystem: true
-      capabilities:
-        drop:
-          - ALL
       seccompProfile:
         type: RuntimeDefault
-      allowPrivilegeEscalation: false
     terminationGracePeriodSeconds: 30
     affinity: |
       podAntiAffinity:
