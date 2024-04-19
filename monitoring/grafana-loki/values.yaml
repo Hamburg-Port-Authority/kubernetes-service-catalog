@@ -34,6 +34,15 @@ loki:
         insecure: true
         http_config:
           insecure_skip_verify: true
+    schema_config:
+      configs:
+      - from: "2022-01-11"
+        index:
+          period: 24h
+          prefix: loki_index_
+        object_store: s3
+        schema: v12
+        store: boltdb-shipper
     
   serviceAccount:
     create: true
