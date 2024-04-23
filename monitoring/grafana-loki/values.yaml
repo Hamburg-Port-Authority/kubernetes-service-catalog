@@ -119,8 +119,8 @@ loki:
     persistence:
       enableStatefulSetAutoDeletePVC: true
       size: 10Gi
-    extraArgs:  
-    - '-config.expand-env=true'
+    # extraArgs:  
+    # - '-config.expand-env=true'
     extraEnv:
     - name: GRAFANA-LOKI-S3-ENDPOINT 
       valueFrom:
