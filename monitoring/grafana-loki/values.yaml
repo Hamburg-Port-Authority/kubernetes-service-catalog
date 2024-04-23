@@ -13,17 +13,13 @@ loki:
     containerSecurityContext:
       seccompProfile:
         type: RuntimeDefault
-      # allowPrivilegeEscalation: false
-      # capabilities:
-      #   drop:
-      #   - ALL
-    podSecurityContext:
-      seccompProfile:
-        type: RuntimeDefault
       allowPrivilegeEscalation: false
       capabilities:
         drop:
         - ALL
+    podSecurityContext:
+      seccompProfile:
+        type: RuntimeDefault
     # -- Limits config
     limits_config:
       retention_period: 192h
@@ -114,6 +110,30 @@ loki:
   
   sidecar:
     securityContext:
+      seccompProfile:
+        type: RuntimeDefault
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+        - ALL
+  
+  memcached:
+    podSecurityContext :
+      seccompProfile:
+        type: RuntimeDefault
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+        - ALL
+    containerSecurityContext:
+      seccompProfile:
+        type: RuntimeDefault
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+        - ALL
+  memcachedExporter:
+    containerSecurityContext:
       seccompProfile:
         type: RuntimeDefault
       allowPrivilegeEscalation: false
