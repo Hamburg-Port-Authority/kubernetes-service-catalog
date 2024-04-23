@@ -125,7 +125,10 @@ loki:
       capabilities:
         drop:
         - ALL
+      fsGroup: 10001
+      runAsGroup: 10001
       runAsNonRoot: true
+      runAsUser: 10001
     containerSecurityContext:
       seccompProfile:
         type: RuntimeDefault
@@ -133,7 +136,6 @@ loki:
       capabilities:
         drop:
         - ALL
-      runAsNonRoot: true
   memcachedExporter:
     containerSecurityContext:
       seccompProfile:
@@ -142,4 +144,3 @@ loki:
       capabilities:
         drop:
         - ALL
-      runAsNonRoot: true
