@@ -111,4 +111,12 @@ loki:
   chunksCache:
     # -- Amount of memory allocated to chunks-cache for object storage (in MB).
     allocatedMemory: 4096
-    
+  
+  sidecar:
+    securityContext:
+      seccompProfile:
+        type: RuntimeDefault
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+        - ALL
