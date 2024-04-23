@@ -77,14 +77,14 @@ loki:
 
   write:
     extraArgs:  
-    - '-config.expand-env=true'
+      - -config.expand-env=true
     extraEnvFrom: 
       - secretRef:
           name: external-secret-loki
 
   read:
     extraArgs:  
-    - '-config.expand-env=true'
+      - -config.expand-env=true
     extraEnvFrom: 
       - secretRef:
           name: external-secret-loki
@@ -94,7 +94,7 @@ loki:
       enableStatefulSetAutoDeletePVC: true
       size: 10Gi
     extraArgs:  
-    - '-config.expand-env=true'
+      - -config.expand-env=true
     extraEnvFrom: 
       - secretRef:
           name: external-secret-loki
