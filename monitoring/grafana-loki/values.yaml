@@ -74,44 +74,46 @@ loki:
         enableConfigReadAPI: false
     lokiCanary:
       enabled: true
-  write:
-    extraArgs:  
-    - '-config.expand-env=true'
-    extraEnv:
-    - name: GRAFANA-LOKI-S3-ENDPOINT 
-      valueFrom:
-        secretKeyRef:
-          name: external-secret-loki
-          key: grafana-loki-s3-endpoint
-    - name: GRAFANA-LOKI-S3-ACCESKEYID 
-      valueFrom:
-        secretKeyRef:
-          name: external-secret-loki
-          key: grafana-loki-s3-accessKeyId
-    - name: GRAFANA-LOKI-S3-SECRETACCESSKEY
-      valueFrom:
-        secretKeyRef:
-          name: external-secret-loki
-          key: grafana-loki-s3-secretAccessKey
-  read:
-    extraArgs:  
-    - '-config.expand-env=true'
-    extraEnv:
-    - name: GRAFANA-LOKI-S3-ENDPOINT 
-      valueFrom:
-        secretKeyRef:
-          name: external-secret-loki
-          key: grafana-loki-s3-endpoint
-    - name: GRAFANA-LOKI-S3-ACCESKEYID 
-      valueFrom:
-        secretKeyRef:
-          name: external-secret-loki
-          key: grafana-loki-s3-accessKeyId
-    - name: GRAFANA-LOKI-S3-SECRETACCESSKEY
-      valueFrom:
-        secretKeyRef:
-          name: external-secret-loki
-          key: grafana-loki-s3-secretAccessKey
+
+  # write:
+  #   extraArgs:  
+  #   - '-config.expand-env=true'
+  #   extraEnv:
+  #   - name: GRAFANA-LOKI-S3-ENDPOINT 
+  #     valueFrom:
+  #       secretKeyRef:
+  #         name: external-secret-loki
+  #         key: grafana-loki-s3-endpoint
+  #   - name: GRAFANA-LOKI-S3-ACCESKEYID 
+  #     valueFrom:
+  #       secretKeyRef:
+  #         name: external-secret-loki
+  #         key: grafana-loki-s3-accessKeyId
+  #   - name: GRAFANA-LOKI-S3-SECRETACCESSKEY
+  #     valueFrom:
+  #       secretKeyRef:
+  #         name: external-secret-loki
+  #         key: grafana-loki-s3-secretAccessKey
+
+  # read:
+  #   extraArgs:  
+  #   - '-config.expand-env=true'
+  #   extraEnv:
+  #   - name: GRAFANA-LOKI-S3-ENDPOINT 
+  #     valueFrom:
+  #       secretKeyRef:
+  #         name: external-secret-loki
+  #         key: grafana-loki-s3-endpoint
+  #   - name: GRAFANA-LOKI-S3-ACCESKEYID 
+  #     valueFrom:
+  #       secretKeyRef:
+  #         name: external-secret-loki
+  #         key: grafana-loki-s3-accessKeyId
+  #   - name: GRAFANA-LOKI-S3-SECRETACCESSKEY
+  #     valueFrom:
+  #       secretKeyRef:
+  #         name: external-secret-loki
+  #         key: grafana-loki-s3-secretAccessKey
   backend:
     replicas: 3
     persistence:
