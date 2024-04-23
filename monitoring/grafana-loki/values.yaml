@@ -121,10 +121,6 @@ loki:
     podSecurityContext :
       seccompProfile:
         type: RuntimeDefault
-      allowPrivilegeEscalation: false
-      capabilities:
-        drop:
-        - ALL
       fsGroup: 10001
       runAsGroup: 10001
       runAsNonRoot: true
