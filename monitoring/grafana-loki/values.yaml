@@ -13,10 +13,10 @@ loki:
     containerSecurityContext:
       seccompProfile:
         type: RuntimeDefault
-      allowPrivilegeEscalation: false
-      capabilities:
-        drop:
-        - ALL
+      # allowPrivilegeEscalation: false
+      # capabilities:
+      #   drop:
+      #   - ALL
     podSecurityContext:
       seccompProfile:
         type: RuntimeDefault
