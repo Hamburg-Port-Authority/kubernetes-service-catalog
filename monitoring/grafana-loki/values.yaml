@@ -13,6 +13,17 @@ loki:
     containerSecurityContext:
       seccompProfile:
         type: RuntimeDefault
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+        - ALL
+    podSecurityContext:
+      seccompProfile:
+        type: RuntimeDefault
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+        - ALL
     # -- Limits config
     limits_config:
       retention_period: 192h
