@@ -25,20 +25,15 @@ loki:
       retention_period: 192h
     # -- Storage config. Providing this will automatically populate all necessary storage configs in the templated config.
     storage:
-      bucketNames:
-        chunks: chunks
-        ruler: ruler
-        admin: admin
       type: 's3'
       s3:
         s3: null
-        endpoint: https://minio.minio-loki
-        region: 
-        secretAccessKey: null
-        accessKeyId: null
-        s3ForcePathStyle: true
-        insecure: true
-        http_config:
+        s3forcepathstyle: "true"
+        endpoint: "${GRAFANA-LOKI-S3-ENDPOINT}"
+        accessKeyId: "${GRAFANA-LOKI-S3-ACCESKEYID}"
+        secretAccessKey: "${GRAFANA-LOKI-S3-SECRETACCESSKEY}"
+        insecure: "true"  
+        http_config: 
           insecure_skip_verify: true
     schemaConfig:
       configs:
@@ -49,13 +44,6 @@ loki:
         object_store: s3
         schema: v13
         store: tsdb
-      # - from: "2023-07-01"
-      #   store: tsdb
-      #   object_store: s3
-      #   schema: v13
-      #   index:
-      #     prefix: index_
-      #     period: 24h
     
   serviceAccount:
     create: true
@@ -91,6 +79,24 @@ loki:
     persistence:
       enableStatefulSetAutoDeletePVC: true
       size: 10Gi
+    extraArgs:  
+    - '-config.expand-env=true'
+    extraEnv:
+    - name: GRAFANA-LOKI-S3-ENDPOINT 
+      valueFrom:
+        secretKeyRef:
+          name: loki-secrets
+          key: grafana-loki-s3-endpoint
+    - name: GRAFANA-LOKI-S3-ACCESKEYID 
+      valueFrom:
+        secretKeyRef:
+          name: loki-secrets
+          key: grafana-loki-s3-accessKeyId
+    - name: GRAFANA-LOKI-S3-SECRETACCESSKEY
+      valueFrom:
+        secretKeyRef:
+          name: loki-secrets
+          key: grafana-loki-s3-secretAccessKey
 
   memberlist:
     service:
