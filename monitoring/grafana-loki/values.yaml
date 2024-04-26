@@ -16,7 +16,7 @@ loki:
       allowPrivilegeEscalation: false
       capabilities:
         drop:
-        - ALL
+          - ALL
     podSecurityContext:
       seccompProfile:
         type: RuntimeDefault
@@ -44,14 +44,14 @@ loki:
           insecure_skip_verify: true
     schemaConfig:
       configs:
-      - from: "2023-07-01"
-        index:
-          period: 24h
-          prefix: loki_index_
-        object_store: s3
-        schema: v13
-        store: tsdb
-    
+        - from: "2023-07-01"
+          index:
+            period: 24h
+            prefix: loki_index_
+          object_store: s3
+          schema: v13
+          store: tsdb
+
   serviceAccount:
     create: true
     automountServiceAccountToken: true
@@ -83,9 +83,9 @@ loki:
       enabled: true
 
   write:
-    # extraArgs:  
+    # extraArgs:
     #   - -config.expand-env=true
-    # extraEnvFrom: 
+    # extraEnvFrom:
     #   - secretRef:
     #       name: external-secret-loki
     extraArgs:
@@ -93,12 +93,12 @@ loki:
       - '-log.level=debug'
       - '-print-config-stderr'
     extraEnv:
-      - name: GRAFANA-LOKI-S3-ENDPOINT 
+      - name: GRAFANA-LOKI-S3-ENDPOINT
         valueFrom:
           secretKeyRef:
             name: external-secret-loki
             key: grafana-loki-s3-endpoint
-      - name: GRAFANA-LOKI-S3-ACCESSKEYID 
+      - name: GRAFANA-LOKI-S3-ACCESSKEYID
         valueFrom:
           secretKeyRef:
             name: external-secret-loki
@@ -110,9 +110,9 @@ loki:
             key: grafana-loki-s3-secretAccessKey
 
   read:
-    # extraArgs:  
+    # extraArgs:
     #   - -config.expand-env=true
-    # extraEnvFrom: 
+    # extraEnvFrom:
     #   - secretRef:
     #       name: external-secret-loki
     extraArgs:
@@ -120,12 +120,12 @@ loki:
       - '-log.level=debug'
       - '-print-config-stderr'
     extraEnv:
-      - name: GRAFANA-LOKI-S3-ENDPOINT 
+      - name: GRAFANA-LOKI-S3-ENDPOINT
         valueFrom:
           secretKeyRef:
             name: external-secret-loki
             key: grafana-loki-s3-endpoint
-      - name: GRAFANA-LOKI-S3-ACCESSKEYID 
+      - name: GRAFANA-LOKI-S3-ACCESSKEYID
         valueFrom:
           secretKeyRef:
             name: external-secret-loki
@@ -140,22 +140,22 @@ loki:
     persistence:
       enableStatefulSetAutoDeletePVC: true
       size: 10Gi
-    # extraArgs:  
-    #   - -config.expand-env=true
-    # extraEnvFrom: 
-    #   - secretRef:
-    #       name: external-secret-loki
+      # extraArgs:
+      #   - -config.expand-env=true
+      # extraEnvFrom:
+      #   - secretRef:
+      #       name: external-secret-loki
       extraArgs:
       - '-config.expand-env=true'
       - '-log.level=debug'
       - '-print-config-stderr'
     extraEnv:
-      - name: GRAFANA-LOKI-S3-ENDPOINT 
+      - name: GRAFANA-LOKI-S3-ENDPOINT
         valueFrom:
           secretKeyRef:
             name: external-secret-loki
             key: grafana-loki-s3-endpoint
-      - name: GRAFANA-LOKI-S3-ACCESSKEYID 
+      - name: GRAFANA-LOKI-S3-ACCESSKEYID
         valueFrom:
           secretKeyRef:
             name: external-secret-loki
@@ -181,7 +181,7 @@ loki:
   chunksCache:
     # -- Amount of memory allocated to chunks-cache for object storage (in MB).
     allocatedMemory: 4096
-  
+
   sidecar:
     securityContext:
       seccompProfile:
@@ -189,10 +189,10 @@ loki:
       allowPrivilegeEscalation: false
       capabilities:
         drop:
-        - ALL
-  
+          - ALL
+
   memcached:
-    podSecurityContext :
+    podSecurityContext:
       seccompProfile:
         type: RuntimeDefault
       fsGroup: 10001
@@ -205,7 +205,7 @@ loki:
       allowPrivilegeEscalation: false
       capabilities:
         drop:
-        - ALL
+          - ALL
   memcachedExporter:
     containerSecurityContext:
       seccompProfile:
@@ -213,4 +213,4 @@ loki:
       allowPrivilegeEscalation: false
       capabilities:
         drop:
-        - ALL
+          - ALL
