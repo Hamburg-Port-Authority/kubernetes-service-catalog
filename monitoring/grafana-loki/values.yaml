@@ -36,9 +36,12 @@ loki:
         # endpoint: "${grafana-loki-s3-endpoint}"
         # accessKeyId: "${grafana-loki-s3-accessKeyId}"
         # secretAccessKey: "${grafana-loki-s3-secretAccessKey}"
-        endpoint: ${GRAFANA-LOKI-S3-ENDPOINT}
-        accessKeyId: ${GRAFANA-LOKI-S3-ACCESKEYID}
-        secretAccessKey: ${GRAFANA-LOKI-S3-SECRETACCESSKEY}
+        # endpoint: ${GRAFANA-LOKI-S3-ENDPOINT}'
+        # accessKeyId: ${GRAFANA-LOKI-S3-ACCESKEYID}
+        # secretAccessKey: ${GRAFANA-LOKI-S3-SECRETACCESSKEY}'
+        endpoint: $GRAFANA-LOKI-S3-ENDPOINT
+        accessKeyId: $GRAFANA-LOKI-S3-ACCESKEYID
+        secretAccessKey: $GRAFANA-LOKI-S3-SECRETACCESSKEY
         insecure: "true"  
         http_config: 
           insecure_skip_verify: true
@@ -111,6 +114,8 @@ loki:
           secretKeyRef:
             name: external-secret-loki
             key: grafana-loki-s3-secretAccessKey
+      - name: TEST
+        value: "Test2"
 
   read:
     # extraArgs:
