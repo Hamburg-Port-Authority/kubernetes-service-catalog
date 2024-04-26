@@ -96,29 +96,29 @@ loki:
     persistence:
       enableStatefulSetAutoDeletePVC: true
       size: 10Gi
-    # extraArgs:  
-    #   - -config.expand-env=true
-    # extraEnvFrom: 
-    #   - secretRef:
-    #       name: external-secret-loki
-      extraArgs:
-      - '-config.expand-env=true'
-    extraEnv:
-      - name: GRAFANA-LOKI-S3-ENDPOINT 
-        valueFrom:
-          secretKeyRef:
-            name: loki-secrets
-            key: grafana-loki-s3-endpoint
-      - name: GRAFANA-LOKI-S3-ACCESSKEYID 
-        valueFrom:
-          secretKeyRef:
-            name: loki-secrets
-            key: grafana-loki-s3-accessKeyId
-      - name: GRAFANA-LOKI-S3-SECRETACCESSKEY
-        valueFrom:
-          secretKeyRef:
-            name: loki-secrets
-            key: grafana-loki-s3-secretAccessKey
+    extraArgs:  
+      - -config.expand-env=true
+    extraEnvFrom: 
+      - secretRef:
+          name: external-secret-loki
+    #   extraArgs:
+    #   - '-config.expand-env=true'
+    # extraEnv:
+    #   - name: GRAFANA-LOKI-S3-ENDPOINT 
+    #     valueFrom:
+    #       secretKeyRef:
+    #         name: loki-secrets
+    #         key: grafana-loki-s3-endpoint
+    #   - name: GRAFANA-LOKI-S3-ACCESSKEYID 
+    #     valueFrom:
+    #       secretKeyRef:
+    #         name: loki-secrets
+    #         key: grafana-loki-s3-accessKeyId
+    #   - name: GRAFANA-LOKI-S3-SECRETACCESSKEY
+    #     valueFrom:
+    #       secretKeyRef:
+    #         name: loki-secrets
+    #         key: grafana-loki-s3-secretAccessKey
 
   memberlist:
     service:
