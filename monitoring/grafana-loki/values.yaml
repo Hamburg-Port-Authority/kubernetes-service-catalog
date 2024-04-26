@@ -32,9 +32,9 @@ loki:
         # endpoint: "grafana-loki-s3-endpoint"
         # accessKeyId: "grafana-loki-s3-accessKeyId"
         # secretAccessKey: "grafana-loki-s3-secretAccessKey"
-        endpoint: "${GRAFANA-LOKI-S3-ENDPOINT:-PUSTEKUCHEN}"
-        accessKeyId: "${GRAFANA-LOKI-S3-ACCESKEYID:-PUSTEKUCHEN}"
-        secretAccessKey: "${GRAFANA-LOKI-S3-SECRETACCESSKEY:-PUSTEKUCHEN}"
+        endpoint: '${GRAFANA-LOKI-S3-ENDPOINT:-PUSTEKUCHEN}'
+        accessKeyId: '${GRAFANA-LOKI-S3-ACCESKEYID:-PUSTEKUCHEN}'
+        secretAccessKey: '${GRAFANA-LOKI-S3-SECRETACCESSKEY:-PUSTEKUCHEN}'
         insecure: "true"  
         http_config: 
           insecure_skip_verify: true
