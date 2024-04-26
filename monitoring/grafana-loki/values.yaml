@@ -85,7 +85,12 @@ loki:
   write:
     # extraArgs:
     #   - -config.expand-env=true
-    extraEnvFrom: ["external-secret-loki"]
+      # -- Environment variables to add to the backend pods
+      extraEnv: []
+      # -- Environment variables from secrets or configmaps to add to the backend pods
+      extraEnvFrom: 
+        - secretRef:
+            name: external-secret-loki
     extraArgs:
       - '-config.expand-env=true'
       - '-log.level=debug'
@@ -110,9 +115,11 @@ loki:
   read:
     # extraArgs:
     #   - -config.expand-env=true
-    extraEnvFrom:
-      - secretRef:
-          name: external-secret-loki
+      extraEnv: []
+      # -- Environment variables from secrets or configmaps to add to the backend pods
+      extraEnvFrom: 
+        - secretRef:
+            name: external-secret-loki
     extraArgs:
       - '-config.expand-env=true'
       - '-log.level=debug'
@@ -138,9 +145,11 @@ loki:
     persistence:
       enableStatefulSetAutoDeletePVC: true
       size: 10Gi
-      # extraArgs:
-        # - -config.expand-env=true
-      extraEnvFrom: ["external-secret-loki"]
+      extraEnv: []
+      # -- Environment variables from secrets or configmaps to add to the backend pods
+      extraEnvFrom: 
+        - secretRef:
+            name: external-secret-loki
       extraArgs:
       - '-config.expand-env=true'
       - '-log.level=debug'
