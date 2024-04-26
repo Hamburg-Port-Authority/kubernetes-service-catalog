@@ -39,7 +39,7 @@ loki:
         # endpoint: ${GRAFANA-LOKI-S3-ENDPOINT}'
         accessKeyId: $GRAFANA-LOKI-S3-ACCESSKEYID
         # secretAccessKey: ${GRAFANA-LOKI-S3-SECRETACCESSKEY}'
-        endpoint: ${TEST}
+        endpoint: ${GRAFANA_LOKI_S3_ENDPOINT}
         # accessKeyId: $GRAFANA-LOKI-S3-ACCESSKEYID
         secretAccessKey: $GRAFANA-LOKI-S3-SECRETACCESSKEY
         insecure: "true"  
@@ -99,7 +99,7 @@ loki:
       - '-log.level=debug'
       - '-print-config-stderr'
     extraEnv:
-      - name: GRAFANA-LOKI-S3-ENDPOINT
+      - name: GRAFANA_LOKI_S3_ENDPOINT
         valueFrom:
           secretKeyRef:
             name: external-secret-loki
