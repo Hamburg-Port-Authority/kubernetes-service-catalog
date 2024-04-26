@@ -88,9 +88,7 @@ loki:
       # -- Environment variables to add to the backend pods
     extraEnv: []
     # -- Environment variables from secrets or configmaps to add to the backend pods
-    extraEnvFrom: 
-      - secretRef:
-          name: external-secret-loki
+    extraEnvFrom: ["external-secret-loki"]
     extraArgs:
       - '-config.expand-env=true'
       - '-log.level=debug'
