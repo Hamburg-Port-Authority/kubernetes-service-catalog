@@ -33,12 +33,12 @@ loki:
       s3:
         s3: null
         s3forcepathstyle: "true"
-        endpoint: "${grafana-loki-s3-endpoint}"
-        accessKeyId: "${grafana-loki-s3-accessKeyId}"
-        secretAccessKey: "${grafana-loki-s3-secretAccessKey}"
-        # endpoint: "'${GRAFANA-LOKI-S3-ENDPOINT}'"
-        # accessKeyId: "'${GRAFANA-LOKI-S3-ACCESKEYID}'"
-        # secretAccessKey: "'${GRAFANA-LOKI-S3-SECRETACCESSKEY}'"
+        # endpoint: "${grafana-loki-s3-endpoint}"
+        # accessKeyId: "${grafana-loki-s3-accessKeyId}"
+        # secretAccessKey: "${grafana-loki-s3-secretAccessKey}"
+        endpoint: "'${GRAFANA-LOKI-S3-ENDPOINT}'"
+        accessKeyId: "'${GRAFANA-LOKI-S3-ACCESKEYID}'"
+        secretAccessKey: "'${GRAFANA-LOKI-S3-SECRETACCESSKEY}'"
         insecure: "true"  
         http_config: 
           insecure_skip_verify: true
@@ -88,9 +88,9 @@ loki:
       # -- Environment variables to add to the backend pods
     extraEnv: []
     # -- Environment variables from secrets or configmaps to add to the backend pods
-    extraEnvFrom: 
-      - secretRef:
-          name: external-secret-loki
+    # extraEnvFrom: 
+    #   - secretRef:
+    #       name: external-secret-loki
     extraArgs:
       - '-config.expand-env=true'
       - '-log.level=debug'
@@ -111,6 +111,13 @@ loki:
     #       secretKeyRef:
     #         name: external-secret-loki
     #         key: grafana-loki-s3-secretAccessKey
+    extraEnv:
+      - name: GRAFANA-LOKI-S3-ENDPOINT
+        value: "test123"
+      - name: GRAFANA-LOKI-S3-ACCESSKEYID
+        value: "2313234"
+      - name: GRAFANA-LOKI-S3-SECRETACCESSKEY
+        value: "qasfd"
 
   read:
     # extraArgs:
