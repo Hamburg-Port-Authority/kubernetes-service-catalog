@@ -25,23 +25,19 @@ loki:
       retention_period: 192h
     # -- Storage config. Providing this will automatically populate all necessary storage configs in the templated config.
     storage:
-      bucketNames:
-        chunks: prometheus-playg
-        ruler: prometheus-playg
-        admin: prometheus-playg
-      type: 's3'
-      s3:
-        s3: null
-        s3forcepathstyle: "true"
+      # type: 's3'
+      # s3:
+      #   s3: null
+      #   s3forcepathstyle: "true"
         # endpoint: "${grafana-loki-s3-endpoint}"
         # accessKeyId: "${grafana-loki-s3-accessKeyId}"
         # secretAccessKey: "${grafana-loki-s3-secretAccessKey}"
         # endpoint: ${GRAFANA-LOKI-S3-ENDPOINT}'
-        accessKeyId: $GRAFANA_LOKI-S3-ACCESSKEYID
+        # accessKeyId: $GRAFANA_LOKI-S3-ACCESSKEYID
         # secretAccessKey: ${GRAFANA-LOKI-S3-SECRETACCESSKEY}'
-        endpoint: ${GRAFANA_LOKI_S3_ENDPOINT}
+        # endpoint: ${GRAFANA_LOKI_S3_ENDPOINT}
         # accessKeyId: $GRAFANA-LOKI-S3-ACCESSKEYID
-        secretAccessKey: $GRAFANA-LOKI_S3_SECRETACCESSKEY
+        # secretAccessKey: $GRAFANA-LOKI_S3_SECRETACCESSKEY
         insecure: "true"  
         http_config: 
           insecure_skip_verify: true
@@ -87,86 +83,66 @@ loki:
 
   write:
     # extraArgs:
-    #   - -config.expand-env=true
-      # -- Environment variables to add to the backend pods
-    extraEnv: []
-    # -- Environment variables from secrets or configmaps to add to the backend pods
-    # extraEnvFrom: 
-    #   - secretRef:
-    #       name: external-secret-loki
-    extraArgs:
-      - '-config.expand-env=true'
-    extraEnv:
-      - name: GRAFANA_LOKI_S3_ENDPOINT
-        valueFrom:
-          secretKeyRef:
-            name: external-secret-loki
-            key: grafana-loki-s3-endpoint
-      - name: GRAFANA_LOKI_S3_ACCESSKEYID
-        valueFrom:
-          secretKeyRef:
-            name: external-secret-loki
-            key: grafana-loki-s3-accessKeyId
-      - name: GRAFANA_LOKI_S3_SECRETACCESSKEY
-        valueFrom:
-          secretKeyRef:
-            name: external-secret-loki
-            key: grafana-loki-s3-secretAccessKey
+    #   - '-config.expand-env=true'
+    # extraEnv:
+    #   - name: GRAFANA_LOKI_S3_ENDPOINT
+    #     valueFrom:
+    #       secretKeyRef:
+    #         name: external-secret-loki
+    #         key: grafana-loki-s3-endpoint
+    #   - name: GRAFANA_LOKI_S3_ACCESSKEYID
+    #     valueFrom:
+    #       secretKeyRef:
+    #         name: external-secret-loki
+    #         key: grafana-loki-s3-accessKeyId
+    #   - name: GRAFANA_LOKI_S3_SECRETACCESSKEY
+    #     valueFrom:
+    #       secretKeyRef:
+    #         name: external-secret-loki
+    #         key: grafana-loki-s3-secretAccessKey
 
   read:
     # extraArgs:
-    #   - -config.expand-env=true
-    extraEnv: []
-    # -- Environment variables from secrets or configmaps to add to the backend pods
-    # extraEnvFrom: 
-    #   - secretRef:
-    #       name: external-secret-loki
-    extraArgs:
-      - '-config.expand-env=true'
-    extraEnv:
-      - name: GRAFANA_LOKI_S3_ENDPOINT
-        valueFrom:
-          secretKeyRef:
-            name: external-secret-loki
-            key: grafana-loki-s3-endpoint
-      - name: GRAFANA_LOKI_S3_ACCESSKEYID
-        valueFrom:
-          secretKeyRef:
-            name: external-secret-loki
-            key: grafana-loki-s3-accessKeyId
-      - name: GRAFANA_LOKI_S3_SECRETACCESSKEY
-        valueFrom:
-          secretKeyRef:
-            name: external-secret-loki
-            key: grafana-loki-s3-secretAccessKey
+    #   - '-config.expand-env=true'
+    # extraEnv:
+    #   - name: GRAFANA_LOKI_S3_ENDPOINT
+    #     valueFrom:
+    #       secretKeyRef:
+    #         name: external-secret-loki
+    #         key: grafana-loki-s3-endpoint
+    #   - name: GRAFANA_LOKI_S3_ACCESSKEYID
+    #     valueFrom:
+    #       secretKeyRef:
+    #         name: external-secret-loki
+    #         key: grafana-loki-s3-accessKeyId
+    #   - name: GRAFANA_LOKI_S3_SECRETACCESSKEY
+    #     valueFrom:
+    #       secretKeyRef:
+    #         name: external-secret-loki
+    #         key: grafana-loki-s3-secretAccessKey
   backend:
     replicas: 3
     persistence:
       enableStatefulSetAutoDeletePVC: true
       size: 10Gi
-      extraEnv: []
-      # -- Environment variables from secrets or configmaps to add to the backend pods
-    # extraEnvFrom: 
-    #   - secretRef:
-    #       name: external-secret-loki
-    extraArgs:
-      - '-config.expand-env=true'
-    extraEnv:
-      - name: GRAFANA_LOKI_S3_ENDPOINT
-        valueFrom:
-          secretKeyRef:
-            name: external-secret-loki
-            key: grafana-loki-s3-endpoint
-      - name: GRAFANA_LOKI_S3_ACCESSKEYID
-        valueFrom:
-          secretKeyRef:
-            name: external-secret-loki
-            key: grafana-loki-s3-accessKeyId
-      - name: GRAFANA_LOKI_S3_SECRETACCESSKEY
-        valueFrom:
-          secretKeyRef:
-            name: external-secret-loki
-            key: grafana-loki-s3-secretAccessKey
+    # extraArgs:
+    #   - '-config.expand-env=true'
+    # extraEnv:
+    #   - name: GRAFANA_LOKI_S3_ENDPOINT
+    #     valueFrom:
+    #       secretKeyRef:
+    #         name: external-secret-loki
+    #         key: grafana-loki-s3-endpoint
+    #   - name: GRAFANA_LOKI_S3_ACCESSKEYID
+    #     valueFrom:
+    #       secretKeyRef:
+    #         name: external-secret-loki
+    #         key: grafana-loki-s3-accessKeyId
+    #   - name: GRAFANA_LOKI_S3_SECRETACCESSKEY
+    #     valueFrom:
+    #       secretKeyRef:
+    #         name: external-secret-loki
+    #         key: grafana-loki-s3-secretAccessKey
 
   memberlist:
     service:
