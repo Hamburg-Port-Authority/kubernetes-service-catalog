@@ -33,7 +33,7 @@ loki:
         # accessKeyId: "${grafana-loki-s3-accessKeyId}"
         # secretAccessKey: "${grafana-loki-s3-secretAccessKey}"
         endpoint: "${GRAFANA-LOKI-S3-ENDPOINT}"
-        accessKeyId: "${GRAFANA-LOKI-S3-ACCESKEYID}"
+        accessKeyId: "${GRAFANA-LOKI-S3-ACCESSKEYID}"
         secretAccessKey: "${GRAFANA-LOKI-S3-SECRETACCESSKEY}"
         insecure: "true"  
         http_config: 
@@ -109,7 +109,7 @@ loki:
           secretKeyRef:
             name: loki-secrets
             key: grafana-loki-s3-endpoint
-      - name: GRAFANA-LOKI-S3-ACCESKEYID 
+      - name: GRAFANA-LOKI-S3-ACCESSKEYID 
         valueFrom:
           secretKeyRef:
             name: loki-secrets
