@@ -16,7 +16,7 @@ loki:
       allowPrivilegeEscalation: false
       capabilities:
         drop:
-          - ALL
+        - ALL
     podSecurityContext:
       seccompProfile:
         type: RuntimeDefault
@@ -25,32 +25,38 @@ loki:
       retention_period: 192h
     # -- Storage config. Providing this will automatically populate all necessary storage configs in the templated config.
     storage:
-      # type: 's3'
-      # s3:
-      #   s3: null
-      #   s3forcepathstyle: "true"
-        # endpoint: "${grafana-loki-s3-endpoint}"
-        # accessKeyId: "${grafana-loki-s3-accessKeyId}"
-        # secretAccessKey: "${grafana-loki-s3-secretAccessKey}"
-        # endpoint: ${GRAFANA-LOKI-S3-ENDPOINT}'
-        # accessKeyId: $GRAFANA_LOKI-S3-ACCESSKEYID
-        # secretAccessKey: ${GRAFANA-LOKI-S3-SECRETACCESSKEY}'
-        # endpoint: ${GRAFANA_LOKI_S3_ENDPOINT}
-        # accessKeyId: $GRAFANA-LOKI-S3-ACCESSKEYID
-        # secretAccessKey: $GRAFANA-LOKI_S3_SECRETACCESSKEY
-        insecure: "true"  
-        http_config: 
+      bucketNames:
+        chunks: chunks
+        ruler: ruler
+        admin: admin
+      type: 's3'
+      s3:
+        s3: null
+        endpoint: https://minio.minio-loki
+        region: 
+        secretAccessKey: null
+        accessKeyId: null
+        s3ForcePathStyle: true
+        insecure: true
+        http_config:
           insecure_skip_verify: true
     schemaConfig:
       configs:
-        - from: "2023-07-01"
-          index:
-            period: 24h
-            prefix: loki_index_
-          object_store: s3
-          schema: v13
-          store: tsdb
-
+      - from: "2023-07-01"
+        index:
+          period: 24h
+          prefix: loki_index_
+        object_store: s3
+        schema: v13
+        store: tsdb
+      # - from: "2023-07-01"
+      #   store: tsdb
+      #   object_store: s3
+      #   schema: v13
+      #   index:
+      #     prefix: index_
+      #     period: 24h
+    
   serviceAccount:
     create: true
     automountServiceAccountToken: true
@@ -80,69 +86,11 @@ loki:
         enableConfigReadAPI: false
     lokiCanary:
       enabled: true
-
-  write:
-    # extraArgs:
-    #   - '-config.expand-env=true'
-    # extraEnv:
-    #   - name: GRAFANA_LOKI_S3_ENDPOINT
-    #     valueFrom:
-    #       secretKeyRef:
-    #         name: external-secret-loki
-    #         key: grafana-loki-s3-endpoint
-    #   - name: GRAFANA_LOKI_S3_ACCESSKEYID
-    #     valueFrom:
-    #       secretKeyRef:
-    #         name: external-secret-loki
-    #         key: grafana-loki-s3-accessKeyId
-    #   - name: GRAFANA_LOKI_S3_SECRETACCESSKEY
-    #     valueFrom:
-    #       secretKeyRef:
-    #         name: external-secret-loki
-    #         key: grafana-loki-s3-secretAccessKey
-
-  read:
-    # extraArgs:
-    #   - '-config.expand-env=true'
-    # extraEnv:
-    #   - name: GRAFANA_LOKI_S3_ENDPOINT
-    #     valueFrom:
-    #       secretKeyRef:
-    #         name: external-secret-loki
-    #         key: grafana-loki-s3-endpoint
-    #   - name: GRAFANA_LOKI_S3_ACCESSKEYID
-    #     valueFrom:
-    #       secretKeyRef:
-    #         name: external-secret-loki
-    #         key: grafana-loki-s3-accessKeyId
-    #   - name: GRAFANA_LOKI_S3_SECRETACCESSKEY
-    #     valueFrom:
-    #       secretKeyRef:
-    #         name: external-secret-loki
-    #         key: grafana-loki-s3-secretAccessKey
   backend:
     replicas: 3
     persistence:
       enableStatefulSetAutoDeletePVC: true
       size: 10Gi
-    # extraArgs:
-    #   - '-config.expand-env=true'
-    # extraEnv:
-    #   - name: GRAFANA_LOKI_S3_ENDPOINT
-    #     valueFrom:
-    #       secretKeyRef:
-    #         name: external-secret-loki
-    #         key: grafana-loki-s3-endpoint
-    #   - name: GRAFANA_LOKI_S3_ACCESSKEYID
-    #     valueFrom:
-    #       secretKeyRef:
-    #         name: external-secret-loki
-    #         key: grafana-loki-s3-accessKeyId
-    #   - name: GRAFANA_LOKI_S3_SECRETACCESSKEY
-    #     valueFrom:
-    #       secretKeyRef:
-    #         name: external-secret-loki
-    #         key: grafana-loki-s3-secretAccessKey
 
   memberlist:
     service:
@@ -159,7 +107,7 @@ loki:
   chunksCache:
     # -- Amount of memory allocated to chunks-cache for object storage (in MB).
     allocatedMemory: 4096
-
+  
   sidecar:
     securityContext:
       seccompProfile:
@@ -167,10 +115,10 @@ loki:
       allowPrivilegeEscalation: false
       capabilities:
         drop:
-          - ALL
-
+        - ALL
+  
   memcached:
-    podSecurityContext:
+    podSecurityContext :
       seccompProfile:
         type: RuntimeDefault
       fsGroup: 10001
@@ -183,7 +131,7 @@ loki:
       allowPrivilegeEscalation: false
       capabilities:
         drop:
-          - ALL
+        - ALL
   memcachedExporter:
     containerSecurityContext:
       seccompProfile:
@@ -191,4 +139,4 @@ loki:
       allowPrivilegeEscalation: false
       capabilities:
         drop:
-          - ALL
+        - ALL
