@@ -29,12 +29,12 @@ loki:
       s3:
         s3: null
         s3forcepathstyle: "true"
-        # endpoint: "${grafana-loki-s3-endpoint}"
-        # accessKeyId: "${grafana-loki-s3-accessKeyId}"
-        # secretAccessKey: "${grafana-loki-s3-secretAccessKey}"
-        endpoint: "$GRAFANA-LOKI-S3-ENDPOINT"
-        accessKeyId: "$GRAFANA-LOKI-S3-ACCESSKEYID"
-        secretAccessKey: "$GRAFANA-LOKI-S3-SECRETACCESSKEY"
+        endpoint: "$grafana-loki-s3-endpoint"
+        accessKeyId: "$grafana-loki-s3-accessKeyId"
+        secretAccessKey: "$grafana-loki-s3-secretAccessKey"
+        # endpoint: "$GRAFANA-LOKI-S3-ENDPOINT"
+        # accessKeyId: "$GRAFANA-LOKI-S3-ACCESSKEYID"
+        # secretAccessKey: "$GRAFANA-LOKI-S3-SECRETACCESSKEY"
         insecure: "true"  
         http_config: 
           insecure_skip_verify: true
