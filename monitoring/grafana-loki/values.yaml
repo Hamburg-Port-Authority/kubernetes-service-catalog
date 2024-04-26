@@ -25,6 +25,10 @@ loki:
       retention_period: 192h
     # -- Storage config. Providing this will automatically populate all necessary storage configs in the templated config.
     storage:
+      bucketNames:
+        chunks: prometheus-playg
+        ruler: prometheus-playg
+        admin: prometheus-playg
       type: 's3'
       s3:
         s3: null
@@ -32,9 +36,9 @@ loki:
         # endpoint: "grafana-loki-s3-endpoint"
         # accessKeyId: "grafana-loki-s3-accessKeyId"
         # secretAccessKey: "grafana-loki-s3-secretAccessKey"
-        endpoint: '${GRAFANA-LOKI-S3-ENDPOINT:-PUSTEKUCHEN}'
-        accessKeyId: '${GRAFANA-LOKI-S3-ACCESKEYID:-PUSTEKUCHEN}'
-        secretAccessKey: '${GRAFANA-LOKI-S3-SECRETACCESSKEY:-PUSTEKUCHEN}'
+        endpoint: "'${GRAFANA-LOKI-S3-ENDPOINT}'"
+        accessKeyId: "'${GRAFANA-LOKI-S3-ACCESKEYID}'"
+        secretAccessKey: "'${GRAFANA-LOKI-S3-SECRETACCESSKEY}'"
         insecure: "true"  
         http_config: 
           insecure_skip_verify: true
@@ -86,6 +90,8 @@ loki:
     #       name: external-secret-loki
     extraArgs:
       - '-config.expand-env=true'
+      - '-log.level=debug'
+      - '-print-config-stderr'
     extraEnv:
       - name: GRAFANA-LOKI-S3-ENDPOINT 
         valueFrom:
@@ -111,6 +117,8 @@ loki:
     #       name: external-secret-loki
     extraArgs:
       - '-config.expand-env=true'
+      - '-log.level=debug'
+      - '-print-config-stderr'
     extraEnv:
       - name: GRAFANA-LOKI-S3-ENDPOINT 
         valueFrom:
@@ -139,6 +147,8 @@ loki:
     #       name: external-secret-loki
       extraArgs:
       - '-config.expand-env=true'
+      - '-log.level=debug'
+      - '-print-config-stderr'
     extraEnv:
       - name: GRAFANA-LOKI-S3-ENDPOINT 
         valueFrom:
