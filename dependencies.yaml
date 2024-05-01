@@ -99,3 +99,7 @@ dependencies:
     arrayPosition: 0
     sourcePath: finops/opencost
     repositoryName: opencost/opencost
+  - name: "otterize-kubernetes"
+    arrayPosition: 0
+    sourcePath: security/otterize/
+    repositoryName: otterize/otterize-kubernetes
