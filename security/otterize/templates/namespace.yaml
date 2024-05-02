@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: otterize-system
+  labels:
+    kubernetes.io/metadata.name: otterize-system
+    pod-security.kubernetes.io/enforce: privileged
