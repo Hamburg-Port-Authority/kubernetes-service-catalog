@@ -91,3 +91,7 @@ dependencies:
     arrayPosition: 0
     repositoryName: minio-tenant/tenant
     sourcePath: storage/minio-tenant
+  - name: "otterize-kubernetes"
+    arrayPosition: 0
+    sourcePath: security/otterize/
+    repositoryName: otterize/otterize-kubernetes

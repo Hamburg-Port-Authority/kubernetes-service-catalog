@@ -1,0 +1,29 @@
+otterize-kubernetes:
+  global:
+    deployment:
+      spire: false
+      credentialsOperator: false
+      intentsOperator: true
+      networkMapper: false
+
+    # Specify an annotation name that by setting it, one can override otterize's service name resolution.
+    serviceNameOverrideAnnotationName: intents.otterize.com/service-name
+    telemetry:
+      enabled: true
+      usage:
+        enabled: true
+      errors:
+        enabled: true
+        endpointAddress: "https://app.otterize.com/api/errors"
+
+  # alias for intents-operator values
+  intentsOperator:
+    operator:
+      mode: defaultActive
+      autoGenerateTLSUsingCredentialsOperator: true
+      enableNetworkPolicyCreation: true
+      enableKafkaACLCreation: true
+      allowExternalTraffic: ifBlockedByOtterize
+      enableIstioPolicyCreation: true
+    watchedNamespaces: null # by default, watch all
+
