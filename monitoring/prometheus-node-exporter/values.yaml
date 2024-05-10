@@ -20,6 +20,17 @@ prometheus-node-exporter:
     type: RollingUpdate
     rollingUpdate:
       maxUnavailable: 1
+  
+  containerSecurityContext:
+    runAsUser: 1000
+    runAsNonRoot: true
+    allowPrivilegeEscalation: false
+    seccompProfile:
+      type: RuntimeDefault
+    capabilities:
+      drop:
+      - ALL
+
 
   resources:
     limits:
@@ -34,7 +45,7 @@ prometheus-node-exporter:
     
   rbac:
     create: true
-    pspEnabled: true
+    pspEnabled: false
 
   hostRootFsMount:
     enabled: true
