@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: exporter
+  name: prometheus-node-exporter
   labels:
-    kubernetes.io/metadata.name: exporter
+    kubernetes.io/metadata.name: prometheus-node-exporter
     pod-security.kubernetes.io/enforce: privileged
