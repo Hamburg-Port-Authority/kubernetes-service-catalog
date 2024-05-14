@@ -18,16 +18,6 @@ opencost:
         allowPrivilegeEscalation: false
         seccompProfile:
           type: RuntimeDefault
-      extraEnv:
-        KUBECOST_SCRAPE_INTERVAL: 1m
-        PROM_CLUSTER_ID_LABEL: cluster
-
-    prometheus:
-      internal:
-        enabled: false
-      external:
-        enabled: true
-        url: http://vmsingle-vm-victoria-metrics-k8s-stack.vm.svc:8429/prometheus
 
     ui:
       # -- Enable OpenCost UI
