@@ -117,7 +117,7 @@ victoria-metrics-cluster:
     # -- Additional environment variables (ex.: secret tokens, flags) https://github.com/VictoriaMetrics/VictoriaMetrics#environment-variables
     env: []
     # -- Data retention period. Supported values 1w, 1d, number without measurement means month, e.g. 2 = 2month
-    retentionPeriod: 1
+    retentionPeriod: 4
     persistentVolume:
       enabled: true
       accessModes:
