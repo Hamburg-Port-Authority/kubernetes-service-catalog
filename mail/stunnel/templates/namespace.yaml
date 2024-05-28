@@ -1,0 +1,9 @@
+{{- if .Values.namespace.enabled }}
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: stunnel
+  labels:
+    kubernetes.io/metadata.name: stunnel
+    pod-security.kubernetes.io/enforce: privileged
+{{- end }}

@@ -13,3 +13,6 @@ configuration:
 image:
   repository: ghcr.io/hamburg-port-authority/stunnel
   tag: sha-e3b7753
+
+namespace:
+  enabled: false
