@@ -4,5 +4,5 @@ version: 1.0.0
 description: This Chart deploys falco-exporter.
 dependencies:
   - name: falco-exporter
-    version: 0.9.6
+    version: 0.11.0
     repository: https://falcosecurity.github.io/charts

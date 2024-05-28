@@ -19,8 +19,19 @@ nfs-subdir-external-provisioner:
   rbac:
     create: true
   
+  securityContext:
+    allowPrivilegeEscalation: false
+    runAsNonRoot: true
+    runAsUser: 1000
+    runAsGroup: 1000
+    seccompProfile:
+      type: RuntimeDefault
+    capabilities:
+      drop:
+      - ALL
+
   podSecurityPolicy:
-    enabled: true
+    enabled: false
   
   serviceAccount:
     create: true

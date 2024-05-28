@@ -5,6 +5,16 @@ victoria-metrics-operator:
   rbac:
     create: true
     pspEnabled: true
+  securityContext:
+    allowPrivilegeEscalation: false
+    runAsNonRoot: true
+    runAsUser: 1000
+    runAsGroup: 1000
+    seccompProfile:
+      type: RuntimeDefault
+    capabilities:
+      drop:
+        - ALL
   operator:
     disable_prometheus_converter: false
     prometheus_converter_add_argocd_ignore_annotations: true
@@ -21,12 +31,16 @@ victoria-metrics-operator:
       cpu: 80m
       memory: 120Mi
   env:
-    #-- available env variables found here: https://docs.victoriametrics.com/operator/vars.html
+    #-- available env variables found here: https://docs.victoriametrics.com/operator/configuration/
     - name: VM_VMALERTDEFAULT_CONFIGRELOADIMAGE
       value: ghcr.io/jimmidyson/configmap-reload:v0.11.0
     - name: VM_VMAGENTDEFAULT_CONFIGRELOADIMAGE
       value: ghcr.io/prometheus-operator/prometheus-config-reloader:v0.64.1
     - name: VM_VMALERTMANAGER_CONFIGRELOADERIMAGE
       value: ghcr.io/jimmidyson/configmap-reload:v0.11.0
+    - name: VM_ENABLESTRICTSECURITY
+      value: true
+    - name: VM_PSPAUTOCREATEENABLED
+      value: false
   serviceMonitor:
     enabled: true

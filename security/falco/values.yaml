@@ -1,10 +1,11 @@
 psp:
-  enabled: "false"
+  enabled: false
   privileged: overlay_me
 
 falco:
   scc:
     create: false
+
   customRules:
     # Detecting Leaky Vessels Falco - https://sysdig.com/blog/exploitation-in-docker-and-kubernetes/
     CVE-2024-21626.yaml: |-
@@ -16,7 +17,7 @@ falco:
           Suspicious Chdir event detected, executed by process %proc.name with cmdline %proc.cmdline under user %user.name (details=%evt.args proc.cmdline=%proc.cmdline evt.type=%evt.type evt.res=%evt.res fd=%evt.arg.fd nstype=%evt.arg.nstype proc.pid=%proc.pid proc.cwd=%proc.cwd proc.pname=%proc.pname proc.ppid=%proc.ppid proc.pcmdline=%proc.pcmdline proc.sid=%proc.sid proc.exepath=%proc.exepath user.name=%user.name user.loginuid=%user.loginuid user.uid=%user.uid user.loginname=%user.loginname group.gid=%group.gid group.name=%group.name container.id=%container.id container_name=%container.name image=%container.image.repository:%container.image.tag)
         priority: WARNING
         tags: [host, container]
-
+        
     CVE-2024-23652: |-
       - macro: create_symlink
         condition: evt.type in (symlink, symlinkat) and evt.dir=<
@@ -36,7 +37,7 @@ falco:
           Symlinks created over sensitive files by process %proc.name with parent %proc.pname under user %user.name with cmdline %proc.cmdline executed on %container.name (user.name=%user.name user.loginuid=%user.loginuid proc.cmdline=%proc.cmdline target=%evt.arg.target linkpath=%evt.arg.linkpath evt.type=%evt.type evt.res=%evt.res proc.name=%proc.name proc.pname=%proc.pname proc.pid=%proc.pid proc.cwd=%proc.cwd proc.ppid=%proc.ppid proc.pcmdline=%proc.pcmdline user.uid=%user.uid user.loginname=%user.loginname container.id=%container.id container.name=%container.name image=%container.image.repository:%container.image.tag)
         priority: WARNING
         tags: [host,container]
-
+        
     CVE-2024-23653: |-
       - macro: container
         condition: (container.id != host)
@@ -53,6 +54,15 @@ falco:
           container and ((evt.type = execve and proc.cwd startswith "/proc/self/fd") or (evt.type in (open, openat, openat2) and fd.name glob "/proc/*/cwd/*") or (evt.type in (symlink, symlinkat) and fs.path.target startswith "/proc/self/fd/")) and proc.name != "runc:[1:CHILD]"
         output: CVE-2024-21626 exploited ( %container.info evt_type=%evt.type process=%proc.name command=%proc.cmdline )
         priority: CRITICAL
+        
+  serviceAccount:
+    create: true
+
+  driver:
+    enabled: true
+    kind: ebpf
+    ebpf:
+      leastPrivileged: true
 
   falco:
     grpc:
