@@ -2,7 +2,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: vmagent-ingress
+  name: vmalert-ingress
   annotations:
     kubernetes.io/ingress.class: {{ .Values.ingress.className }}
     ingress.kubernetes.io/force-ssl-redirect: "true"
@@ -19,7 +19,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: vmagent-victoria-metrics-alert
+                name: vmalert-victoria-metrics-alert
                 port:
                   name: http
   tls:
