@@ -6,3 +6,8 @@ vmalert:
   notifiers: "http://vmalertmanager-alertmanager.victoria-metrics:9093/"
   remoteRead: "http://victoria-metrics-cluster-vmselect.victoria-metrics-cluster:8481/select/0/prometheus"
   remoteWrite: "http://victoria-metrics-cluster-vminsert.victoria-metrics-cluster:8480/insert/0/prometheus"
+ingress:
+  enabled: false
+  className: overlay_me
+  issuer: overlay_me
+  host: overlay_me
