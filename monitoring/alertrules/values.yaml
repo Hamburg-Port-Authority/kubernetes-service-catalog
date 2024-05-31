@@ -6,6 +6,8 @@ kubernetesalerts:
   enabled: "true"
 podalerts:
   enabled: "true"
+alertmanagerConfig:
+  enabled: "false"
 emailConfiguration:
   to: "overlay_me"
   from: "overlay_me"
