@@ -12,9 +12,9 @@ opencost:
         capabilities:
           drop:
           - ALL
-        readOnlyRootFilesystem: true
+        readOnlyRootFilesystem: false
         runAsNonRoot: true
-        runAsUser: 1000
+        runAsUser: 1001
         allowPrivilegeEscalation: false
         seccompProfile:
           type: RuntimeDefault
