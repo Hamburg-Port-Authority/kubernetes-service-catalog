@@ -12,11 +12,8 @@ spec:
     global:
       resolve_timeout: 5m
     route:
-      receiver: 'default'
       group_interval: 5m
       repeat_interval: 12h
-    receivers:
-    - name: 'default'
   configSelector: {}
   replicaCount: 1
   resources:
