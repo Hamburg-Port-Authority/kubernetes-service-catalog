@@ -1,3 +1,5 @@
+# https://grafana.com/grafana/dashboards/8670-cluster-cost-utilization-metrics/
+# https://grafana.com/orgs/kubecost
 apiVersion: v1
 kind: ConfigMap
 metadata:

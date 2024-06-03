@@ -293,7 +293,7 @@ data:
               "instant": true,
               "interval": "",
               "intervalFactor": 1,
-              "legendFormat": "{{ pod_name }}",
+              "legendFormat": "{{printf "{{ pod_name }}"}}",
               "refId": "A"
             },
             {
@@ -302,7 +302,7 @@ data:
               "hide": false,
               "instant": true,
               "intervalFactor": 1,
-              "legendFormat": "{{ pod_name }}",
+              "legendFormat": "{{printf "{{ pod_name }}"}}",
               "refId": "B"
             }
           ],
@@ -429,7 +429,7 @@ data:
               "instant": true,
               "interval": "",
               "intervalFactor": 1,
-              "legendFormat": "{{ persistentvolumeclaim }}",
+              "legendFormat": "{{printf "{{ persistentvolumeclaim }}"}}",
               "refId": "A"
             }
           ],

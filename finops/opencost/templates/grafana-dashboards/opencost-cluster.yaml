@@ -193,7 +193,7 @@ data:
               "instant": true,
               "interval": "",
               "intervalFactor": 1,
-              "legendFormat": " {{ node }}",
+              "legendFormat": "{{printf " {{ node }}"}}",
               "refId": "A"
             }
           ],
@@ -281,7 +281,7 @@ data:
               "instant": true,
               "interval": "",
               "intervalFactor": 1,
-              "legendFormat": " {{ node }}",
+              "legendFormat": "{{printf " {{ node }}"}}",
               "refId": "A"
             }
           ],
@@ -369,7 +369,7 @@ data:
               "instant": true,
               "interval": "",
               "intervalFactor": 1,
-              "legendFormat": " {{ node }}",
+              "legendFormat": "{{printf " {{ node }}"}}",
               "refId": "A"
             }
           ],
@@ -457,7 +457,7 @@ data:
               "instant": true,
               "interval": "",
               "intervalFactor": 1,
-              "legendFormat": " {{ node }}",
+              "legendFormat": "{{printf " {{ node }}"}}",
               "refId": "A"
             }
           ],
@@ -997,7 +997,7 @@ data:
               "instant": true,
               "interval": "",
               "intervalFactor": 1,
-              "legendFormat": " {{ node }}",
+              "legendFormat": "{{printf " {{ node }}"}}",
               "refId": "A"
             }
           ],
