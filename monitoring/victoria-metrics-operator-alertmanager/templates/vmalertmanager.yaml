@@ -17,7 +17,6 @@ spec:
       repeat_interval: 12h
     receivers:
       - name: 'null'
-        continue: false
   configSelector: {}
   replicaCount: 1
   resources:
