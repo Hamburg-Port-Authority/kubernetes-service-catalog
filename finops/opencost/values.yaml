@@ -26,6 +26,7 @@ opencost:
         capabilities:
           drop:
           - ALL
+        # https://github.com/opencost/opencost-helm-chart/issues/198
         readOnlyRootFilesystem: false
         runAsNonRoot: true
         runAsUser: 1001
