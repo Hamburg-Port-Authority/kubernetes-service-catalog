@@ -1,6 +1,6 @@
 image:
   repository: "prom/alertmanager"
-  tag: "v0.25.0"
+  tag: "v0.27.0"
 ingress:
   enabled: true
   host: alertmanageer.localhost
