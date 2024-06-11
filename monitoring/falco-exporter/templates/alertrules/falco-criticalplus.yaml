@@ -18,21 +18,21 @@ spec:
     - name: falco-level-criticalplus
       rules:
         - alert: Falco Event Level Critical
-          expr: rate(falco_events{priority="2"}[1m])
+          expr: rate(falco_events{priority="2"}[5m])
           labels:
             falco: "alert"
           annotations:
             description: "Pod {{ printf "{{ $labels.k8s_ns_name }}" }} / {{ printf "{{ $labels.k8s_pod_name }}" }} is conflicting rule {{ printf "{{ $labels.source }}" }} / {{ printf "{{ $labels.rule }}" }} with tags {{ printf "{{ $labels.tags }}" }}"
             summary: Pod is violating a critical rule.
         - alert: Falco Event Level Alert
-          expr: rate(falco_events{priority="1"}[1m])
+          expr: rate(falco_events{priority="1"}[5m])
           labels:
             falco: "alert"
           annotations:
             description: "Pod {{ printf "{{ $labels.k8s_ns_name }}" }} / {{ printf "{{ $labels.k8s_pod_name }}" }} is conflicting rule {{ printf "{{ $labels.source }}" }} / {{ printf "{{ $labels.rule }}" }} with tags {{ printf "{{ $labels.tags }}" }}"
             summary: Pod is violating a alert rule.
         - alert: Falco Event Level Emergency
-          expr: rate(falco_events{priority="0"}[1m])
+          expr: rate(falco_events{priority="0"}[5m])
           labels:
             falco: "alert"
             oncall: "true"

@@ -6,6 +6,7 @@ init:
   - applicationEnabled: true
     path: "./argocd-applicationsets/env/development"
     targetRevision: "main"
+    manifestId: "test"
   repository:
   - repositoryEnabled: true
     url: https://github.com/Hamburg-Port-Authority/kubernetes-service-catalog

@@ -1,10 +1,14 @@
 psp:
-  enabled: "false"
+  enabled: false
   privileged: overlay_me
 
 falco:
   scc:
     create: false
+<<<<<<< staging
+
+=======
+>>>>>>> main
   customRules:
     # Detecting Leaky Vessels Falco - https://sysdig.com/blog/exploitation-in-docker-and-kubernetes/
     CVE-2024-21626.yaml: |-
@@ -14,9 +18,15 @@ falco:
           evt.type=chdir and evt.dir=< and evt.rawres=0 and evt.arg.path startswith "/proc/self/fd/" 
         output: >
           Suspicious Chdir event detected, executed by process %proc.name with cmdline %proc.cmdline under user %user.name (details=%evt.args proc.cmdline=%proc.cmdline evt.type=%evt.type evt.res=%evt.res fd=%evt.arg.fd nstype=%evt.arg.nstype proc.pid=%proc.pid proc.cwd=%proc.cwd proc.pname=%proc.pname proc.ppid=%proc.ppid proc.pcmdline=%proc.pcmdline proc.sid=%proc.sid proc.exepath=%proc.exepath user.name=%user.name user.loginuid=%user.loginuid user.uid=%user.uid user.loginname=%user.loginname group.gid=%group.gid group.name=%group.name container.id=%container.id container_name=%container.name image=%container.image.repository:%container.image.tag)
+<<<<<<< staging
+        priority: WARNING
+        tags: [host, container]
+        
+=======
         priority: ALERT
         tags: [host, container]
 
+>>>>>>> main
     CVE-2024-23652: |-
       - macro: create_symlink
         condition: evt.type in (symlink, symlinkat) and evt.dir=<
@@ -34,9 +44,15 @@ falco:
           (evt.arg.target in (sensitive_file_names) or evt.arg.target in (sensitive_directory_names) or evt.arg.target contains "/var/spool/cron" or evt.arg.target contains "/var/cron" or evt.arg.target contains "/etc/cron" or evt.arg.target contains "/etc/security" or evt.arg.target contains "/usr/lib/cron") 
         output: >
           Symlinks created over sensitive files by process %proc.name with parent %proc.pname under user %user.name with cmdline %proc.cmdline executed on %container.name (user.name=%user.name user.loginuid=%user.loginuid proc.cmdline=%proc.cmdline target=%evt.arg.target linkpath=%evt.arg.linkpath evt.type=%evt.type evt.res=%evt.res proc.name=%proc.name proc.pname=%proc.pname proc.pid=%proc.pid proc.cwd=%proc.cwd proc.ppid=%proc.ppid proc.pcmdline=%proc.pcmdline user.uid=%user.uid user.loginname=%user.loginname container.id=%container.id container.name=%container.name image=%container.image.repository:%container.image.tag)
+<<<<<<< staging
+        priority: WARNING
+        tags: [host,container]
+        
+=======
         priority: ALERT
         tags: [host,container]
 
+>>>>>>> main
     CVE-2024-23653: |-
       - macro: container
         condition: (container.id != host)
@@ -50,6 +66,20 @@ falco:
       - rule: Launch Privileged Container
         desc: Detect the initial process started in a privileged container. Exceptions are made for known trusted images.
         condition: >
+<<<<<<< staging
+          container and ((evt.type = execve and proc.cwd startswith "/proc/self/fd") or (evt.type in (open, openat, openat2) and fd.name glob "/proc/*/cwd/*") or (evt.type in (symlink, symlinkat) and fs.path.target startswith "/proc/self/fd/")) and proc.name != "runc:[1:CHILD]"
+        output: CVE-2024-21626 exploited ( %container.info evt_type=%evt.type process=%proc.name command=%proc.cmdline )
+        priority: CRITICAL
+        
+  serviceAccount:
+    create: true
+
+  driver:
+    enabled: true
+    kind: ebpf
+    ebpf:
+      leastPrivileged: true
+=======
           container_started and container and container.privileged=true
         output: Privileged container %container.name with image %container.image.repository started (user.name=%user.name user.loginuid=%user.loginuid proc.cmdline=%proc.cmdline %container.info evt.type=%evt.type evt.res=%evt.res proc.pid=%proc.pid proc.cwd=%proc.cwd proc.ppid=%proc.ppid proc.pcmdline=%proc.pcmdline proc.sid=%proc.sid proc.exepath=%proc.exepath user.uid=%user.uid user.loginname=%user.loginname group.gid=%group.gid group.name=%group.name container.id=%container.id container.name=%container.name image=%container.image.repository:%container.image.tag)
         priority: ALERT
@@ -68,6 +98,7 @@ falco:
           shell=%proc.name parent=%proc.pname cmdline=%proc.cmdline)    
         priority: WARNING
         tags: [container, shell, host]
+>>>>>>> main
 
   falco:
     grpc:

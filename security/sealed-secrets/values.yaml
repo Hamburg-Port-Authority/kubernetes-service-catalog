@@ -6,8 +6,6 @@ tls:
 sealed-secrets:
   crd:
     create: false
-  rbac:
-    pspEnabled: true
   resources:
     requests:
       memory: 75Mi
@@ -15,3 +13,10 @@ sealed-secrets:
     limits:
       memory: 125Mi
       cpu: 250m
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+  containerSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    allowPrivilegeEscalation: false

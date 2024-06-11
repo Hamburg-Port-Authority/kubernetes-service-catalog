@@ -1,23 +1,28 @@
 loki:
+  # -- Deployment mode lets you specify how to deploy Loki.
+  # There are 3 options:
+  # - SingleBinary: Loki is deployed as a single binary, useful for small installs typically without HA, up to a few tens of GB/day.
+  # - SimpleScalable: Loki is deployed as 3 targets: read, write, and backend. Useful for medium installs easier to manage than distributed, up to a about 1TB/day.
+  # - Distributed: Loki is deployed as individual microservices. The most complicated but most capable, useful for large installs, typically over 1TB/day.
+  # There are also 2 additional modes used for migrating between deployment modes:
+  # - SingleBinary<->SimpleScalable: Migrate from SingleBinary to SimpleScalable (or vice versa)
+  # - SimpleScalable<->Distributed: Migrate from SimpleScalable to Distributed (or vice versa)
+  # Note: SimpleScalable and Distributed REQUIRE the use of object storage.
+  deploymentMode: SimpleScalable
   loki:
-    server:
-      http_listen_port: 3100
-      grpc_listen_port: 9095
+    containerSecurityContext:
+      seccompProfile:
+        type: RuntimeDefault
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+        - ALL
+    podSecurityContext:
+      seccompProfile:
+        type: RuntimeDefault
     # -- Limits config
     limits_config:
-      enforce_metric_name: false
-      reject_old_samples: true
-      reject_old_samples_max_age: 168h
-      max_cache_freshness_per_query: 10m
-      split_queries_by_interval: 15m
       retention_period: 192h
-    # -- Provides a reloadable runtime configuration file for some specific configuration
-    runtimeConfig: {}
-    # -- Check https://grafana.com/docs/loki/latest/configuration/#common_config for more info on how to provide a common configuration
-    commonConfig:
-      path_prefix: /var/loki
-      replication_factor: 3
-      compactor_address: '{{ include "loki.compactorAddress" . }}'
     # -- Storage config. Providing this will automatically populate all necessary storage configs in the templated config.
     storage:
       bucketNames:
@@ -35,25 +40,26 @@ loki:
         insecure: true
         http_config:
           insecure_skip_verify: true
-    compactor:
-      retention_enabled: true
-      retention_delete_delay: 2h
-      compaction_interval: 10m
-      retention_delete_worker_count: 150
-
+    schemaConfig:
+      configs:
+      - from: "2023-07-01"
+        index:
+          period: 24h
+          prefix: loki_index_
+        object_store: s3
+        schema: v13
+        store: tsdb
+      # - from: "2023-07-01"
+      #   store: tsdb
+      #   object_store: s3
+      #   schema: v13
+      #   index:
+      #     prefix: index_
+      #     period: 24h
+    
   serviceAccount:
     create: true
     automountServiceAccountToken: true
-  rbac:
-    pspEnabled: true
-    sccEnabled: false
-  test:
-    enabled: false
-    prometheusAddress: "http://prometheus:9090"
-    timeout: 1m
-    image:
-      registry: docker.io
-      repository: grafana/loki-helm-test
   monitoring:
     dashboards:
       enabled: true
@@ -80,112 +86,11 @@ loki:
         enableConfigReadAPI: false
     lokiCanary:
       enabled: true
-      image:
-        registry: docker.io
-        repository: grafana/loki-canary
-  write:
+  backend:
     replicas: 3
-    podManagementPolicy: OrderedReady
-    targetModule: "write"
-    terminationGracePeriodSeconds: 300
-    affinity: |
-      podAntiAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-          - labelSelector:
-              matchLabels:
-                {{- include "loki.writeSelectorLabels" . | nindent 10 }}
-            topologyKey: kubernetes.io/hostname
-    persistence:
-      enableStatefulSetAutoDeletePVC: false
-      size: 5Gi
-  tableManager:
-    enabled: false
-    terminationGracePeriodSeconds: 30
-    affinity: |
-      podAntiAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-          - labelSelector:
-              matchLabels:
-                {{- include "loki.tableManagerSelectorLabels" . | nindent 10 }}
-            topologyKey: kubernetes.io/hostname
-        preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 100
-            podAffinityTerm:
-              labelSelector:
-                matchLabels:
-                  {{- include "loki.tableManagerSelectorLabels" . | nindent 12 }}
-              topologyKey: failure-domain.beta.kubernetes.io/zone
-  read:
-    replicas: 3
-    podManagementPolicy: Parallel
-    autoscaling:
-      enabled: false
-      minReplicas: 1
-      maxReplicas: 3
-      targetCPUUtilizationPercentage: 60
-      targetMemoryUtilizationPercentage:
-    targetModule: "read"
-    legacyReadTarget: true
-    terminationGracePeriodSeconds: 30
-    affinity: |
-      podAntiAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-          - labelSelector:
-              matchLabels:
-                {{- include "loki.readSelectorLabels" . | nindent 10 }}
-            topologyKey: kubernetes.io/hostname
     persistence:
       enableStatefulSetAutoDeletePVC: true
       size: 10Gi
-  backend:
-    replicas: 3
-    podManagementPolicy: OrderedReady
-    targetModule: "backend"
-    terminationGracePeriodSeconds: 300
-    affinity: |
-      podAntiAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-          - labelSelector:
-              matchLabels:
-                {{- include "loki.backendSelectorLabels" . | nindent 10 }}
-            topologyKey: kubernetes.io/hostname
-    persistence:
-      enableStatefulSetAutoDeletePVC: false
-      size: 10Gi
-  ingress:
-    enabled: false
-    ingressClassName: ""
-    annotations: {}
-    #    nginx.ingress.kubernetes.io/auth-type: basic
-    #    nginx.ingress.kubernetes.io/auth-secret: loki-distributed-basic-auth
-    #    nginx.ingress.kubernetes.io/auth-secret-type: auth-map
-    #    nginx.ingress.kubernetes.io/configuration-snippet: |
-    #      proxy_set_header X-Scope-OrgID $remote_user;
-    paths:
-      write:
-        - /api/prom/push
-        - /loki/api/v1/push
-      read:
-        - /api/prom/tail
-        - /loki/api/v1/tail
-        - /loki/api
-        - /api/prom/rules
-        - /loki/api/v1/rules
-        - /prometheus/api/v1/rules
-        - /prometheus/api/v1/alerts
-      singleBinary:
-        - /api/prom/push
-        - /loki/api/v1/push
-        - /api/prom/tail
-        - /loki/api/v1/tail
-        - /loki/api
-        - /api/prom/rules
-        - /loki/api/v1/rules
-        - /prometheus/api/v1/rules
-        - /prometheus/api/v1/alerts
-    hosts:
-      - loki.example.com
-    tls: []
 
   memberlist:
     service:
@@ -194,22 +99,44 @@ loki:
     enabled: true
     replicas: 2
     verboseLogging: true
-    podSecurityContext:
-      fsGroup: 101
-      runAsGroup: 101
-      runAsNonRoot: true
-      runAsUser: 101
     containerSecurityContext:
-      readOnlyRootFilesystem: true
+      seccompProfile:
+        type: RuntimeDefault
+    terminationGracePeriodSeconds: 30
+
+  chunksCache:
+    # -- Amount of memory allocated to chunks-cache for object storage (in MB).
+    allocatedMemory: 4096
+  
+  sidecar:
+    securityContext:
+      seccompProfile:
+        type: RuntimeDefault
+      allowPrivilegeEscalation: false
       capabilities:
         drop:
-          - ALL
+        - ALL
+  
+  memcached:
+    podSecurityContext :
+      seccompProfile:
+        type: RuntimeDefault
+      fsGroup: 10001
+      runAsGroup: 10001
+      runAsNonRoot: true
+      runAsUser: 10001
+    containerSecurityContext:
+      seccompProfile:
+        type: RuntimeDefault
       allowPrivilegeEscalation: false
-    terminationGracePeriodSeconds: 30
-    affinity: |
-      podAntiAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-          - labelSelector:
-              matchLabels:
-                {{- include "loki.gatewaySelectorLabels" . | nindent 10 }}
-            topologyKey: kubernetes.io/hostname
+      capabilities:
+        drop:
+        - ALL
+  memcachedExporter:
+    containerSecurityContext:
+      seccompProfile:
+        type: RuntimeDefault
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+        - ALL

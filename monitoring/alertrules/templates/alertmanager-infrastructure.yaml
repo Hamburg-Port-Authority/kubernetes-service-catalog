@@ -27,4 +27,5 @@ spec:
         tlsConfig:
           insecureSkipVerify: {{ .Values.emailConfiguration.insecureSkipVerify }}
         requireTLS: {{ .Values.emailConfiguration.requireTLS }}
+
 {{ end }}
