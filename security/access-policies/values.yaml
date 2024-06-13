@@ -1,0 +1,8 @@
+readerGroups: []
+#  - myAwesomeReaderGroup1@local.domain.de
+#  - myAwesomeReaderGroup2@local.domain.de
+#  - myAwesomeReaderGroup3@local.domain.de
+developerGroups: []
+# - myAwesomeDeveloperGroup@local.domain.de
+maintainerGroups: []
+# - myAwesomeMaintainerGroup@local.domain.de
