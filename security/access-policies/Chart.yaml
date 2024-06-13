@@ -1,0 +1,4 @@
+apiVersion: v2
+name: access-policiees
+version: 1.0.0
+description: This Chart deploys hpa access policies.
