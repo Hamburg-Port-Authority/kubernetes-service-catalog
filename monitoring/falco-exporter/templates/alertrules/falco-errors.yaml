@@ -19,7 +19,7 @@ spec:
       rules:
         - alert: Falco Event Level Error
           expr: |
-            rate(falco_events{priority="3"}[1m])
+            rate(falco_events{priority="3"}[5m])
           labels:
             falco: error
           annotations:

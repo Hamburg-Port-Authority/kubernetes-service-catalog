@@ -2,7 +2,7 @@ image:
   repository: "victoriametrics/vmalert"
 vmalert:
   #please overlay these urls with your correct environment
-  datasource: "http://victoria-metrics-cluster-vmselect.default:8481/select/0/prometheus"
+  datasource: "http://victoria-metrics-cluster-vmselect.victoria-metrics-cluster:8481/select/0/prometheus"
   notifiers: "http://vmalertmanager-alertmanager.victoria-metrics:9093/"
-  remoteRead: "http://victoria-metrics-cluster-vmselect.default:8481/select/0/prometheus"
-  remoteWrite: "http://victoria-metrics-cluster-vminsert.default:8480/insert/0/prometheus"
+  remoteRead: "http://victoria-metrics-cluster-vmselect.victoria-metrics-cluster:8481/select/0/prometheus"
+  remoteWrite: "http://victoria-metrics-cluster-vminsert.victoria-metrics-cluster:8480/insert/0/prometheus"

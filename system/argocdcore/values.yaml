@@ -6,6 +6,7 @@ init:
   - applicationEnabled: true
     path: "./argocd-applicationsets/env/development"
     targetRevision: "main"
+    manifestId: "test"
   repository:
   - repositoryEnabled: true
     url: https://github.com/Hamburg-Port-Authority/kubernetes-service-catalog
@@ -41,10 +42,10 @@ argo-cd:
     resources:
       limits:
         cpu: 500m
-        memory: 1024Mi
+        memory: 2048Mi
       requests:
         cpu: 250m
-        memory: 512Mi
+        memory: 1024Mi
     metrics:
       enabled: true
       serviceMonitor:

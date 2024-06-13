@@ -1,3 +1,4 @@
+{{- if eq .Values.alertmanagerConfig.enabled "true" -}}
 apiVersion: monitoring.coreos.com/v1alpha1
 kind: AlertmanagerConfig
 metadata:
@@ -26,3 +27,5 @@ spec:
         tlsConfig:
           insecureSkipVerify: {{ .Values.emailConfiguration.insecureSkipVerify }}
         requireTLS: {{ .Values.emailConfiguration.requireTLS }}
+
+{{ end }}
