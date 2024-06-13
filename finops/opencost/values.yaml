@@ -26,9 +26,10 @@ opencost:
         capabilities:
           drop:
           - ALL
-        readOnlyRootFilesystem: true
+        # https://github.com/opencost/opencost-helm-chart/issues/198
+        readOnlyRootFilesystem: false
         runAsNonRoot: true
-        runAsUser: 1000
+        runAsUser: 1001
         allowPrivilegeEscalation: false
         seccompProfile:
           type: RuntimeDefault
