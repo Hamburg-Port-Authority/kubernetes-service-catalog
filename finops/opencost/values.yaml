@@ -33,3 +33,14 @@ opencost:
         allowPrivilegeEscalation: false
         seccompProfile:
           type: RuntimeDefault
+
+    metrics:
+      serviceMonitor:
+        enbaled: true
+    
+    prometheus:
+      internal:
+        enabled: false
+      external:
+        enabled: true
+        url: http://victoria-metrics-cluster-vmselect.victoria-metrics-cluster:8481/select/0/prometheus
