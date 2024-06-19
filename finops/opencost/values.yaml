@@ -27,7 +27,7 @@ opencost:
           type: RuntimeDefault
     metrics:
       serviceMonitor:
-        enbaled: true
+        enabled: true
     prometheus:
       internal:
         enabled: false
