@@ -1,6 +1,8 @@
 opencost:
   opencost:
     exporter:
+      extraEnv:
+        KUBECOST_SCRAPE_INTERVAL: 1m
       securityContext: 
         capabilities:
           drop:
