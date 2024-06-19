@@ -356,7 +356,7 @@ data:
               "instant": true,
               "interval": "",
               "intervalFactor": 1,
-              "legendFormat": "{{ persistentvolumeclaim }}",
+              "legendFormat": "{{printf "{{ persistentvolumeclaim }}" }}",
               "refId": "A"
             }
           ],
