@@ -28,3 +28,11 @@ open-telemetry:
           receivers: [otlp]
           processors: []
           exporters: [otlphttp/victoriametrics]
+  clusterRole:
+    create: true
+  metrics:
+    enabled: true
+  ingress:
+    enabled: true
+  serviceMonitor:
+    enabled: true
