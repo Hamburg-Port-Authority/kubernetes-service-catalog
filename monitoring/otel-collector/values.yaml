@@ -1,4 +1,4 @@
-open-telemetry:
+opentelemetry-collector:
   mode: deployment
   image:
     repository: "otel/opentelemetry-collector-contrib"

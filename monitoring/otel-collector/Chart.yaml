@@ -3,6 +3,6 @@ name: otel-collector
 version: 1.0.0
 description: This Chart deploys otel collector.
 dependencies:
-  - name: open-telemetry
+  - name: opentelemetry-collector
     version: 0.96.0
     repository: https://open-telemetry.github.io/opentelemetry-helm-charts
