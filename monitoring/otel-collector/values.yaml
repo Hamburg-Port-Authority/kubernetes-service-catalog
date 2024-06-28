@@ -29,7 +29,9 @@ opentelemetry-collector:
         encoding: proto
         # http://victoria-metrics-victoria-metrics-single-server.default.svc.cluster.local:8428/opentelemetry
         # cluster-wide should be vmstorage directly 
-        endpoint: http://victoria-metrics-cluster-vmstorage.victoria-metrics-cluster:8428/opentelemetry
+        # http://victoria-metrics-cluster-vmstorage.victoria-metrics-cluster:8428/opentelemetry
+        # http://victoria-metrics-cluster-vminsert.default:8480/insert/0/prometheus
+        endpoint: http://victoria-metrics-cluster-vminsert.default:8480/insert/0/opentelemetry/api/v1/push
         tls:
             insecure: true
     service:
