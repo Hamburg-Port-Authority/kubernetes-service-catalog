@@ -1,0 +1,38 @@
+open-telemetry:
+  mode: deployment
+  image:
+    repository: "otel/opentelemetry-collector-contrib"
+  presets:
+    clusterMetrics:
+      enabled: true
+  config:
+    receivers:
+      otlp:
+        protocols:
+          grpc:
+            endpoint: 0.0.0.0:4317
+          http:
+            endpoint: 0.0.0.0:4318
+    exporters:
+      otlphttp/victoriametrics:
+        compression: gzip
+        encoding: proto
+        # http://victoria-metrics-victoria-metrics-single-server.default.svc.cluster.local:8428/opentelemetry
+        # cluster-wide should be vmstorage directly 
+        endpoint: http://victoria-metrics-cluster-vmstorage.victoria-metrics-cluster:8428/opentelemetry
+        tls:
+            insecure: true
+    service:
+      pipelines:
+        metrics:
+          receivers: [otlp]
+          processors: []
+          exporters: [otlphttp/victoriametrics]
+  clusterRole:
+    create: true
+  metrics:
+    enabled: true
+  ingress:
+    enabled: true
+  serviceMonitor:
+    enabled: true
