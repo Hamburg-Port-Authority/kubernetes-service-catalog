@@ -30,8 +30,6 @@ opentelemetry-collector:
           exporters: [otlphttp/victoriametrics]
   clusterRole:
     create: true
-  metrics:
-    enabled: true
   ingress:
     enabled: true
   serviceMonitor:
