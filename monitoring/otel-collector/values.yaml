@@ -3,6 +3,10 @@ opentelemetry-collector:
   image:
     repository: "otel/opentelemetry-collector-contrib"
   securityContext:
+    readOnlyRootFilesystem: true
+    runAsNonRoot: true
+    runAsUser: 1000
+    allowPrivilegeEscalation: false
     seccompProfile:
       type: RuntimeDefault
     capabilities:
