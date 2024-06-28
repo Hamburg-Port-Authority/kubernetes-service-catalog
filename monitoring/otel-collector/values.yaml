@@ -5,6 +5,9 @@ opentelemetry-collector:
   securityContext:
     seccompProfile:
       type: RuntimeDefault
+    capabilities:
+      drop:
+        - ALL
   presets:
     clusterMetrics:
       enabled: true
