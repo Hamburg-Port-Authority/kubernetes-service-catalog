@@ -5,10 +5,10 @@ metadata:
 rules:
   # core api
   - apiGroups: [""]
-    resources: ["pods", "configmaps", "services"]
+    resources: ["pods", "pods/portforward", "configmaps", "services"]
     verbs: ["get", "watch", "list", "delete", "patch", "update", "create"]
   - apiGroups: [""]
-    resources: ["namespaces", "events", "nodes", "persistentvolumeclaims", "persistentvolumes"]
+    resources: ["pods/log", "namespaces", "events", "nodes", "persistentvolumeclaims", "persistentvolumes"]
     verbs: ["get", "watch", "list"]
   # autoscaling api
   - apiGroups: ["autoscaling"]
