@@ -2,6 +2,9 @@ opentelemetry-collector:
   mode: deployment
   image:
     repository: "otel/opentelemetry-collector-contrib"
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
   presets:
     clusterMetrics:
       enabled: true
