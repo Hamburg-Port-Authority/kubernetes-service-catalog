@@ -1,10 +1,9 @@
 {{- range .Values.maintainerGroups }}
 ---
-kind: RoleBinding
+kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: rolebinding-cluster-maintainer
-  namespace: {{ $.Release.Namespace }}
+  name: rolebinding-cluster-maintainer-{{ . }}
 roleRef:
   kind: ClusterRole
   name: cluster-maintainer                             
