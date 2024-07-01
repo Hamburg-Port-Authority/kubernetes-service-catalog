@@ -12,8 +12,10 @@ spec:
     groupInterval: 5m
     repeatInterval: 1h
     receiver: "email"
+    continue: false
     routes:
       - receiver: email
+        continue: false
         matchers: 
         - name: infrastructure
           matchType: =
@@ -27,5 +29,4 @@ spec:
         tlsConfig:
           insecureSkipVerify: {{ .Values.emailConfiguration.insecureSkipVerify }}
         requireTLS: {{ .Values.emailConfiguration.requireTLS }}
-
 {{ end }}
