@@ -1,5 +1,8 @@
 externalSecret:
-  enabled: true
+  adminCred:
+    enabled: true
+  azureClientSecret:
+    enabled: true
 
 grafana:
   rbac:
