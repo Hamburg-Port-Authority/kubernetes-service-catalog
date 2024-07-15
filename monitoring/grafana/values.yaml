@@ -1,3 +1,6 @@
+externalSecret:
+  enabled: true
+
 grafana:
   rbac:
     create: true
@@ -103,7 +106,7 @@ grafana:
         gnetId: 1860
         revision: 30
         datasource: victoriametrics
-        
+
   grafana.ini:
     snapshots:
       external_enabled: false

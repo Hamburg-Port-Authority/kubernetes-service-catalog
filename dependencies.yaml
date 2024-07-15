@@ -71,6 +71,10 @@ dependencies:
     arrayPosition: 0
     sourcePath: monitoring/grafana-promtail
     repositoryName: grafana/promtail
+  - name: "Kubeshark"
+    arrayPosition: 0
+    sourcePath: monitoring/kubeshark
+    repositoryName: kubeshark/kubeshark
   - name: "External Secrets"
     arrayPosition: 0
     sourcePath: security/external-secrets
