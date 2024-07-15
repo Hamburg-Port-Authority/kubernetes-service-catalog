@@ -1,0 +1,8 @@
+apiVersion: v2
+name: kubeshark
+version: 1.0.0
+description: This Chart deploys kubeshark.
+dependencies:
+  - name: kubeshark
+    version: 52.3.69
+    repository: https://helm.kubeshark.co

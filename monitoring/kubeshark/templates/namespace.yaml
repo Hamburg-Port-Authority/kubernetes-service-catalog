@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: kubeshark
+  labels:
+    kubernetes.io/metadata.name: kubeshark
+    pod-security.kubernetes.io/enforce: privileged
