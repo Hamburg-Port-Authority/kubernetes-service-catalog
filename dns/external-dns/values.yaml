@@ -1,4 +1,5 @@
-pdns_api_key: "asd"
+externalSecret:
+  enabled: true
 
 external-dns:
   txtOwnerId: "overlay_me"
