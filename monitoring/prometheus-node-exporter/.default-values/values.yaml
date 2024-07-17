@@ -51,7 +51,8 @@ prometheus-node-exporter:
     ## Ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-container
     containerSecurityContext: {}
 
-    resources: {}
+    resources:
+      {}
       # We usually recommend not to specify default resources and to leave this as a conscious
       # choice for the user. This also increases chances charts run on environments with little
       # resources, such as Minikube. If you do want to specify resources, uncomment the following
@@ -237,7 +238,8 @@ prometheus-node-exporter:
     rollingUpdate:
       maxUnavailable: 1
 
-  resources: {}
+  resources:
+    {}
     # We usually recommend not to specify default resources and to leave this as a conscious
     # choice for the user. This also increases chances charts run on environments with little
     # resources, such as Minikube. If you do want to specify resources, uncomment the following
@@ -277,8 +279,6 @@ prometheus-node-exporter:
     create: true
     ## If true, create & use Pod Security Policy resources
     ## https://kubernetes.io/docs/concepts/policy/pod-security-policy/
-    pspEnabled: true
-    pspAnnotations: {}
 
   # for deployments that have node_exporter deployed outside of the cluster, list
   # their addresses here
@@ -444,6 +444,6 @@ prometheus-node-exporter:
     # memory: 100Mi
 
     # updatePolicy:
-      # Specifies whether recommended updates are applied when a Pod is started and whether recommended updates
-      # are applied during the life of a Pod. Possible values are "Off", "Initial", "Recreate", and "Auto".
-      # updateMode: Auto
+    # Specifies whether recommended updates are applied when a Pod is started and whether recommended updates
+    # are applied during the life of a Pod. Possible values are "Off", "Initial", "Recreate", and "Auto".
+    # updateMode: Auto

@@ -1,5 +1,2 @@
-psp:
-  privileged: overlay_me
-
 cert-manager:
   installCRDs: true

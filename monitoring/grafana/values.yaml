@@ -7,8 +7,6 @@ externalSecret:
 grafana:
   rbac:
     create: true
-    pspEnabled: true
-    pspUseAppArmor: true
     namespaced: false
 
   serviceAccount:

@@ -32,7 +32,7 @@ rules:
     verbs: ["get", "watch", "list", "delete", "patch", "update", "create"]
   # policy
   - apiGroups: ["policy"]
-    resources: ["poddisruptionbudgets", "podsecuritypolicies"]
+    resources: ["poddisruptionbudgets"]
     verbs: ["get", "watch", "list"]
   # rbac.authorization.k8s.io
   - apiGroups: ["rbac.authorization.k8s.io"]
