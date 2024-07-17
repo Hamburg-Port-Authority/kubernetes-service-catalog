@@ -1,10 +1,8 @@
 victoria-metrics-cluster:
   rbac:
     create: true
-    # Note: The PSP will only be deployed, if Kubernetes (<1.25) supports the resource.
-    pspEnabled: true
     namespaced: true
-    
+
   serviceAccount:
     create: true
     automountToken: true
@@ -32,7 +30,8 @@ victoria-metrics-cluster:
       capabilities:
         drop:
           - ALL
-    resources: {}
+    resources:
+      {}
       # limits:
       #   cpu: 50m
       #   memory: 64Mi
@@ -148,8 +147,8 @@ victoria-metrics-cluster:
       size: 8Gi
     # -- Pod's annotations
     podAnnotations:
-        prometheus.io/scrape: "true"
-        prometheus.io/port: "8482"
+      prometheus.io/scrape: "true"
+      prometheus.io/port: "8482"
     serviceMonitor:
       enabled: true
       namespace: ""

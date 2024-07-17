@@ -1,6 +1,4 @@
 ingress-nginx:
-  podSecurityPolicy:
-    enabled: true
   controller:
     allowSnippetAnnotations: true
     resources:

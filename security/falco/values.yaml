@@ -1,7 +1,3 @@
-psp:
-  enabled: false
-  privileged: overlay_me
-
 falco:
   scc:
     create: false
@@ -69,7 +65,7 @@ falco:
           shell=%proc.name parent=%proc.pname cmdline=%proc.cmdline)    
         priority: WARNING
         tags: [container, shell, host]
-        
+
   serviceAccount:
     create: true
 

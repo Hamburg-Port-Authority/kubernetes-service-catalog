@@ -4,9 +4,6 @@ certificate:
   commonName: overlay_me
   dnsNames: overlay_me
 
-psp:
-  privileged: overlay_me
-
 configuration:
   connect: overlay_me
 

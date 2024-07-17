@@ -3,6 +3,3 @@ externalSecret:
 
 external-dns:
   txtOwnerId: "overlay_me"
-
-  rbac:
-    pspEnabled: true

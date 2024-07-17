@@ -1,16 +1,9 @@
-psp:
-  enabled: "false"
-  privileged: overlay_me
-
 alertrules:
-  criticalEnabled: true 
+  criticalEnabled: true
   errorsEnabled: true
   warningsEnabled: true
 
 falco-exporter:
-  podSecurityPolicy:
-    create: false
-
   serviceAccount:
     name: falco-exporter
 
