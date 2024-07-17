@@ -1,6 +1,7 @@
 alertrules:
   criticalEnabled: true
   errorsEnabled: true
+  warningsEnabled: true
 
 falco-exporter:
   serviceAccount:
