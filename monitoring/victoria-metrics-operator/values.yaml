@@ -4,7 +4,6 @@ victoria-metrics-operator:
   logLevel: "info"
   rbac:
     create: true
-    pspEnabled: true
   securityContext:
     allowPrivilegeEscalation: false
     runAsNonRoot: true
@@ -18,7 +17,6 @@ victoria-metrics-operator:
   operator:
     disable_prometheus_converter: false
     prometheus_converter_add_argocd_ignore_annotations: true
-    psp_auto_creation_enabled: true
     enable_converter_ownership: false
     useCustomConfigReloader: false
   serviceAccount:
@@ -40,7 +38,5 @@ victoria-metrics-operator:
       value: ghcr.io/jimmidyson/configmap-reload:v0.13.0
     - name: VM_ENABLESTRICTSECURITY
       value: true
-    - name: VM_PSPAUTOCREATEENABLED
-      value: false
   serviceMonitor:
     enabled: true

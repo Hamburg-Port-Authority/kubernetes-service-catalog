@@ -18,8 +18,6 @@ grafana:
     create: true
     ## Use an existing ClusterRole/Role (depending on rbac.namespaced false/true)
     # useExistingRole: name-of-some-(cluster)role
-    pspEnabled: true
-    pspUseAppArmor: true
     namespaced: false
     extraRoleRules: []
     # - apiGroups: []
@@ -35,9 +33,9 @@ grafana:
     nameTest:
     ## ServiceAccount labels.
     labels: {}
-  ## Service account annotations. Can be templated.
-  #  annotations:
-  #    eks.amazonaws.com/role-arn: arn:aws:iam::123456789000:role/iam-role-name-here
+    ## Service account annotations. Can be templated.
+    #  annotations:
+    #    eks.amazonaws.com/role-arn: arn:aws:iam::123456789000:role/iam-role-name-here
     autoMount: true
 
   replicas: 1
@@ -118,18 +116,18 @@ grafana:
 
   # Extra configmaps to mount in grafana pods
   # Values are templated.
-  extraConfigmapMounts: []
+  extraConfigmapMounts:
+    []
     # - name: certs-configmap
     #   mountPath: /etc/grafana/ssl/
     #   subPath: certificates.crt # (optional)
     #   configMap: certs-configmap
     #   readOnly: true
 
-
-  extraEmptyDirMounts: []
+  extraEmptyDirMounts:
+    []
     # - name: provisioning-notifiers
     #   mountPath: /etc/grafana/provisioning/notifiers
-
 
   # Apply extra labels to common labels.
   extraLabels: {}
@@ -173,7 +171,8 @@ grafana:
     enabled: true
     type: ClusterIP
     port: 80
-    targetPort: 3000
+    targetPort:
+      3000
       # targetPort: 4181 To be used with a proxy extraContainer
     ## Service annotations. Can be templated.
     annotations: {}
@@ -204,7 +203,8 @@ grafana:
   #   type: ClusterIP
 
   # overrides pod.spec.hostAliases in the grafana deployment's pods
-  hostAliases: []
+  hostAliases:
+    []
     # - ip: "1.2.3.4"
     #   hostnames:
     #     - "my.host.com"
@@ -215,7 +215,8 @@ grafana:
     # See https://kubernetes.io/blog/2020/04/02/improvements-to-the-ingress-api-in-kubernetes-1.18/#specifying-the-class-of-an-ingress
     # ingressClassName: nginx
     # Values can be templated
-    annotations: {}
+    annotations:
+      {}
       # kubernetes.io/ingress.class: nginx
       # kubernetes.io/tls-acme: "true"
     labels: {}
@@ -240,7 +241,6 @@ grafana:
     #       name: ssl-redirect
     #       port:
     #         name: use-annotation
-
 
     tls: []
     #  - secretName: chart-example-tls
@@ -366,7 +366,6 @@ grafana:
       runAsNonRoot: false
       runAsUser: 0
 
-
   # Administrator credentials when not using an existing secret (see below)
   adminUser: admin
   # adminPassword: strongpassword
@@ -425,7 +424,8 @@ grafana:
   ##     - name: <key>
   ##       valueFrom:
   ##         <value rendered as YAML>
-  envValueFrom: {}
+  envValueFrom:
+    {}
     #  ENV_NAME:
     #    configMapKeyRef:
     #      name: configmap-name
@@ -460,7 +460,8 @@ grafana:
 
   ## Additional grafana server secret mounts
   # Defines additional mounts with secrets. Secrets must be manually created in the namespace.
-  extraSecretMounts: []
+  extraSecretMounts:
+    []
     # - name: secret-files
     #   mountPath: /etc/secrets
     #   secretName: grafana-secret-files
@@ -493,7 +494,8 @@ grafana:
 
   ## Additional grafana server volume mounts
   # Defines additional volume mounts.
-  extraVolumeMounts: []
+  extraVolumeMounts:
+    []
     # - name: extra-volume-0
     #   mountPath: /mnt/volume0
     #   readOnly: true
@@ -511,14 +513,16 @@ grafana:
     #       secretProviderClass: "grafana-env-spc"
 
   ## Container Lifecycle Hooks. Execute a specific bash command or make an HTTP request
-  lifecycleHooks: {}
+  lifecycleHooks:
+    {}
     # postStart:
     #   exec:
     #     command: []
 
   ## Pass the plugins you want installed as a list.
   ##
-  plugins: []
+  plugins:
+    []
     # - digrich-bubblechart-panel
     # - grafana-clock-panel
 
@@ -546,7 +550,8 @@ grafana:
   ## Configure grafana alerting (can be templated)
   ## ref: http://docs.grafana.org/administration/provisioning/#alerting
   ##
-  alerting: {}
+  alerting:
+    {}
     # rules.yaml:
     #   apiVersion: 1
     #   groups:
@@ -650,7 +655,8 @@ grafana:
   ##
   ## dashboards per provider, use provider name as key.
   ##
-  dashboards: {}
+  dashboards:
+    {}
     # default:
     #   some-dashboard:
     #     json: |
@@ -706,7 +712,7 @@ grafana:
       domain: "{{ if (and .Values.ingress.enabled .Values.ingress.hosts) }}{{ .Values.ingress.hosts | first }}{{ else }}''{{ end }}"
   ## grafana Authentication can be enabled with the following values on grafana.ini
   # server:
-        # The full public facing url you use in browser, used for redirects and emails
+  # The full public facing url you use in browser, used for redirects and emails
   #    root_url:
   # https://grafana.com/docs/grafana/latest/auth/github/#enable-github-in-grafana
   # auth.github:
@@ -722,10 +728,10 @@ grafana:
   #    client_secret:
   ## LDAP Authentication can be enabled with the following values on grafana.ini
   ## NOTE: Grafana will fail to start if the value for ldap.toml is invalid
-    # auth.ldap:
-    #   enabled: true
-    #   allow_sign_up: true
-    #   config_file: /etc/grafana/ldap.toml
+  # auth.ldap:
+  #   enabled: true
+  #   allow_sign_up: true
+  #   config_file: /etc/grafana/ldap.toml
 
   ## Grafana's LDAP configuration
   ## Templated by the template in _helpers.tpl
@@ -769,12 +775,12 @@ grafana:
       sha: ""
     imagePullPolicy: IfNotPresent
     resources: {}
-  #   limits:
-  #     cpu: 100m
-  #     memory: 100Mi
-  #   requests:
-  #     cpu: 50m
-  #     memory: 50Mi
+    #   limits:
+    #     cpu: 100m
+    #     memory: 100Mi
+    #   requests:
+    #     cpu: 50m
+    #     memory: 50Mi
     securityContext: {}
     # skipTlsVerify Set to true to skip tls verification for kube api calls
     # skipTlsVerify: true
@@ -871,7 +877,7 @@ grafana:
         # orgid as configured in grafana
         orgid: 1
         # folder in which the dashboards should be imported in grafana
-        folder: ''
+        folder: ""
         # type of the provider
         type: file
         # disableDelete to activate a import-only behaviour
@@ -1048,18 +1054,18 @@ grafana:
     # image-renderer deployment container securityContext
     containerSecurityContext:
       capabilities:
-        drop: ['ALL']
+        drop: ["ALL"]
       allowPrivilegeEscalation: false
       readOnlyRootFilesystem: true
     # image-renderer deployment Host Aliases
     hostAliases: []
     # image-renderer deployment priority class
-    priorityClassName: ''
+    priorityClassName: ""
     service:
       # Enable the image-renderer service
       enabled: true
       # image-renderer service port name
-      portName: 'http'
+      portName: "http"
       # image-renderer service port used by both service and deployment
       port: 8081
       targetPort: 8081
@@ -1079,7 +1085,8 @@ grafana:
       scrapeTimeout: 30s
       relabelings: []
       # See: https://doc.crds.dev/github.com/prometheus-operator/kube-prometheus/monitoring.coreos.com/ServiceMonitor/v1@v0.11.0#spec-targetLabels
-      targetLabels: []
+      targetLabels:
+        []
         # - targetLabel1
         # - targetLabel2
     # If https is enabled in Grafana, this needs to be set as 'https' to correctly configure the callback used in Grafana
@@ -1098,12 +1105,12 @@ grafana:
       # Allow additional services to access image-renderer (eg. Prometheus operator when ServiceMonitor is enabled)
       extraIngressSelectors: []
     resources: {}
-  #   limits:
-  #     cpu: 100m
-  #     memory: 100Mi
-  #   requests:
-  #     cpu: 50m
-  #     memory: 50Mi
+    #   limits:
+    #     cpu: 100m
+    #     memory: 100Mi
+    #   requests:
+    #     cpu: 50m
+    #     memory: 50Mi
     ## Node labels for pod assignment
     ## ref: https://kubernetes.io/docs/user-guide/node-selection/
     #
@@ -1169,8 +1176,8 @@ grafana:
       ## Add ports to the egress by specifying - port: <port number>
       ## E.X.
       ## ports:
-        ## - port: 80
-        ## - port: 443
+      ## - port: 80
+      ## - port: 443
     ##
     ##
     ##
@@ -1182,7 +1189,8 @@ grafana:
   enableKubeBackwardCompatibility: false
   useStatefulSet: false
   # Create a dynamic manifests via values:
-  extraObjects: []
+  extraObjects:
+    []
     # - apiVersion: "kubernetes-client.io/v1"
     #   kind: ExternalSecret
     #   metadata:

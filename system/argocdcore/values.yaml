@@ -1,22 +1,19 @@
-psp:
-  privileged: overlay_me
-
 init:
   application:
-  - applicationEnabled: true
-    path: "./argocd-applicationsets/env/development"
-    targetRevision: "main"
-    manifestId: "test"
+    - applicationEnabled: true
+      path: "./argocd-applicationsets/env/development"
+      targetRevision: "main"
+      manifestId: "test"
   repository:
-  - repositoryEnabled: true
-    url: https://github.com/Hamburg-Port-Authority/kubernetes-service-catalog
-    username: "overlay_me"
-    password: "overlay_me"
-    insecure: "false"
-    forceHttpBasicAuth: "false"
-    isSshConnection: true
-    manifestId: "test"
-    secretStore: "secret-store"
+    - repositoryEnabled: true
+      url: https://github.com/Hamburg-Port-Authority/kubernetes-service-catalog
+      username: "overlay_me"
+      password: "overlay_me"
+      insecure: "false"
+      forceHttpBasicAuth: "false"
+      isSshConnection: true
+      manifestId: "test"
+      secretStore: "secret-store"
   externalSecret:
     enabled: false
 

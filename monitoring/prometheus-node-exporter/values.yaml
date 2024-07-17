@@ -1,5 +1,4 @@
 prometheus-node-exporter:
-  
   prometheus:
     monitor:
       enabled: true
@@ -20,7 +19,7 @@ prometheus-node-exporter:
     type: RollingUpdate
     rollingUpdate:
       maxUnavailable: 1
-  
+
   containerSecurityContext:
     runAsUser: 1000
     runAsNonRoot: true
@@ -29,8 +28,7 @@ prometheus-node-exporter:
       type: RuntimeDefault
     capabilities:
       drop:
-      - ALL
-
+        - ALL
 
   resources:
     limits:
@@ -42,10 +40,9 @@ prometheus-node-exporter:
 
   serviceAccount:
     create: true
-    
+
   rbac:
     create: true
-    pspEnabled: false
 
   hostRootFsMount:
     enabled: true
@@ -54,7 +51,7 @@ prometheus-node-exporter:
   podAnnotations:
     cluster-autoscaler.kubernetes.io/safe-to-evict: "true"
 
-  podLabels: 
+  podLabels:
     jobLabel: node-exporter
 
   extraArgs:
