@@ -1,7 +1,7 @@
-nfs-subdir-external-provisioner:  
+nfs-subdir-external-provisioner:
   nfs:
     reclaimPolicy: Retain
-  
+
   storageClass:
     create: true
     provisionerName: k8s-sigs.io/nfs-backup-share
@@ -18,7 +18,7 @@ nfs-subdir-external-provisioner:
 
   rbac:
     create: true
-  
+
   securityContext:
     allowPrivilegeEscalation: false
     runAsNonRoot: true
@@ -28,16 +28,13 @@ nfs-subdir-external-provisioner:
       type: RuntimeDefault
     capabilities:
       drop:
-      - ALL
+        - ALL
 
-  podSecurityPolicy:
-    enabled: false
-  
   serviceAccount:
     create: true
     name: sa-nfs-backup-share
 
-  resources: 
+  resources:
     limits:
       cpu: 1000m
       memory: 1024Mi

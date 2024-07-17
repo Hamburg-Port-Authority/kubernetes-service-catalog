@@ -32,8 +32,6 @@ victoria-metrics-operator:
   rbac:
     # -- Specifies whether the RBAC resources should be created
     create: true
-    # Note: The PSP will only be deployed, if Kubernetes (<1.25) supports the resource.
-    pspEnabled: true
 
   # -- Labels to be added to the all resources
   extraLabels: {}
@@ -42,22 +40,18 @@ victoria-metrics-operator:
   # -- Annotations to be added to the all resources
   annotations: {}
 
-  securityContext:
-    {}
+  securityContext: {}
   operator:
     # -- By default, operator converts prometheus-operator objects.
     disable_prometheus_converter: false
     # -- Compare-options and sync-options for prometheus objects converted by operator for properly use with ArgoCD
     prometheus_converter_add_argocd_ignore_annotations: false
-    # -- By default, operator creates psp for its objects.
-    psp_auto_creation_enabled: true
     # -- Enables ownership reference for converted prometheus-operator objects,
     # it will remove corresponding victoria-metrics objects in case of deletion prometheus one.
     enable_converter_ownership: false
     # -- Enables custom config-reloader, bundled with operator.
     # It should reduce  vmagent and vmauth config sync-time and make it predictable.
     useCustomConfigReloader: false
-
 
   serviceAccount:
     # -- Specifies whether a service account should be created
@@ -66,7 +60,8 @@ victoria-metrics-operator:
     name: ""
 
   # -- Resource object
-  resources: {}
+  resources:
+    {}
     # limits:
     #   cpu: 120m
     #   memory: 320Mi
@@ -86,7 +81,8 @@ victoria-metrics-operator:
   extraArgs: {}
 
   # -- extra settings for the operator deployment. full list Ref: [https://github.com/VictoriaMetrics/operator/blob/master/vars.MD](https://github.com/VictoriaMetrics/operator/blob/master/vars.MD)
-  env: []
+  env:
+    []
     # - name: VM_VMSINGLEDEFAULT_VERSION
     #   value: v1.43.0
 
@@ -146,6 +142,6 @@ victoria-metrics-operator:
   # -- configures monitoring with serviceScrape. VMServiceScrape must be pre-installed
   serviceMonitor:
     enabled: false
-    extraLabels: { }
-    annotations: { }
-    relabelings: [ ]
+    extraLabels: {}
+    annotations: {}
+    relabelings: []
