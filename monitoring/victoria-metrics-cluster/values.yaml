@@ -76,6 +76,13 @@ victoria-metrics-cluster:
       namespace: ""
       interval: 15s
       scrapeTimeout: 5s
+    topologySpreadConstraints:
+      - maxSkew: 1
+        topologyKey: kubernetes.io/hostname
+        whenUnsatisfiable: DoNotSchedule
+        labelSelector:
+          matchLabels:
+            app: vmselect
 
   vminsert:
     enabled: true
@@ -125,6 +132,13 @@ victoria-metrics-cluster:
       namespace: ""
       interval: 15s
       scrapeTimeout: 5s
+    topologySpreadConstraints:
+      - maxSkew: 1
+        topologyKey: kubernetes.io/hostname
+        whenUnsatisfiable: DoNotSchedule
+        labelSelector:
+          matchLabels:
+            app: vminsert
 
   vmstorage:
     enabled: true
@@ -154,3 +168,10 @@ victoria-metrics-cluster:
       namespace: ""
       interval: 15s
       scrapeTimeout: 5s
+    topologySpreadConstraints:
+      - maxSkew: 1
+        topologyKey: kubernetes.io/hostname
+        whenUnsatisfiable: DoNotSchedule
+        labelSelector:
+          matchLabels:
+            app: vmstorage

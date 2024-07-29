@@ -1,0 +1,4 @@
+kubeshark:
+  tap:
+    release:  
+      namespace: "kubeshark"

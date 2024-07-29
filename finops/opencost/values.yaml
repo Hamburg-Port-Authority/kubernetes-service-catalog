@@ -1,13 +1,8 @@
 opencost:
-  # -- Overwrite the default name of the chart
-  nameOverride: ""
-  # -- Overwrite all resources name created by the chart
-  fullnameOverride: ""
-  # -- Override the deployment namespace
-  namespaceOverride: "opencost"
-
   opencost:
     exporter:
+      extraEnv:
+        KUBECOST_SCRAPE_INTERVAL: 1m
       securityContext: 
         capabilities:
           drop:
@@ -18,7 +13,6 @@ opencost:
         allowPrivilegeEscalation: false
         seccompProfile:
           type: RuntimeDefault
-
     ui:
       # -- Enable OpenCost UI
       enabled: true
@@ -33,3 +27,12 @@ opencost:
         allowPrivilegeEscalation: false
         seccompProfile:
           type: RuntimeDefault
+    metrics:
+      serviceMonitor:
+        enabled: true
+    prometheus:
+      internal:
+        enabled: false
+      external:
+        enabled: true
+        url: http://victoria-metrics-cluster-vmselect.victoria-metrics-cluster:8481/select/0/prometheus

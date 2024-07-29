@@ -1,2 +1,8 @@
 cert-manager:
   installCRDs: true
+
+  startupapicheck:
+    image:
+      #2024-07-01: fix for currently unavailable 1.15.1 cert-manager-ctl image
+      #https://quay.io/repository/jetstack/cert-manager-ctl?tab=tags
+      tag: v1.14.7
