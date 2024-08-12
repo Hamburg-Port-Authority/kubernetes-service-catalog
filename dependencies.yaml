@@ -31,10 +31,6 @@ dependencies:
     arrayPosition: 0
     sourcePath: monitoring/prometheus-alertmanager
     repositoryName: prometheus-community/alertmanager
-  - name: "VCLUSTER"
-    arrayPosition: 0
-    sourcePath: optimization/vcluster
-    repositoryName: loft-sh/vcluster
   - name: "Kyverno"
     arrayPosition: 0
     sourcePath: security/kyverno
@@ -55,10 +51,6 @@ dependencies:
     arrayPosition: 0
     sourcePath: security/sealed-secrets
     repositoryName: bitnami-labs/sealed-secrets
-  - name: "NFS Subdir Provisioner"
-    arrayPosition: 0
-    sourcePath: storage/nfs-subdir-provisioner
-    repositoryName: nfs-subdir-external-provisioner/nfs-subdir-external-provisioner
   - name: "Grafana"
     arrayPosition: 0
     sourcePath: monitoring/grafana
@@ -71,10 +63,6 @@ dependencies:
     arrayPosition: 0
     sourcePath: monitoring/grafana-promtail
     repositoryName: grafana/promtail
-  - name: "Kubeshark"
-    arrayPosition: 0
-    sourcePath: monitoring/kubeshark
-    repositoryName: kubeshark/kubeshark
   - name: "External Secrets"
     arrayPosition: 0
     sourcePath: security/external-secrets
@@ -91,10 +79,6 @@ dependencies:
     arrayPosition: 0
     repositoryName: minio-operator/operator
     sourcePath: storage/minio-operator
-  - name: "minIO Tenant"
-    arrayPosition: 0
-    repositoryName: minio-tenant/tenant
-    sourcePath: storage/minio-tenant
   - name: "kubeclarity"
     arrayPosition: 0
     sourcePath: security/kubeclarity
