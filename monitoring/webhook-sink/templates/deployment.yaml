@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: webhook-sink
+  name: webhook-sink
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webhook-sink
+  template:
+    metadata:
+      labels:
+        app: webhook-sink
+    spec:
+      containers:
+        - image: {{.Values.deployment.image}}
+          name: webhook-sink
+          securityContext: 
+            capabilities:
+              drop:
+              - ALL
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            runAsUser: 1000
+            allowPrivilegeEscalation: false
+            seccompProfile:
+              type: RuntimeDefault
