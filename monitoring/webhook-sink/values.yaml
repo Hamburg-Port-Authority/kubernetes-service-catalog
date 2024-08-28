@@ -1,2 +1,2 @@
 deployment:
-  image: ghcr.io/coveros/webhook-tester: sha-847b6a9 
+  image: ghcr.io/coveros/webhook-tester:sha-847b6a9
