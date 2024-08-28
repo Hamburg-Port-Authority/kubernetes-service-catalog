@@ -1,0 +1,4 @@
+apiVersion: v2
+name: webhook-sink
+version: 1.0.0
+description: This Chart deploys a webhook to log catcher.
