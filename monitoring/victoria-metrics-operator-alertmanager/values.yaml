@@ -6,3 +6,17 @@ ingress:
   host: alertmanageer.localhost
   className: nginx
   certificateIssuer: selfsigned
+tolerations: {}
+  # - key: "nodetype"
+  #   operator: "Equal"
+  #   value: "infrastructurenode"
+  #   effect: "NoSchedule"
+affinity: {}
+  # nodeAffinity:
+  #   requiredDuringSchedulingIgnoredDuringExecution:
+  #     nodeSelectorTerms:
+  #     - matchExpressions:
+  #       - key: nodetype
+  #         operator: In
+  #         values:
+  #         - infrastructurenode
