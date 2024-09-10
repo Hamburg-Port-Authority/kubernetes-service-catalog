@@ -13,3 +13,20 @@ image:
 
 namespace:
   enabled: false
+
+affinity: {}
+  # example affinity:
+  # nodeAffinity:
+  #     requiredDuringSchedulingIgnoredDuringExecution:
+  #       nodeSelectorTerms:
+  #       - matchExpressions:
+  #         - key: nodetype
+  #           operator: In
+  #           values:
+  #           - infrastructurenode
+
+tolerations: {}
+  # - key: "nodetype"
+  #   operator: "Equal"
+  #   value: "infrastructurenode"
+  #   effect: "NoSchedule"

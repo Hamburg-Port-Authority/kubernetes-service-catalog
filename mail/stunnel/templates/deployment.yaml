@@ -16,6 +16,10 @@ spec:
       labels:
         app: stunnel-{{ .Release.Name }}
     spec:
+      {{- if .Values.affinity }}
+      affinity: 
+        {{- toYaml .Values.affinity | nindent 8 }}
+      {{- end}}
       serviceAccountName: stunnel-{{ .Release.Name }}
       containers:
         - name: stunnel
@@ -37,6 +41,10 @@ spec:
             - mountPath: "/tmp/certs"
               name: ssl
               readOnly: true
+      {{- if .Values.tolerations }}
+      tolerations:
+        {{- toYaml .Values.tolerations | nindent 8 }}
+      {{- end }}
       volumes:
         - name: ssl
           secret:
