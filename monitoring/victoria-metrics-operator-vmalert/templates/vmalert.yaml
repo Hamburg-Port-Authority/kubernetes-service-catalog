@@ -30,4 +30,12 @@ spec:
   remoteWrite:
     url: {{ .Values.vmalert.remoteWrite }}
   selectAllByDefault: true
+  {{- if .Values.affinity }}
+  affinity: 
+      {{- toYaml .Values.affinity | nindent 8 }}
+  {{- end}}
+  {{- if .Values.tolerations }}
+  tolerations:
+      {{- toYaml .Values.tolerations | nindent 8 }}
+  {{- end }}
 
