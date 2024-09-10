@@ -11,3 +11,17 @@ ingress:
   className: overlay_me
   issuer: overlay_me
   host: overlay_me
+tolerations: {}
+  # - key: "nodetype"
+  #   operator: "Equal"
+  #   value: "infrastructurenode"
+  #   effect: "NoSchedule"
+affinity: {}
+  # nodeAffinity:
+  #   requiredDuringSchedulingIgnoredDuringExecution:
+  #     nodeSelectorTerms:
+  #     - matchExpressions:
+  #       - key: nodetype
+  #         operator: In
+  #         values:
+  #         - infrastructurenode
