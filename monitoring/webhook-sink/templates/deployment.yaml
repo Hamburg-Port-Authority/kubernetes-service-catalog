@@ -27,11 +27,11 @@ spec:
           name: webhook-sink
           resources:
             requests:
-              cpu: 50m
-              memory: 128Mi
+              cpu: {{.Values.deployment.resources.requests.cpu}}m
+              memory: {{.Values.deployment.resources.requests.memory}}Mi
             limits:
-              cpu: 100m
-              memory: 256Mi          
+              cpu: {{.Values.deployment.resources.limits.cpu}}m
+              memory: {{.Values.deployment.resources.limits.memory}}Mi          
           securityContext: 
             capabilities:
               drop:

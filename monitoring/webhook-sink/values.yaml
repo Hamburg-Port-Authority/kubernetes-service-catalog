@@ -1,5 +1,12 @@
 deployment:
   image: ghcr.io/coveros/webhook-tester:sha-847b6a9
+  resources:
+    requests:
+      cpu: 50 #value in m
+      memory: 128 #value in Mi
+    limits:
+      cpu: 100 #value in m
+      memory: 256 #value in Mi
 
 affinity: {}
   # example affinity:
