@@ -14,6 +14,14 @@ spec:
       labels:
         app: webhook-sink
     spec:
+      {{- if .Values.affinity }}
+      affinity: 
+        {{- toYaml .Values.affinity | nindent 8 }}
+      {{- end}}
+      {{- if .Values.tolerations }}
+      tolerations:
+        {{- toYaml .Values.tolerations | nindent 8 }}
+      {{- end }}
       containers:
         - image: {{.Values.deployment.image}}
           name: webhook-sink
