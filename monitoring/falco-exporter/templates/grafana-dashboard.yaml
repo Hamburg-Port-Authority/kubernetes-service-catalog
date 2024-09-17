@@ -112,7 +112,7 @@ data:
               {
                 "expr": "rate(falco_events[5m])",
                 "intervalFactor": 1,
-                "legendFormat": "{{printf "{{rule}}"}}" ({{printf "{{hostname}}"}})",
+                "legendFormat": "{{printf "{{rule}}"}} ({{printf "{{hostname}}"}})",
                 "refId": "A"
               }
             ],
