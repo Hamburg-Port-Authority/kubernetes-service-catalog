@@ -24,15 +24,16 @@ otterize-kubernetes:
       enableNetworkPolicyCreation: true
       enableKafkaACLCreation: true
       allowExternalTraffic: ifBlockedByOtterize
-      enableIstioPolicyCreation: true
+      enableIstioPolicyCreation: true    
+      resources: 
+        limits:
+          cpu: 100m
+          memory: 500Mi
+        requests:
+          cpu: 10m
+          memory: 128Mi
     watchedNamespaces: null # by default, watch all
-    resources: 
-      limits:
-        cpu: 100m
-        memory: 500Mi
-      requests:
-        cpu: 10m
-        memory: 128Mi
+
 
   networkMapper:
     mapper:
