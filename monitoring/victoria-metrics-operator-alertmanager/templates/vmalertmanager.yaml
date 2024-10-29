@@ -28,6 +28,7 @@ spec:
       memory: 150Mi
   useStrictSecurity: true
   securityContext:
+    allowPrivilegeEscalation: false
     capabilities:
       drop:
         - ALL
