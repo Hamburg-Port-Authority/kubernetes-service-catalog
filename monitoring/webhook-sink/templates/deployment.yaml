@@ -25,6 +25,13 @@ spec:
       containers:
         - image: {{.Values.deployment.image}}
           name: webhook-sink
+          resources:
+            requests:
+              cpu: {{.Values.deployment.resources.requests.cpu}}m
+              memory: {{.Values.deployment.resources.requests.memory}}Mi
+            limits:
+              cpu: {{.Values.deployment.resources.limits.cpu}}m
+              memory: {{.Values.deployment.resources.limits.memory}}Mi          
           securityContext: 
             capabilities:
               drop:

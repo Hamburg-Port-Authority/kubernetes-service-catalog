@@ -6,6 +6,7 @@ victoria-metrics-cluster:
   serviceAccount:
     create: true
     automountToken: true
+    name: "victoria-metrics-cluster"
 
   vmselect:
     enabled: true
