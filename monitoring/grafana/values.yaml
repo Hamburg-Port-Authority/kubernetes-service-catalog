@@ -54,7 +54,7 @@ grafana:
         - name: victoriametrics
           type: prometheus
           orgId: 1
-          url: http://victoria-metrics-cluster-vmselect.victoria-metrics-cluster:8481/select/0/prometheus/
+          url: http://vmselect-vmselect.victoria-metrics-cluster:8481/select/0/prometheus/
           access: proxy
           isDefault: true
           updateIntervalSeconds: 10
