@@ -1,8 +1,0 @@
-apiVersion: v2
-name: nfs-subdir-external-provisioner
-version: 1.0.0
-description: This Chart deploys nfs subdir external provisioner.
-dependencies:
-  - name: nfs-subdir-external-provisioner
-    version: 4.0.18
-    repository: https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner
