@@ -1,16 +1,16 @@
 kyverno:
   # Admission controller configuration
   admissionController:
-    replicas: 0
+    replicas: 1
   # Reports controller configuration
   reportsController:
-    replicas: 0
+    replicas: 1
   # Cleanup controller configuration
   cleanupController:
-    replicas: 0
+    replicas: 1
   # Background controller configuration
   backgroundController:
-    replicas: 0
+    replicas: 1
 
   # CRDs configuration
   crds:
