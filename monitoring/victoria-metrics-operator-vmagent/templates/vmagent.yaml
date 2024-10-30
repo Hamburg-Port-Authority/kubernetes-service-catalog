@@ -5,25 +5,25 @@ metadata:
   name: victoria-metrics-agent
 spec:
   #this part allows you not just to deploy additional initContainers, but also to modify the existing ones!
-  initContainers:
-    - name: config-init
-      resources:
-        limits:
-          cpu: 100m
-          memory: 25Mi
-        requests:
-          cpu: 100m
-          memory: 25Mi
-      securityContext:
-          allowPrivilegeEscalation: false
-          capabilities:
-            drop:
-            - ALL
-          runAsGroup: 1000
-          runAsNonRoot: true
-          runAsUser: 1000
-          seccompProfile:
-            type: RuntimeDefault
+  # initContainers:
+  #   - name: config-init
+  #     resources:
+  #       limits:
+  #         cpu: 100m
+  #         memory: 25Mi
+  #       requests:
+  #         cpu: 100m
+  #         memory: 25Mi
+  #     securityContext:
+  #         allowPrivilegeEscalation: false
+  #         capabilities:
+  #           drop:
+  #           - ALL
+  #         runAsGroup: 1000
+  #         runAsNonRoot: true
+  #         runAsUser: 1000
+  #         seccompProfile:
+  #           type: RuntimeDefault
   image:
     repository: {{ .Values.image.repository }}
   useStrictSecurity: true
