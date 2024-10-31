@@ -3,7 +3,6 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: victoria-metrics-agent-clusterrole
-  namespace: victoria-metrics
 rules:
   - apiGroups:
       - discovery.k8s.io
