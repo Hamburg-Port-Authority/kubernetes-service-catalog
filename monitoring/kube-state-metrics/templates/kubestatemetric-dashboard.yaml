@@ -447,7 +447,7 @@ data:
                 "exemplar": true,
                 "expr": "sum(kube_pod_status_qos_class) by (qos_class)",
                 "interval": "",
-                "legendFormat": "{{ qos_class }} pods",
+                "legendFormat": "{{printf "{{ qos_class}} (pods)"}}",
                 "range": true,
                 "refId": "A"
               },
@@ -823,7 +823,7 @@ data:
                 "exemplar": true,
                 "expr": "sum(kube_pod_status_reason) by (reason)",
                 "interval": "",
-                "legendFormat": "{{ reason }}",
+                "legendFormat": "{{ printf "{{ reason }}"}}",
                 "range": true,
                 "refId": "A"
               }
@@ -1475,7 +1475,7 @@ data:
                 "format": "time_series",
                 "interval": "",
                 "intervalFactor": 1,
-                "legendFormat": "{{node}}",
+                "legendFormat": "{{ printf "{{ node }}"}}",
                 "range": true,
                 "refId": "A"
               }
@@ -1549,7 +1549,7 @@ data:
                 "instant": false,
                 "interval": "",
                 "intervalFactor": 1,
-                "legendFormat": "{{node}} {{condition}}",
+                "legendFormat": "{{printf "{{node}}"}} ({{printf "{{condition}}"}})",
                 "refId": "A"
               },
               {
@@ -1560,7 +1560,7 @@ data:
                 "expr": "kube_node_status_condition{condition=\"MemoryPressure\",status=\"true\"}==1",
                 "format": "time_series",
                 "intervalFactor": 1,
-                "legendFormat": "{{node}} {{condition}}",
+                "legendFormat": "{{printf "{{node}}"}} ({{printf "{{condition}}"}})",
                 "range": true,
                 "refId": "B"
               },
@@ -1572,7 +1572,7 @@ data:
                 "expr": "kube_node_status_condition{condition=~\"PIDPressure\",status=\"true\"}==1",
                 "format": "time_series",
                 "intervalFactor": 1,
-                "legendFormat": "{{node}} {{condition}}",
+                "legendFormat": "{{printf "{{node}}"}} ({{printf "{{condition}}"}})",
                 "range": true,
                 "refId": "C"
               }
@@ -1717,7 +1717,7 @@ data:
                     "exemplar": true,
                     "expr": "sum(rate(container_cpu_usage_seconds_total{image!=\"\", cluster=\"$cluster\"}[$__rate_interval])) by (namespace)",
                     "interval": "$resolution",
-                    "legendFormat": "{{ namespace }}",
+                    "legendFormat": "{{ printf " {{ namespace }}"}}",
                     "range": true,
                     "refId": "A"
                   }
@@ -1822,7 +1822,7 @@ data:
                     "exemplar": true,
                     "expr": "sum(container_memory_working_set_bytes{image!=\"\", cluster=\"$cluster\"}) by (namespace)",
                     "interval": "$resolution",
-                    "legendFormat": "{{ namespace }}",
+                    "legendFormat": "{{ printf " {{ namespace }}"}}",
                     "refId": "A"
                   }
                 ],
@@ -1915,7 +1915,7 @@ data:
                     "instant": true,
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "{{ deployment }}",
+                    "legendFormat": "{{ printf " {{ deployment }}"}}",
                     "refId": "A"
                   }
                 ],
@@ -2200,7 +2200,7 @@ data:
                     "format": "time_series",
                     "instant": false,
                     "intervalFactor": 1,
-                    "legendFormat": "{{statefulset}}",
+                    "legendFormat": "{{ printf " {{ statefulset }}"}}",
                     "refId": "A"
                   }
                 ],
@@ -2295,7 +2295,7 @@ data:
                     "format": "time_series",
                     "instant": false,
                     "intervalFactor": 1,
-                    "legendFormat": "{{statefulset}}",
+                    "legendFormat": "{{ printf " {{ daemonset }}"}}",
                     "refId": "A"
                   }
                 ],
@@ -2414,7 +2414,7 @@ data:
                     "instant": true,
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "{{pod}}",
+                    "legendFormat": "{{ printf " {{ pod }}"}}",
                     "refId": "A",
                     "useBackend": false
                   }
@@ -2524,7 +2524,7 @@ data:
                     "instant": false,
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "{{pod}}",
+                    "legendFormat": "{{ printf " {{ pod }}"}}",
                     "refId": "A"
                   }
                 ],
@@ -3546,7 +3546,7 @@ data:
                     "instant": true,
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "{{job_name}}",
+                    "legendFormat": "{{ printf " {{ jobname }}"}}",
                     "refId": "A"
                   }
                 ],
@@ -3691,7 +3691,7 @@ data:
                     "instant": true,
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "{{job_name}}",
+                    "legendFormat": "{{ printf " {{ jobname }}"}}",
                     "refId": "A"
                   }
                 ],
@@ -3971,7 +3971,7 @@ data:
                     "expr": "sum(kube_persistentvolumeclaim_status_phase{phase=\"Bound\"}==1)",
                     "format": "time_series",
                     "intervalFactor": 1,
-                    "legendFormat": "{{persistentvolumeclaim=}}",
+                    "legendFormat": "{{ printf " {{ persistentvolumeclaim= }}"}}",
                     "range": true,
                     "refId": "A"
                   }
@@ -4068,7 +4068,7 @@ data:
                     "format": "time_series",
                     "instant": true,
                     "intervalFactor": 1,
-                    "legendFormat": "{{persistentvolumeclaim}}",
+                    "legendFormat": "{{ printf " {{ persistentvolumeclaim }}"}}",
                     "refId": "A"
                   }
                 ],
@@ -4171,7 +4171,7 @@ data:
                     "expr": "sum(kube_persistentvolumeclaim_status_phase{phase!=\"Bound\"}==1)",
                     "format": "time_series",
                     "intervalFactor": 1,
-                    "legendFormat": "{{persistentvolumeclaim=}}",
+                    "legendFormat": "{{ printf " {{ persistentvolumeclaim= }}"}}",
                     "range": true,
                     "refId": "A"
                   }
