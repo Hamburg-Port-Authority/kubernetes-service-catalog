@@ -30,9 +30,8 @@ data:
         "description": "This Grafana dashboard provides a comprehensive overview of the state and performance of Kubernetes resources within your cluster, with a focus on resource counts, utilization, and availability. It covers key metrics across nodes, namespaces, pods, and containers, making it easier to monitor and troubleshoot your cluster effectively.",
         "editable": true,
         "fiscalYearStartMonth": 0,
-        "gnetId": 21742,
         "graphTooltip": 1,
-        "id": 21,
+        "id": 19,
         "links": [
           {
             "asDropdown": true,
@@ -49,10 +48,6 @@ data:
         "panels": [
           {
             "collapsed": false,
-            "datasource": {
-              "type": "prometheus",
-              "uid": "prometheus"
-            },
             "gridPos": {
               "h": 1,
               "w": 24,
@@ -61,15 +56,6 @@ data:
             },
             "id": 58,
             "panels": [],
-            "targets": [
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "prometheus"
-                },
-                "refId": "A"
-              }
-            ],
             "title": "Cluster",
             "type": "row"
           },
@@ -161,7 +147,7 @@ data:
                 "sort": "none"
               }
             },
-            "pluginVersion": "8.3.3",
+            "pluginVersion": "11.3.0",
             "targets": [
               {
                 "datasource": {
@@ -436,7 +422,7 @@ data:
                 "sort": "none"
               }
             },
-            "pluginVersion": "8.3.3",
+            "pluginVersion": "11.3.0",
             "targets": [
               {
                 "datasource": {
@@ -489,7 +475,7 @@ data:
                     "type": "special"
                   }
                 ],
-                "max": 100,
+                "max": 1,
                 "min": 0,
                 "thresholds": {
                   "mode": "absolute",
@@ -500,11 +486,11 @@ data:
                     },
                     {
                       "color": "rgba(237, 129, 40, 0.89)",
-                      "value": 80
+                      "value": 0.8
                     },
                     {
                       "color": "#d44a3a",
-                      "value": 90
+                      "value": 0.9
                     }
                   ]
                 },
@@ -535,7 +521,7 @@ data:
               "showThresholdMarkers": true,
               "sizing": "auto"
             },
-            "pluginVersion": "11.2.2+security-01",
+            "pluginVersion": "11.3.0",
             "targets": [
               {
                 "datasource": {
@@ -576,7 +562,7 @@ data:
                     "type": "special"
                   }
                 ],
-                "max": 100,
+                "max": 1,
                 "min": 0,
                 "thresholds": {
                   "mode": "absolute",
@@ -587,11 +573,11 @@ data:
                     },
                     {
                       "color": "rgba(237, 129, 40, 0.89)",
-                      "value": 80
+                      "value": 0.8
                     },
                     {
                       "color": "#d44a3a",
-                      "value": 90
+                      "value": 0.9
                     }
                   ]
                 },
@@ -622,7 +608,7 @@ data:
               "showThresholdMarkers": true,
               "sizing": "auto"
             },
-            "pluginVersion": "11.2.2+security-01",
+            "pluginVersion": "11.3.0",
             "targets": [
               {
                 "datasource": {
@@ -661,7 +647,7 @@ data:
                     "type": "special"
                   }
                 ],
-                "max": 100,
+                "max": 1,
                 "min": 0,
                 "thresholds": {
                   "mode": "absolute",
@@ -672,11 +658,11 @@ data:
                     },
                     {
                       "color": "rgba(237, 129, 40, 0.89)",
-                      "value": 80
+                      "value": 0.8
                     },
                     {
                       "color": "#d44a3a",
-                      "value": 90
+                      "value": 0.9
                     }
                   ]
                 },
@@ -707,7 +693,7 @@ data:
               "showThresholdMarkers": true,
               "sizing": "auto"
             },
-            "pluginVersion": "11.2.2+security-01",
+            "pluginVersion": "11.3.0",
             "targets": [
               {
                 "datasource": {
@@ -812,7 +798,7 @@ data:
                 "sort": "none"
               }
             },
-            "pluginVersion": "8.3.3",
+            "pluginVersion": "11.3.0",
             "targets": [
               {
                 "datasource": {
@@ -913,7 +899,7 @@ data:
                 "sort": "none"
               }
             },
-            "pluginVersion": "10.4.0",
+            "pluginVersion": "11.3.0",
             "targets": [
               {
                 "datasource": {
@@ -1025,7 +1011,7 @@ data:
                 "sort": "none"
               }
             },
-            "pluginVersion": "10.4.0",
+            "pluginVersion": "11.3.0",
             "targets": [
               {
                 "datasource": {
@@ -1161,7 +1147,7 @@ data:
                 "sort": "none"
               }
             },
-            "pluginVersion": "10.4.0",
+            "pluginVersion": "11.3.0",
             "targets": [
               {
                 "datasource": {
@@ -1217,10 +1203,6 @@ data:
           },
           {
             "collapsed": false,
-            "datasource": {
-              "type": "prometheus",
-              "uid": "prometheus"
-            },
             "gridPos": {
               "h": 1,
               "w": 24,
@@ -1229,15 +1211,6 @@ data:
             },
             "id": 22,
             "panels": [],
-            "targets": [
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "prometheus"
-                },
-                "refId": "A"
-              }
-            ],
             "title": "Node",
             "type": "row"
           },
@@ -1305,7 +1278,7 @@ data:
               "textMode": "auto",
               "wideLayout": true
             },
-            "pluginVersion": "11.2.2+security-01",
+            "pluginVersion": "11.3.0",
             "targets": [
               {
                 "datasource": {
@@ -1391,7 +1364,7 @@ data:
               "textMode": "auto",
               "wideLayout": true
             },
-            "pluginVersion": "11.2.2+security-01",
+            "pluginVersion": "11.3.0",
             "targets": [
               {
                 "datasource": {
@@ -1464,7 +1437,7 @@ data:
               "textMode": "auto",
               "wideLayout": true
             },
-            "pluginVersion": "11.2.2+security-01",
+            "pluginVersion": "11.3.0",
             "targets": [
               {
                 "datasource": {
@@ -1537,7 +1510,7 @@ data:
               "textMode": "auto",
               "wideLayout": true
             },
-            "pluginVersion": "11.2.2+security-01",
+            "pluginVersion": "11.3.0",
             "targets": [
               {
                 "datasource": {
@@ -1684,7 +1657,7 @@ data:
                   "h": 8,
                   "w": 12,
                   "x": 0,
-                  "y": 11
+                  "y": 30
                 },
                 "id": 94,
                 "options": {
@@ -1706,7 +1679,7 @@ data:
                     "sort": "none"
                   }
                 },
-                "pluginVersion": "8.3.3",
+                "pluginVersion": "11.3.0",
                 "targets": [
                   {
                     "datasource": {
@@ -1715,7 +1688,7 @@ data:
                     },
                     "editorMode": "code",
                     "exemplar": true,
-                    "expr": "sum(rate(container_cpu_usage_seconds_total{image!=\"\", cluster=\"$cluster\"}[$__rate_interval])) by (namespace)",
+                    "expr": "sum(rate(container_cpu_usage_seconds_total{image!=\"\"}[$__rate_interval])) by (namespace)",
                     "interval": "$resolution",
                     "legendFormat": "{{ printf " {{ namespace }}"}}",
                     "range": true,
@@ -1790,7 +1763,7 @@ data:
                   "h": 8,
                   "w": 12,
                   "x": 12,
-                  "y": 11
+                  "y": 30
                 },
                 "id": 95,
                 "options": {
@@ -1812,15 +1785,16 @@ data:
                     "sort": "none"
                   }
                 },
-                "pluginVersion": "8.3.3",
+                "pluginVersion": "11.3.0",
                 "targets": [
                   {
                     "datasource": {
                       "type": "prometheus",
                       "uid": "PABDA7AB1AD2A1489"
                     },
+                    "editorMode": "code",
                     "exemplar": true,
-                    "expr": "sum(container_memory_working_set_bytes{image!=\"\", cluster=\"$cluster\"}) by (namespace)",
+                    "expr": "sum(container_memory_working_set_bytes{image!=\"\"}) by (namespace)",
                     "interval": "$resolution",
                     "legendFormat": "{{ printf " {{ namespace }}"}}",
                     "refId": "A"
@@ -1835,10 +1809,6 @@ data:
           },
           {
             "collapsed": true,
-            "datasource": {
-              "type": "prometheus",
-              "uid": "prometheus"
-            },
             "gridPos": {
               "h": 1,
               "w": 24,
@@ -1887,7 +1857,7 @@ data:
                   "h": 9,
                   "w": 20,
                   "x": 0,
-                  "y": 12
+                  "y": 39
                 },
                 "id": 16,
                 "options": {
@@ -1903,7 +1873,7 @@ data:
                   },
                   "showHeader": true
                 },
-                "pluginVersion": "11.2.2+security-01",
+                "pluginVersion": "11.3.0",
                 "targets": [
                   {
                     "datasource": {
@@ -1989,7 +1959,7 @@ data:
                   "h": 3,
                   "w": 4,
                   "x": 20,
-                  "y": 12
+                  "y": 39
                 },
                 "id": 18,
                 "maxDataPoints": 100,
@@ -2010,7 +1980,7 @@ data:
                   "textMode": "auto",
                   "wideLayout": true
                 },
-                "pluginVersion": "11.2.2+security-01",
+                "pluginVersion": "11.3.0",
                 "targets": [
                   {
                     "datasource": {
@@ -2070,7 +2040,7 @@ data:
                   "h": 3,
                   "w": 4,
                   "x": 20,
-                  "y": 15
+                  "y": 42
                 },
                 "id": 20,
                 "maxDataPoints": 100,
@@ -2091,7 +2061,7 @@ data:
                   "textMode": "auto",
                   "wideLayout": true
                 },
-                "pluginVersion": "11.2.2+security-01",
+                "pluginVersion": "11.3.0",
                 "targets": [
                   {
                     "datasource": {
@@ -2109,24 +2079,11 @@ data:
                 "type": "stat"
               }
             ],
-            "targets": [
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "prometheus"
-                },
-                "refId": "A"
-              }
-            ],
             "title": "Deployments",
             "type": "row"
           },
           {
             "collapsed": true,
-            "datasource": {
-              "type": "prometheus",
-              "uid": "prometheus"
-            },
             "gridPos": {
               "h": 1,
               "w": 24,
@@ -2168,11 +2125,17 @@ data:
                   "h": 7,
                   "w": 18,
                   "x": 0,
-                  "y": 32
+                  "y": 49
                 },
                 "id": 73,
                 "options": {
                   "displayMode": "lcd",
+                  "legend": {
+                    "calcs": [],
+                    "displayMode": "list",
+                    "placement": "bottom",
+                    "showLegend": false
+                  },
                   "maxVizHeight": 66,
                   "minVizHeight": 1,
                   "minVizWidth": 8,
@@ -2189,7 +2152,7 @@ data:
                   "sizing": "auto",
                   "valueMode": "color"
                 },
-                "pluginVersion": "11.2.2+security-01",
+                "pluginVersion": "11.3.0",
                 "targets": [
                   {
                     "datasource": {
@@ -2206,15 +2169,6 @@ data:
                 ],
                 "title": "Statefulset replicas",
                 "type": "bargauge"
-              }
-            ],
-            "targets": [
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "prometheus"
-                },
-                "refId": "A"
               }
             ],
             "title": "Statefuleset",
@@ -2263,11 +2217,17 @@ data:
                   "h": 7,
                   "w": 18,
                   "x": 0,
-                  "y": 33
+                  "y": 57
                 },
                 "id": 100,
                 "options": {
                   "displayMode": "lcd",
+                  "legend": {
+                    "calcs": [],
+                    "displayMode": "list",
+                    "placement": "bottom",
+                    "showLegend": false
+                  },
                   "maxVizHeight": 66,
                   "minVizHeight": 1,
                   "minVizWidth": 8,
@@ -2284,7 +2244,7 @@ data:
                   "sizing": "auto",
                   "valueMode": "color"
                 },
-                "pluginVersion": "11.2.2+security-01",
+                "pluginVersion": "11.3.0",
                 "targets": [
                   {
                     "datasource": {
@@ -2308,10 +2268,6 @@ data:
           },
           {
             "collapsed": true,
-            "datasource": {
-              "type": "prometheus",
-              "uid": "prometheus"
-            },
             "gridPos": {
               "h": 1,
               "w": 24,
@@ -2384,7 +2340,7 @@ data:
                   "h": 9,
                   "w": 6,
                   "x": 0,
-                  "y": 7
+                  "y": 65
                 },
                 "id": 68,
                 "options": {
@@ -2399,7 +2355,7 @@ data:
                     "sort": "none"
                   }
                 },
-                "pluginVersion": "10.4.0",
+                "pluginVersion": "11.3.0",
                 "targets": [
                   {
                     "datasource": {
@@ -2497,7 +2453,7 @@ data:
                   "h": 9,
                   "w": 6,
                   "x": 6,
-                  "y": 7
+                  "y": 65
                 },
                 "id": 77,
                 "options": {
@@ -2512,7 +2468,7 @@ data:
                     "sort": "none"
                   }
                 },
-                "pluginVersion": "10.4.0",
+                "pluginVersion": "11.3.0",
                 "targets": [
                   {
                     "datasource": {
@@ -2575,7 +2531,7 @@ data:
                   "h": 3,
                   "w": 12,
                   "x": 12,
-                  "y": 7
+                  "y": 65
                 },
                 "id": 30,
                 "maxDataPoints": 100,
@@ -2596,7 +2552,7 @@ data:
                   "textMode": "auto",
                   "wideLayout": true
                 },
-                "pluginVersion": "11.2.2+security-01",
+                "pluginVersion": "11.3.0",
                 "targets": [
                   {
                     "datasource": {
@@ -2658,7 +2614,7 @@ data:
                   "h": 3,
                   "w": 6,
                   "x": 12,
-                  "y": 10
+                  "y": 68
                 },
                 "id": 33,
                 "maxDataPoints": 100,
@@ -2679,7 +2635,7 @@ data:
                   "textMode": "auto",
                   "wideLayout": true
                 },
-                "pluginVersion": "11.2.2+security-01",
+                "pluginVersion": "11.3.0",
                 "targets": [
                   {
                     "datasource": {
@@ -2741,7 +2697,7 @@ data:
                   "h": 3,
                   "w": 6,
                   "x": 18,
-                  "y": 10
+                  "y": 68
                 },
                 "id": 32,
                 "maxDataPoints": 100,
@@ -2762,7 +2718,7 @@ data:
                   "textMode": "auto",
                   "wideLayout": true
                 },
-                "pluginVersion": "11.2.2+security-01",
+                "pluginVersion": "11.3.0",
                 "targets": [
                   {
                     "datasource": {
@@ -2824,7 +2780,7 @@ data:
                   "h": 3,
                   "w": 6,
                   "x": 12,
-                  "y": 13
+                  "y": 71
                 },
                 "id": 31,
                 "maxDataPoints": 100,
@@ -2845,7 +2801,7 @@ data:
                   "textMode": "auto",
                   "wideLayout": true
                 },
-                "pluginVersion": "11.2.2+security-01",
+                "pluginVersion": "11.3.0",
                 "targets": [
                   {
                     "datasource": {
@@ -2907,7 +2863,7 @@ data:
                   "h": 3,
                   "w": 6,
                   "x": 18,
-                  "y": 13
+                  "y": 71
                 },
                 "id": 34,
                 "maxDataPoints": 100,
@@ -2928,7 +2884,7 @@ data:
                   "textMode": "auto",
                   "wideLayout": true
                 },
-                "pluginVersion": "11.2.2+security-01",
+                "pluginVersion": "11.3.0",
                 "targets": [
                   {
                     "datasource": {
@@ -2947,24 +2903,11 @@ data:
                 "type": "stat"
               }
             ],
-            "targets": [
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "prometheus"
-                },
-                "refId": "A"
-              }
-            ],
             "title": "Pods",
             "type": "row"
           },
           {
             "collapsed": true,
-            "datasource": {
-              "type": "prometheus",
-              "uid": "prometheus"
-            },
             "gridPos": {
               "h": 1,
               "w": 24,
@@ -3017,7 +2960,7 @@ data:
                   "h": 3,
                   "w": 6,
                   "x": 0,
-                  "y": 8
+                  "y": 66
                 },
                 "id": 38,
                 "maxDataPoints": 100,
@@ -3038,7 +2981,7 @@ data:
                   "textMode": "auto",
                   "wideLayout": true
                 },
-                "pluginVersion": "11.2.2+security-01",
+                "pluginVersion": "11.3.0",
                 "targets": [
                   {
                     "datasource": {
@@ -3101,7 +3044,7 @@ data:
                   "h": 3,
                   "w": 6,
                   "x": 6,
-                  "y": 8
+                  "y": 66
                 },
                 "id": 39,
                 "maxDataPoints": 100,
@@ -3122,7 +3065,7 @@ data:
                   "textMode": "auto",
                   "wideLayout": true
                 },
-                "pluginVersion": "11.2.2+security-01",
+                "pluginVersion": "11.3.0",
                 "targets": [
                   {
                     "datasource": {
@@ -3183,7 +3126,7 @@ data:
                   "h": 3,
                   "w": 6,
                   "x": 12,
-                  "y": 8
+                  "y": 66
                 },
                 "id": 40,
                 "maxDataPoints": 100,
@@ -3204,7 +3147,7 @@ data:
                   "textMode": "auto",
                   "wideLayout": true
                 },
-                "pluginVersion": "11.2.2+security-01",
+                "pluginVersion": "11.3.0",
                 "targets": [
                   {
                     "datasource": {
@@ -3265,7 +3208,7 @@ data:
                   "h": 3,
                   "w": 6,
                   "x": 18,
-                  "y": 8
+                  "y": 66
                 },
                 "id": 41,
                 "maxDataPoints": 100,
@@ -3286,7 +3229,7 @@ data:
                   "textMode": "auto",
                   "wideLayout": true
                 },
-                "pluginVersion": "11.2.2+security-01",
+                "pluginVersion": "11.3.0",
                 "targets": [
                   {
                     "datasource": {
@@ -3304,24 +3247,11 @@ data:
                 "type": "stat"
               }
             ],
-            "targets": [
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "prometheus"
-                },
-                "refId": "A"
-              }
-            ],
             "title": "Containers",
             "type": "row"
           },
           {
             "collapsed": true,
-            "datasource": {
-              "type": "prometheus",
-              "uid": "prometheus"
-            },
             "gridPos": {
               "h": 1,
               "w": 24,
@@ -3374,7 +3304,7 @@ data:
                   "h": 3,
                   "w": 8,
                   "x": 0,
-                  "y": 9
+                  "y": 67
                 },
                 "id": 47,
                 "maxDataPoints": 100,
@@ -3395,7 +3325,7 @@ data:
                   "textMode": "auto",
                   "wideLayout": true
                 },
-                "pluginVersion": "11.2.2+security-01",
+                "pluginVersion": "11.3.0",
                 "targets": [
                   {
                     "datasource": {
@@ -3518,9 +3448,8 @@ data:
                   "h": 9,
                   "w": 8,
                   "x": 8,
-                  "y": 9
+                  "y": 67
                 },
-                "hideTimeOverride": false,
                 "id": 62,
                 "options": {
                   "cellHeight": "sm",
@@ -3534,7 +3463,7 @@ data:
                   },
                   "showHeader": true
                 },
-                "pluginVersion": "11.2.2+security-01",
+                "pluginVersion": "11.3.0",
                 "targets": [
                   {
                     "datasource": {
@@ -3663,9 +3592,8 @@ data:
                   "h": 9,
                   "w": 8,
                   "x": 16,
-                  "y": 9
+                  "y": 67
                 },
-                "hideTimeOverride": false,
                 "id": 76,
                 "options": {
                   "cellHeight": "sm",
@@ -3679,7 +3607,7 @@ data:
                   },
                   "showHeader": true
                 },
-                "pluginVersion": "11.2.2+security-01",
+                "pluginVersion": "11.3.0",
                 "targets": [
                   {
                     "datasource": {
@@ -3750,7 +3678,7 @@ data:
                   "h": 3,
                   "w": 8,
                   "x": 0,
-                  "y": 12
+                  "y": 70
                 },
                 "id": 48,
                 "maxDataPoints": 100,
@@ -3771,7 +3699,7 @@ data:
                   "textMode": "auto",
                   "wideLayout": true
                 },
-                "pluginVersion": "11.2.2+security-01",
+                "pluginVersion": "11.3.0",
                 "targets": [
                   {
                     "datasource": {
@@ -3832,7 +3760,7 @@ data:
                   "h": 3,
                   "w": 8,
                   "x": 0,
-                  "y": 15
+                  "y": 73
                 },
                 "id": 49,
                 "maxDataPoints": 100,
@@ -3853,7 +3781,7 @@ data:
                   "textMode": "auto",
                   "wideLayout": true
                 },
-                "pluginVersion": "11.2.2+security-01",
+                "pluginVersion": "11.3.0",
                 "targets": [
                   {
                     "datasource": {
@@ -3871,24 +3799,11 @@ data:
                 "type": "stat"
               }
             ],
-            "targets": [
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "prometheus"
-                },
-                "refId": "A"
-              }
-            ],
             "title": "Jobs",
             "type": "row"
           },
           {
             "collapsed": true,
-            "datasource": {
-              "type": "prometheus",
-              "uid": "prometheus"
-            },
             "gridPos": {
               "h": 1,
               "w": 24,
@@ -3940,7 +3855,7 @@ data:
                   "h": 4,
                   "w": 4,
                   "x": 0,
-                  "y": 10
+                  "y": 68
                 },
                 "id": 66,
                 "maxDataPoints": 100,
@@ -3961,7 +3876,7 @@ data:
                   "textMode": "auto",
                   "wideLayout": true
                 },
-                "pluginVersion": "11.2.2+security-01",
+                "pluginVersion": "11.3.0",
                 "targets": [
                   {
                     "datasource": {
@@ -4042,7 +3957,7 @@ data:
                   "h": 8,
                   "w": 20,
                   "x": 4,
-                  "y": 10
+                  "y": 68
                 },
                 "id": 67,
                 "options": {
@@ -4057,7 +3972,7 @@ data:
                   },
                   "showHeader": true
                 },
-                "pluginVersion": "11.2.2+security-01",
+                "pluginVersion": "11.3.0",
                 "targets": [
                   {
                     "datasource": {
@@ -4140,7 +4055,7 @@ data:
                   "h": 4,
                   "w": 4,
                   "x": 0,
-                  "y": 14
+                  "y": 72
                 },
                 "id": 69,
                 "maxDataPoints": 100,
@@ -4161,7 +4076,7 @@ data:
                   "textMode": "auto",
                   "wideLayout": true
                 },
-                "pluginVersion": "11.2.2+security-01",
+                "pluginVersion": "11.3.0",
                 "targets": [
                   {
                     "datasource": {
@@ -4180,102 +4095,22 @@ data:
                 "type": "stat"
               }
             ],
-            "targets": [
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "prometheus"
-                },
-                "refId": "A"
-              }
-            ],
             "title": "PVC",
             "type": "row"
           }
         ],
+        "preload": false,
         "refresh": "10s",
-        "schemaVersion": 39,
+        "schemaVersion": 40,
         "tags": [],
         "templating": {
           "list": [
             {
-              "current": {
-                "selected": false,
-                "text": "victoria-metrics",
-                "value": "victoria-metrics"
-              },
-              "definition": "label_values(kube_namespace_created,namespace)",
-              "hide": 0,
-              "includeAll": false,
-              "label": "Namespace",
-              "multi": false,
-              "name": "namespace",
-              "options": [],
-              "query": {
-                "qryType": 1,
-                "query": "label_values(kube_namespace_created,namespace)",
-                "refId": "PrometheusVariableQueryEditor-VariableQuery"
-              },
-              "refresh": 1,
-              "regex": "",
-              "skipUrlSync": false,
-              "sort": 0,
-              "type": "query"
-            },
-            {
               "hide": 2,
               "name": "datasource",
               "query": "Prometheus",
-              "skipUrlSync": false,
+              "skipUrlSync": true,
               "type": "constant"
-            },
-            {
-              "current": {
-                "selected": false,
-                "text": "30s",
-                "value": "30s"
-              },
-              "hide": 0,
-              "includeAll": false,
-              "label": "Resolution",
-              "multi": false,
-              "name": "resolution",
-              "options": [
-                {
-                  "selected": false,
-                  "text": "1s",
-                  "value": "1s"
-                },
-                {
-                  "selected": false,
-                  "text": "15s",
-                  "value": "15s"
-                },
-                {
-                  "selected": true,
-                  "text": "30s",
-                  "value": "30s"
-                },
-                {
-                  "selected": false,
-                  "text": "1m",
-                  "value": "1m"
-                },
-                {
-                  "selected": false,
-                  "text": "3m",
-                  "value": "3m"
-                },
-                {
-                  "selected": false,
-                  "text": "5m",
-                  "value": "5m"
-                }
-              ],
-              "query": "1s, 15s, 30s, 1m, 3m, 5m",
-              "queryValue": "",
-              "skipUrlSync": false,
-              "type": "custom"
             }
           ]
         },
@@ -4294,22 +4129,11 @@ data:
             "1h",
             "2h",
             "1d"
-          ],
-          "time_options": [
-            "5m",
-            "15m",
-            "1h",
-            "6h",
-            "12h",
-            "24h",
-            "2d",
-            "7d",
-            "30d"
           ]
         },
         "timezone": "browser",
         "title": "Kube State Metrics",
         "uid": "akash-devops-primefocus-objhds",
-        "version": 4,
+        "version": 1,
         "weekStart": ""
       }
