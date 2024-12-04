@@ -6,6 +6,7 @@ ingress:
   host: alertmanageer.localhost
   className: nginx
   certificateIssuer: selfsigned
+extraEnvs: []
 tolerations: {}
   # - key: "nodetype"
   #   operator: "Equal"
