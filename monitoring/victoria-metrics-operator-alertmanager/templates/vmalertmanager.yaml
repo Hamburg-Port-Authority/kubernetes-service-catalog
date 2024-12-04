@@ -19,7 +19,8 @@ spec:
       - name: 'null'
   configSelector: {}
   replicaCount: 1
-  extraEnvs: {{ .Values.extraEnvs }}
+  extraEnvs: 
+    {{- .Values.extraEnvs | toYaml | nindent 4 }}
   resources:
     limits:
       cpu: 100m
