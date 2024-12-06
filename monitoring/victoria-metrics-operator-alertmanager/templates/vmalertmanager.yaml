@@ -8,17 +8,11 @@ spec:
     tag: {{ .Values.image.tag }}
     pullPolicy: IfNotPresent
   configNamespaceSelector: {}
-  configRawYaml: |
-    global:
-      resolve_timeout: 5m
-    route:
-      receiver: 'null'
-      group_interval: 5m
-      repeat_interval: 12h
-    receivers:
-      - name: 'null'
+  configRawYaml: {{ .Values.configRawYaml | toYaml | indent 2}}
   configSelector: {}
   replicaCount: 1
+  extraEnvs: 
+    {{- .Values.extraEnvs | toYaml | nindent 4 }}
   resources:
     limits:
       cpu: 100m

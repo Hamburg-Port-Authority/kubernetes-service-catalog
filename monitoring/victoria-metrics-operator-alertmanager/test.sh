@@ -2,4 +2,4 @@
 if [ -d ./test ]; then
     rm -rf ./test
 fi
-helm template --output-dir ./test ./
+helm template --debug --output-dir ./test ./

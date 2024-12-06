@@ -1,0 +1,25 @@
+{{- if .Values.namespacePrivileged }}
+apiVersion: kyverno.io/v1
+kind: Policy
+metadata:  
+  name: allow-privileged-image
+  namespace: nginx-ingress
+spec:
+  background: true
+  rules:
+  - match:
+      any:
+      - resources:
+          kinds:
+          - Pod
+    name: restricted
+    validate:
+      podSecurity:
+        exclude:
+        - controlName: Capabilities
+          images:
+          - {{ .Values.privilegedImage }}
+        level: restricted
+        version: latest
+  validationFailureAction: Enforce
+{{- end }}
