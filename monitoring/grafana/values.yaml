@@ -3,6 +3,8 @@ externalSecret:
     enabled: true
   azureClientSecret:
     enabled: true
+  mssql:
+    enabled: false
 
 grafana:
   rbac:
