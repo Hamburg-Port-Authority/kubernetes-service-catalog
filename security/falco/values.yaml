@@ -59,6 +59,31 @@ falco:
     kind: ebpf
     ebpf:
       leastPrivileged: true
+    resources: 
+      requests:
+        cpu: 10m
+        memory: 128Mi
+      limits:
+        cpu: 100m
+        memory: 256Mi
+  falcoctl:
+    artifact:
+      install:
+        resources: 
+          requests:
+            cpu: 10m
+            memory: 64Mi
+          limits:
+            cpu: 100m
+            memory: 128Mi
+      follow:
+        resources: 
+          requests:
+            cpu: 10m
+            memory: 64Mi
+          limits:
+            cpu: 100m
+            memory: 128Mi
 
   falco:
     grpc:

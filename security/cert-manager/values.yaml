@@ -1,2 +1,33 @@
 cert-manager:
   installCRDs: true
+  resources: 
+      limits:
+        cpu: 50m
+        memory: 128Mi
+      requests:
+        cpu: 10m
+        memory: 128Mi
+  webhook:
+    resources: 
+      limits:
+        cpu: 50m
+        memory: 128Mi
+      requests:
+        cpu: 10m
+        memory: 128Mi
+  cainjector:
+    resources: 
+      limits:
+        cpu: 50m
+        memory: 128Mi
+      requests:
+        cpu: 10m
+        memory: 128Mi
+  startupapicheck:
+    resources: 
+      limits:
+        cpu: 50m
+        memory: 128Mi
+      requests:
+        cpu: 10m
+        memory: 128Mi

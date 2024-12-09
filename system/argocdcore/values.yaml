@@ -32,7 +32,14 @@ argo-cd:
       serviceMonitor:
         enabled: true
     serviceAccount:
-      create: true
+      create: true  
+    resources: 
+      limits:
+        cpu: 200m
+        memory: 128Mi
+      requests:
+        cpu: 100m
+        memory: 64Mi
 
   controller:
     replicas: 1
@@ -93,4 +100,40 @@ argo-cd:
     metrics:
       enabled: true
       serviceMonitor:
-        enabled: true
+        enabled: true  
+    resources: 
+      limits:
+        cpu: 100m
+        memory: 128Mi
+      requests:
+        cpu: 100m
+        memory: 128Mi
+  dex:
+    initImage:
+      resources: 
+        # Default Values 
+        requests:
+          cpu: 5m
+          memory: 96Mi
+        limits:
+          cpu: 10m
+          memory: 144Mi
+    
+    # -- Resource limits and requests for dex
+    resources: 
+      limits:
+        cpu: 50m
+        memory: 128Mi
+      requests:
+        cpu: 10m
+        memory: 128Mi
+
+  # -- Resource limits and requests for the notifications controller
+  notifications:
+    resources: 
+      limits:
+        cpu: 100m
+        memory: 128Mi
+      requests:
+        cpu: 100m
+        memory: 128Mi
