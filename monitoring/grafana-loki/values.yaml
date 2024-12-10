@@ -177,6 +177,14 @@ loki:
       capabilities:
         drop:
         - ALL
+    
+    resources:
+      limits:
+        cpu: 10m
+        memory: 40Mi
+      requests:
+        cpu: 5m
+        memory: 20Mi
 
   write:
     resources:
