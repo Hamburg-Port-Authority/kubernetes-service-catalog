@@ -32,13 +32,12 @@ victoria-metrics-cluster:
         drop:
           - ALL
     resources:
-      {}
-      # limits:
-      #   cpu: 50m
-      #   memory: 64Mi
-      # requests:
-      #   cpu: 50m
-      #   memory: 64Mi
+      limits:
+        cpu: 200m
+        memory: 500Mi
+      requests:
+        cpu: 50m
+        memory: 200Mi
     ingress:
       enabled: false
       annotations: {}
@@ -94,6 +93,13 @@ victoria-metrics-cluster:
       loggerFormat: json
     # -- Additional environment variables (ex.: secret tokens, flags) https://github.com/VictoriaMetrics/VictoriaMetrics#environment-variables
     env: []
+    resources:
+      limits:
+        cpu: 200m
+        memory: 500Mi
+      requests:
+        cpu: 50m
+        memory: 200Mi
     podAnnotations:
       #  prometheus.io/scrape: "true"
       #  prometheus.io/port: "8480"
@@ -151,6 +157,13 @@ victoria-metrics-cluster:
       loggerFormat: json
     # -- Additional environment variables (ex.: secret tokens, flags) https://github.com/VictoriaMetrics/VictoriaMetrics#environment-variables
     env: []
+    resources:
+      limits:
+        cpu: 500m
+        memory: 2Gi
+      requests:
+        cpu: 100m
+        memory: 1Gi
     # -- Data retention period. Supported values 1w, 1d, number without measurement means month, e.g. 2 = 2month
     retentionPeriod: 4
     persistentVolume:

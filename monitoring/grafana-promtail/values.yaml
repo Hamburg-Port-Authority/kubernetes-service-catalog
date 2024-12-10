@@ -196,3 +196,12 @@ promtail:
         serverPort: 9533
       serviceMonitor:
         enabled: true
+      
+      # -- Resource requests and limits for sidecar config-reloader
+      resources: 
+        limits:
+          cpu: 200m
+          memory: 128Mi
+        requests:
+          cpu: 100m
+          memory: 128Mi

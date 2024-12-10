@@ -86,11 +86,6 @@ loki:
         enableConfigReadAPI: false
     lokiCanary:
       enabled: true
-  backend:
-    replicas: 3
-    persistence:
-      enableStatefulSetAutoDeletePVC: true
-      size: 10Gi
 
   memberlist:
     service:
@@ -98,6 +93,13 @@ loki:
   gateway:
     enabled: true
     replicas: 2
+    resources:
+      limits:
+        cpu: 10m
+        memory: 40Mi
+      requests:
+        cpu: 5m
+        memory: 20Mi
     verboseLogging: true
     containerSecurityContext:
       seccompProfile:
@@ -113,9 +115,37 @@ loki:
 
   chunksCache:
     # -- Amount of memory allocated to chunks-cache for object storage (in MB).
-    allocatedMemory: 4096
+    allocatedMemory: 2048
+    # -- Resource requests and limits for the results-cache
+    # By default a safe memory limit will be requested based on allocatedMemory value (floor (* 1.2 allocatedMemory)).
+    resources:
+      limits:
+        cpu: 20m
+        memory: 3Gi
+      requests:
+        cpu: 5m
+        memory: 2500Mi
+  resultsCache:  
+    # -- Amount of memory allocated to results-cache for object storage (in MB).
+    allocatedMemory: 256
+    # -- Resource requests and limits for the results-cache
+    # By default a safe memory limit will be requested based on allocatedMemory value (floor (* 1.2 allocatedMemory)).
+    resources:
+      limits:
+        cpu: 20m
+        memory: 400Mi
+      requests:
+        cpu: 5m
+        memory: 100Mi
   
   sidecar:
+    resources:
+      limits:
+        cpu: 50m
+        memory: 100Mi
+      requests:
+        cpu: 5m
+        memory: 85Mi
     securityContext:
       seccompProfile:
         type: RuntimeDefault
@@ -149,6 +179,13 @@ loki:
         - ALL
 
   write:
+    resources:
+      limits:
+        cpu: 100m
+        memory: 300Mi
+      requests:
+        cpu: 30m
+        memory: 175Mi
     topologySpreadConstraints:
       - maxSkew: 1
         topologyKey: kubernetes.io/hostname
@@ -158,6 +195,13 @@ loki:
             app.kubernetes.io/component: write
 
   read:
+    resources:
+      limits:
+        cpu: 100m
+        memory: 500Mi
+      requests:
+        cpu: 25m
+        memory: 250Mi
     topologySpreadConstraints:
       - maxSkew: 1
         topologyKey: kubernetes.io/hostname
@@ -167,6 +211,17 @@ loki:
             app.kubernetes.io/component: read
 
   backend:
+    replicas: 3
+    persistence:
+      enableStatefulSetAutoDeletePVC: true
+      size: 10Gi
+    resources:
+      limits:
+        cpu: 50m
+        memory: 400Mi
+      requests:
+        cpu: 20m
+        memory: 250Mi
     topologySpreadConstraints:
       - maxSkew: 1
         topologyKey: kubernetes.io/hostname
@@ -174,3 +229,11 @@ loki:
         labelSelector:
           matchLabels:
             app.kubernetes.io/component: backend
+  lokiCanary:
+    resources:
+      limits:
+        cpu: 20m
+        memory: 40Mi
+      requests:
+        cpu: 10m
+        memory: 40Mi
