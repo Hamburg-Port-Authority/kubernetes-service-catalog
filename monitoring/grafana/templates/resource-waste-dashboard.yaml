@@ -1,0 +1,467 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: resource-waste-dashboard
+  labels:
+    grafana_dashboard: "1"
+  annotations:
+    argocd.argoproj.io/sync-options: Replace=true
+    dashboard-application: grafana
+    grafana-folder: /tmp/dashboards
+data:
+  resource-waste-dashboard.json: |-
+      {
+        "annotations": {
+          "list": [
+            {
+              "builtIn": 1,
+              "datasource": {
+                "type": "grafana",
+                "uid": "-- Grafana --"
+              },
+              "enable": true,
+              "hide": true,
+              "iconColor": "rgba(0, 211, 255, 1)",
+              "name": "Annotations & Alerts",
+              "type": "dashboard"
+            }
+          ]
+        },
+        "editable": true,
+        "fiscalYearStartMonth": 0,
+        "graphTooltip": 0,
+        "id": 20,
+        "links": [],
+        "panels": [
+          {
+            "collapsed": false,
+            "gridPos": {
+              "h": 1,
+              "w": 24,
+              "x": 0,
+              "y": 0
+            },
+            "id": 5,
+            "panels": [],
+            "title": "Request",
+            "type": "row"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "PABDA7AB1AD2A1489"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "thresholds"
+                },
+                "custom": {
+                  "align": "auto",
+                  "cellOptions": {
+                    "type": "auto"
+                  },
+                  "filterable": true,
+                  "inspect": false
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 14,
+              "w": 12,
+              "x": 0,
+              "y": 1
+            },
+            "id": 3,
+            "options": {
+              "cellHeight": "sm",
+              "footer": {
+                "countRows": false,
+                "fields": "",
+                "reducer": [
+                  "sum"
+                ],
+                "show": false
+              },
+              "showHeader": true,
+              "sortBy": [
+                {
+                  "desc": true,
+                  "displayName": "Actual Usage / Request"
+                }
+              ]
+            },
+            "pluginVersion": "11.3.1",
+            "targets": [
+              {
+                "editorMode": "code",
+                "exemplar": false,
+                "expr": "sum (\n    label_replace(\n        label_replace(\n            container_memory_working_set_bytes{pod!=\"\", container!=\"\", namespace=~\"$Namespace\"}, \"exported_pod\", \"$1\", \"pod\", \"(.+)\"\n        ), \"exported_namespace\", \"$1\", \"namespace\", \"(.+)\"\n    ) \n) by (exported_pod, exported_namespace)\n/\nsum(kube_pod_container_resource_requests{resource=\"memory\", exported_pod!=\"\"}) by (exported_namespace, exported_pod)",
+                "format": "table",
+                "instant": true,
+                "legendFormat": "__auto",
+                "range": false,
+                "refId": "A"
+              }
+            ],
+            "title": "Mem Waste",
+            "transformations": [
+              {
+                "id": "organize",
+                "options": {
+                  "excludeByName": {
+                    "Time": true
+                  },
+                  "includeByName": {},
+                  "indexByName": {},
+                  "renameByName": {
+                    "Value": "Actual Usage / Request",
+                    "exported_namespace": "Namespace",
+                    "exported_pod": "Pod"
+                  }
+                }
+              }
+            ],
+            "type": "table"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "PABDA7AB1AD2A1489"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 14,
+              "w": 12,
+              "x": 12,
+              "y": 1
+            },
+            "id": 1,
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "11.3.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "PABDA7AB1AD2A1489"
+                },
+                "editorMode": "code",
+                "expr": "sum(kube_pod_container_resource_requests{resource=\"memory\", exported_pod!=\"\"}) by (exported_namespace, exported_pod)\n/\nsum (\n    label_replace(\n        label_replace(\n            container_memory_working_set_bytes{pod!=\"\", container!=\"\", namespace=~\"$Namespace\"}, \"exported_pod\", \"$1\", \"pod\", \"(.+)\"\n        ), \"exported_namespace\", \"$1\", \"namespace\", \"(.+)\"\n    ) \n) by (exported_pod, exported_namespace) * 100",
+                "hide": false,
+                "legendFormat": "__auto",
+                "range": true,
+                "refId": "A"
+              }
+            ],
+            "title": "Mem waste (in %)",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "PABDA7AB1AD2A1489"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "thresholds"
+                },
+                "custom": {
+                  "align": "auto",
+                  "cellOptions": {
+                    "type": "auto"
+                  },
+                  "filterable": true,
+                  "inspect": false
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 14,
+              "w": 12,
+              "x": 0,
+              "y": 15
+            },
+            "id": 4,
+            "options": {
+              "cellHeight": "sm",
+              "footer": {
+                "countRows": false,
+                "fields": "",
+                "reducer": [
+                  "sum"
+                ],
+                "show": false
+              },
+              "showHeader": true,
+              "sortBy": []
+            },
+            "pluginVersion": "11.3.1",
+            "targets": [
+              {
+                "editorMode": "code",
+                "exemplar": false,
+                "expr": "sum(\n    label_replace(\n        label_replace(\n            rate(\n                container_cpu_usage_seconds_total{pod!=\"\", container!=\"\", namespace=~\"$Namespace\"}[1m]\n            ), \"exported_pod\", \"$1\", \"pod\", \"(.+)\"\n        ), \"exported_namespace\", \"$1\", \"namespace\", \"(.+)\"\n    )\n) by (exported_pod, exported_namespace) \n/\nsum(kube_pod_container_resource_requests{resource=\"cpu\", exported_pod!=\"\"}) by (exported_namespace, exported_pod)",
+                "format": "table",
+                "instant": true,
+                "legendFormat": "__auto",
+                "range": false,
+                "refId": "A"
+              }
+            ],
+            "title": "Cpu Waste",
+            "transformations": [
+              {
+                "id": "organize",
+                "options": {
+                  "excludeByName": {
+                    "Time": true
+                  },
+                  "includeByName": {},
+                  "indexByName": {},
+                  "renameByName": {
+                    "Value": "Actual Usage / Request",
+                    "exported_namespace": "Namespace",
+                    "exported_pod": "Pod"
+                  }
+                }
+              }
+            ],
+            "type": "table"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "PABDA7AB1AD2A1489"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 14,
+              "w": 12,
+              "x": 12,
+              "y": 15
+            },
+            "id": 2,
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "11.3.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "PABDA7AB1AD2A1489"
+                },
+                "editorMode": "code",
+                "expr": "sum(kube_pod_container_resource_requests{resource=\"cpu\", exported_pod!=\"\"}) by (exported_namespace, exported_pod)\n/\nsum(\n    label_replace(\n        label_replace(\n            rate(\n                container_cpu_usage_seconds_total{pod!=\"\", container!=\"\", namespace=~\"$Namespace\"}[1m]\n            ), \"exported_pod\", \"$1\", \"pod\", \"(.+)\"\n        ), \"exported_namespace\", \"$1\", \"namespace\", \"(.+)\"\n    )\n) by (exported_pod, exported_namespace) * 100",
+                "hide": false,
+                "legendFormat": "__auto",
+                "range": true,
+                "refId": "A"
+              }
+            ],
+            "title": "Cpu waste (in %)",
+            "type": "timeseries"
+          }
+        ],
+        "preload": false,
+        "schemaVersion": 40,
+        "tags": [],
+        "templating": {
+          "list": [
+            {
+              "allValue": ".*",
+              "current": {
+                "text": [
+                  "argocd"
+                ],
+                "value": [
+                  "argocd"
+                ]
+              },
+              "definition": "label_values(cluster:namespace:pod_cpu:active:kube_pod_container_resource_limits,exported_namespace)",
+              "includeAll": true,
+              "multi": true,
+              "name": "Namespace",
+              "options": [],
+              "query": {
+                "qryType": 1,
+                "query": "label_values(cluster:namespace:pod_cpu:active:kube_pod_container_resource_limits,exported_namespace)",
+                "refId": "PrometheusVariableQueryEditor-VariableQuery"
+              },
+              "refresh": 1,
+              "regex": "",
+              "sort": 1,
+              "type": "query"
+            }
+          ]
+        },
+        "time": {
+          "from": "now-6h",
+          "to": "now"
+        },
+        "timepicker": {},
+        "timezone": "browser",
+        "title": "Resource Checker",
+        "uid": "ae6kx8xeapczkf",
+        "version": 4,
+        "weekStart": ""
+      }
