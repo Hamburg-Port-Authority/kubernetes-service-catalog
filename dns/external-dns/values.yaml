@@ -2,4 +2,8 @@ externalSecret:
   enabled: true
 
 external-dns:
+  global: 
+    security: 
+      allowInsecureImages: true
+
   txtOwnerId: "overlay_me"
