@@ -10,3 +10,10 @@ kube-state-metrics:
       enabled: true
   selfMonitor:
     enabled: true
+  resources:
+    limits:
+      cpu: 50m
+      memory: 128Mi
+    requests:
+      cpu: 10m
+      memory: 64Mi

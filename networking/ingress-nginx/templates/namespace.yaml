@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: nginx-ingress
+  labels:
+    kubernetes.io/metadata.name: nginx-ingress
+{{- if .Values.namespacePrivileged }}
+    pod-security.kubernetes.io/enforce: privileged
+{{- end }}

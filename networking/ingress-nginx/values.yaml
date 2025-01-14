@@ -28,3 +28,5 @@ ingress-nginx:
       limits:
         memory: 100Mi
         cpu: 150m
+namespacePrivileged: false
+privilegedImage: "overlay_me"

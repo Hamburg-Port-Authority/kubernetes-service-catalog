@@ -2,3 +2,27 @@ external-secrets:
   serviceMonitor:
     # -- Specifies whether to create a ServiceMonitor resource for collecting Prometheus metrics
     enabled: true
+  resources: 
+    requests:
+      cpu: 10m
+      memory: 64Mi
+    limits:
+      cpu: 20m
+      memory: 128Mi
+  webhook:
+    resources: 
+      requests:
+        cpu: 10m
+        memory: 64Mi
+      limits:
+        cpu: 20m
+        memory: 128Mi
+  certController:
+    resources: 
+      requests:
+        cpu: 10m
+        memory: 64Mi
+      limits:
+        cpu: 20m
+        memory: 128Mi
+  
