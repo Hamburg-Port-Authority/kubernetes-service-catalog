@@ -1,0 +1,8 @@
+apiVersion: v2
+name: popeye
+version: 1.0.0
+description: This Chart deploys popeye within the kubernetes cluster and is based on https://artifacthub.io/packages/helm/christianhuth/popeye.
+dependencies:
+  - name: popeye
+    version: 2.1.4
+    repository: https://charts.christianhuth.de
