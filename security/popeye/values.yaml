@@ -3,11 +3,9 @@ popeye:
     capabilities:
       drop:
         - ALL
-   readOnlyRootFilesystem: true
-   runAsNonRoot: true
-   runAsUser: 1000
-
+    readOnlyRootFilesystem: true
+    runAsNonRoot: true
+    runAsUser: 1000
 
   cronjob:
     outputFormat: prometheus
-    
