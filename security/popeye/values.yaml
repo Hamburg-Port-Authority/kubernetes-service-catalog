@@ -1,4 +1,10 @@
 popeye:
+  
+  resources:
+    limits:
+      cpu: '1'
+      memory: 1000Mi
+  
   securityContext:
     capabilities:
       drop:
