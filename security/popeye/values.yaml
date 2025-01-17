@@ -14,12 +14,13 @@ popeye:
     runAsUser: 1000
 
   securityContext:
-    seccompProfile:
-      type: RuntimeDefault
     allowPrivilegeEscalation: false
     capabilities:
       drop:
       - ALL
+    runAsNonRoot: true
+    seccompProfile:
+      type: RuntimeDefault
 
   cronjob:
     outputFormat: prometheus
