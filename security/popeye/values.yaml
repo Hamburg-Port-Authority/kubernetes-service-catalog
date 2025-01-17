@@ -6,6 +6,9 @@ popeye:
     readOnlyRootFilesystem: true
     runAsNonRoot: true
     runAsUser: 1000
+    allowPrivilegeEscalation: false
+    seccompProfile:
+          type: RuntimeDefault
 
   cronjob:
     outputFormat: prometheus
