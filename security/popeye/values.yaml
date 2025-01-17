@@ -5,16 +5,21 @@ popeye:
       cpu: '1'
       memory: 1000Mi
   
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    fsGroup: 2000
+    runAsGroup: 1000
+    runAsNonRoot: true
+    runAsUser: 1000
+
   securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    allowPrivilegeEscalation: false
     capabilities:
       drop:
       - ALL
-    readOnlyRootFilesystem: true
-    runAsNonRoot: true
-    runAsUser: 1000
-    allowPrivilegeEscalation: false
-    seccompProfile:
-          type: RuntimeDefault
 
   cronjob:
     outputFormat: prometheus
