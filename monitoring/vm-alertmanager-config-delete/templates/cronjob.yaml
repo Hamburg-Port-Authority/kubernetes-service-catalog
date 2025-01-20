@@ -50,6 +50,8 @@ spec:
               allowPrivilegeEscalation: false
               seccompProfile:
                 type: RuntimeDefault
+              serviceAccount: vm-alertmanager-config-delete-sa
+              serviceAccountName: vm-alertmanager-config-delete-sa
           restartPolicy: OnFailure
           {{- if .Values.affinity }}
           affinity: 
