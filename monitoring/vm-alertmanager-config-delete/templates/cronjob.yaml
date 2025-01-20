@@ -38,7 +38,13 @@ spec:
                 memory: {{.Values.resources.requests.memory}}Mi
               limits:
                 cpu: {{.Values.resources.limits.cpu}}m
-                memory: {{.Values.resources.limits.memory}}Mi          
+                memory: {{.Values.resources.limits.memory}}Mi       
+            securityContext: 
+              capabilities:
+                drop:
+                - ALL
+              readOnlyRootFilesystem: true
+              allowPrivilegeEscalation: false
           securityContext: 
             capabilities:
               drop:
