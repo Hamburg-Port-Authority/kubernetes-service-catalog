@@ -47,4 +47,4 @@ rules:
   - apiGroups: [""]
     resources: ["serviceaccounts"]
     verbs: ["impersonate"]
-    resourceNames: ["secret-reader"]
+    resourceNames: ["secret-reader", "hks-admin"]
