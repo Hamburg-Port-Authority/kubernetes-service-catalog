@@ -3,9 +3,12 @@ kind: ClusterRole
 metadata:
   name: vm-alertmanager-config-delete-role
 rules:
-- apiGroups: ["monitoring.coreos.com/v1alpha1"]
-  resources: ["AlertmanagerConfig"]
-  verbs: ["list"]
-- apiGroups: ["operator.victoriametrics.com/v1beta1"]
-  resources: ["VMAlertmanagerConfig"]
+- apiGroups: ["monitoring.coreos.com"]
+  resources: ["alertmanagerconfigs"]
+  verbs: ["list", "get"]
+- apiGroups: ["operator.victoriametrics.com"]
+  resources: ["vmalertmanagerconfigs"]
   verbs: ["list", "delete"]
+- apiGroups: [""]
+  resources: ["namespaces"]
+  verbs: ["list"]

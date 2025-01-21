@@ -29,9 +29,6 @@ spec:
                   fi
                 done
               done
-            env:
-            - name: KUBECONFIG
-              value: /root/.kube/config    
             resources:
               requests:
                 cpu: {{.Values.resources.requests.cpu}}m
@@ -45,16 +42,6 @@ spec:
                 - ALL
               readOnlyRootFilesystem: true
               allowPrivilegeEscalation: false
-            env:
-              - name: KUBECONFIG
-                value: /root/.kube/config
-            volumeMounts:
-              - name: kube-config
-                mountPath: /root/.kube
-          volumes:
-            - name: kube-config
-              configMap:
-                name: kubeconfig
           securityContext: 
             runAsNonRoot: true
             runAsUser: 1000
