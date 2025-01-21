@@ -45,6 +45,16 @@ spec:
                 - ALL
               readOnlyRootFilesystem: true
               allowPrivilegeEscalation: false
+            env:
+              - name: KUBECONFIG
+                value: /root/.kube/config
+            volumeMounts:
+              - name: kube-config
+                mountPath: /root/.kube
+          volumes:
+            - name: kube-config
+              configMap:
+                name: kubeconfig
           securityContext: 
             runAsNonRoot: true
             runAsUser: 1000
