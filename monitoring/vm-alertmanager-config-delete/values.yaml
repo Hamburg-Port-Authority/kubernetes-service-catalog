@@ -1,0 +1,27 @@
+namespace: victoria-metrics
+schedule: "0 3 * * *"
+image: bitnami/kubectl:latest
+resources:
+  requests:
+    cpu: 10 #value in m
+    memory: 64 #value in Mi
+  limits:
+    cpu: 100 #value in m
+    memory: 512 #value in Mi
+
+affinity: {}
+  # example affinity:
+  # nodeAffinity:
+  #     requiredDuringSchedulingIgnoredDuringExecution:
+  #       nodeSelectorTerms:
+  #       - matchExpressions:
+  #         - key: nodetype
+  #           operator: In
+  #           values:
+  #           - infrastructurenode
+
+tolerations: {}
+  # - key: "nodetype"
+  #   operator: "Equal"
+  #   value: "infrastructurenode"
+  #   effect: "NoSchedule"
