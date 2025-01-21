@@ -4,5 +4,5 @@ version: 1.0.0
 description: This Chart deploys OpenCost.
 dependencies:
   - name: opencost
-    version: 1.43.1
+    version: 1.43.2
     repository: https://opencost.github.io/opencost-helm-chart
