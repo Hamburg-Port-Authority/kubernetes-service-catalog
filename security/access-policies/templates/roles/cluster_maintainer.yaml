@@ -43,3 +43,8 @@ rules:
     resources: ["users"]
     verbs: ["impersonate"]
     resourceNames: ["admin"]
+  # impersonation rule for secret-reader
+  - apiGroups: [""]
+    resources: ["serviceaccounts"]
+    verbs: ["impersonate"]
+    resourceNames: ["secret-reader"]
