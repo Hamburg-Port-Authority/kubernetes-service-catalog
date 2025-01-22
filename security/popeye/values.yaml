@@ -2,10 +2,6 @@ popeye:
   cronJob:
     schedule: "* */1 * * *"
     securityContext:
-      allowPrivilegeEscalation: false
-      capabilities:
-        drop:
-          - ALL
       runAsNonRoot: true
       seccompProfile:
         type: RuntimeDefault
@@ -27,7 +23,7 @@ popeye:
           - ALL
     resources:
       limits:
-        cpu: 1000m
+        cpu: '1'
         memory: 1000Mi
       requests:
         cpu: 500m
