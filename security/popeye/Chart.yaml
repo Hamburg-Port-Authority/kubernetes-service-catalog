@@ -4,5 +4,5 @@ version: 1.0.0
 description: This Chart deploys popeye within the kubernetes cluster and is based on https://artifacthub.io/packages/helm/christianhuth/popeye.
 dependencies:
   - name: popeye
-    version: 0.0.0-875291
+    version: 0.0.0-d0f128
     repository: oci://ghcr.io/deb4sh/helm-popeye
