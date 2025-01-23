@@ -9,4 +9,3 @@ spec:
     name: popeye-cronjob
   calls:
     - name: "svc:kubernetes.default"
-    - name: victoria-metrics-cluster-vminsert.victoria-metrics-cluster
