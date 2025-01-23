@@ -4,5 +4,5 @@ version: 1.0.0
 description: This Chart deploys minio-operator.
 dependencies:
   - name: operator
-    version: 6.0.4
+    version: 7.0.0
     repository: https://operator.min.io/
