@@ -42,4 +42,4 @@ rules:
   - apiGroups: [""]
     resources: ["users"]
     verbs: ["impersonate"]
-    resourceNames: ["cluster-admin"]
+    resourceNames: ["admin"]

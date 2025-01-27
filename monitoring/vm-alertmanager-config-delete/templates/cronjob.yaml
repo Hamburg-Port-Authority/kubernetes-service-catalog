@@ -1,0 +1,60 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+metadata:
+  labels:
+    app: vm-alertmanager-config-delete
+  name: vm-alertmanager-config-delete
+  namespace: {{.Values.namespace}}
+spec:
+  schedule: {{.Values.schedule}}
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: kubectl
+            image: {{.Values.image}}
+            command:
+            - /bin/bash
+            - -c
+            - |
+              NAMESPACES=$(kubectl get namespace -o jsonpath='{.items[*].metadata.name}')
+              for NAMESPACE in $NAMESPACES; do
+                VMALERTMANAGERCONFIGS=$(kubectl get VMAlertmanagerConfig -n $NAMESPACE -o jsonpath='{.items[*].metadata.name}')
+                for VMALERTMANAGERCONFIG in $VMALERTMANAGERCONFIGS; do
+                  ALERTMANAGERCONFIG=$(kubectl get AlertmanagerConfig $VMALERTMANAGERCONFIG --ignore-not-found -n $NAMESPACE -o jsonpath='{.metadata.name}')
+                  if [ -z "$ALERTMANAGERCONFIG" ]; then
+                    kubectl delete VMAlertmanagerConfig $VMALERTMANAGERCONFIG -n $NAMESPACE
+                  fi
+                done
+              done
+            resources:
+              requests:
+                cpu: {{.Values.resources.requests.cpu}}m
+                memory: {{.Values.resources.requests.memory}}Mi
+              limits:
+                cpu: {{.Values.resources.limits.cpu}}m
+                memory: {{.Values.resources.limits.memory}}Mi       
+            securityContext: 
+              capabilities:
+                drop:
+                - ALL
+              readOnlyRootFilesystem: true
+              allowPrivilegeEscalation: false
+          securityContext: 
+            runAsNonRoot: true
+            runAsUser: 1000
+            seccompProfile:
+              type: RuntimeDefault
+          serviceAccount: vm-alertmanager-config-delete-sa
+          serviceAccountName: vm-alertmanager-config-delete-sa
+          restartPolicy: OnFailure
+          {{- if .Values.affinity }}
+          affinity: 
+            {{- toYaml .Values.affinity | nindent 12 }}
+          {{- end}}
+          {{- if .Values.tolerations }}
+          tolerations:
+            {{- toYaml .Values.tolerations | nindent 12 }}
+          {{- end }}
