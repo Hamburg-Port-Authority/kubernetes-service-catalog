@@ -1,6 +1,6 @@
 prometheus-pushgateway:
   ingress:
-    enanbled: true
+    enabled: true
     className: "nginx"
 
   securityContext:
