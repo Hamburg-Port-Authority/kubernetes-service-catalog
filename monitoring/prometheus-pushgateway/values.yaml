@@ -1,0 +1,7 @@
+prometheus-pushgateway:
+  ingress:
+    enanbled: true
+    className: "nginx"
+
+  persistentVolume:
+    enabled: true
