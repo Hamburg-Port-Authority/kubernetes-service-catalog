@@ -17,4 +17,4 @@ prometheus-pushgateway:
       - ALL
 
   persistentVolume:
-    enabled: true
+    enabled: false
