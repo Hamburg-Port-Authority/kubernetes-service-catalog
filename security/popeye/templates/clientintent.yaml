@@ -9,4 +9,5 @@ spec:
     name: popeye-cronjob
   calls:
     - name: "svc:kubernetes.default"
-    - name: "svc:prometheus-pushgateway.prometheus-pushgateway"
+    - kind: Service
+      name: prometheus-pushgateway.prometheus-pushgateway
