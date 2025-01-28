@@ -4,15 +4,17 @@ prometheus-pushgateway:
     className: "nginx"
 
   securityContext:
-    capabilities:
-      drop:
-      - ALL
-    allowPrivilegeEscalation: false
     fsGroup: 65534
     runAsUser: 65534
     runAsNonRoot: true
     seccompProfile:
       type: RuntimeDefault
+
+  containerSecurityContext:
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+      - ALL
 
   persistentVolume:
     enabled: true
