@@ -6,11 +6,11 @@ prometheus-pushgateway:
   securityContext:
     capabilities:
       drop:
-        - ALL
+      - ALL
+    allowPrivilegeEscalation: false
     fsGroup: 65534
     runAsUser: 65534
     runAsNonRoot: true
-    allowPrivilegeEscalation: false
     seccompProfile:
       type: RuntimeDefault
 
