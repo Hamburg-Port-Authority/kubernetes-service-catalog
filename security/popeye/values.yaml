@@ -6,7 +6,6 @@ popeye:
       seccompProfile:
         type: RuntimeDefault
     
-
     containerConfiguration:
       outputFormat: ""
 
