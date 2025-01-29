@@ -6,9 +6,8 @@ popeye:
       seccompProfile:
         type: RuntimeDefault
     
-
     containerConfiguration:
-      outputFormat: prometheus
+      outputFormat: ""
 
   job:
     securityContext:
@@ -28,3 +27,7 @@ popeye:
       requests:
         cpu: 500m
         memory: 500Mi
+  
+  grafana:
+    enabled: true
+    datasource: "victoriametrics"

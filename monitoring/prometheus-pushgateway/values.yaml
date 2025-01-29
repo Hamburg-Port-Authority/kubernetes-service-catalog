@@ -1,0 +1,20 @@
+prometheus-pushgateway:
+  ingress:
+    enabled: true
+    className: "nginx"
+
+  securityContext:
+    fsGroup: 65534
+    runAsUser: 65534
+    runAsNonRoot: true
+    seccompProfile:
+      type: RuntimeDefault
+
+  containerSecurityContext:
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+      - ALL
+
+  persistentVolume:
+    enabled: false
