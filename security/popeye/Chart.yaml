@@ -4,5 +4,5 @@ version: 1.0.0
 description: This chart deploys popeye.
 dependencies:
   - name: popeye
-    version: 0.0.0-9d6f17
+    version: 0.0.0-63cb61
     repository: oci://ghcr.io/deb4sh/helm-popeye

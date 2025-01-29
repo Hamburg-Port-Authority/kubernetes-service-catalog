@@ -30,3 +30,4 @@ popeye:
   
   grafana:
     enabled: true
+    datasource: "victoriametrics"
