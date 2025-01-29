@@ -8,7 +8,7 @@ popeye:
     
 
     containerConfiguration:
-      outputFormat: prometheus
+      outputFormat: ""
 
   job:
     securityContext:
