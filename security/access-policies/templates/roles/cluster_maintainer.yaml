@@ -38,12 +38,7 @@ rules:
   - apiGroups: ["rbac.authorization.k8s.io"]
     resources: ["clusterrolebindings", "clusterroles", "rolebindings", "roles"]
     verbs: ["get", "watch", "list", "delete", "patch", "update", "create"]
-  # impersonation rule for cluster-admin
-  - apiGroups: [""]
-    resources: ["users"]
-    verbs: ["impersonate"]
-    resourceNames: ["admin"]
-  # impersonation rule for secret-reader
+  # impersonation rule
   - apiGroups: [""]
     resources: ["serviceaccounts"]
     verbs: ["impersonate"]
