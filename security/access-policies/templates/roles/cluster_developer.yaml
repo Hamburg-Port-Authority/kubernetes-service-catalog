@@ -43,3 +43,7 @@ rules:
     resources: ["serviceaccounts"]
     verbs: ["impersonate"]
     resourceNames: ["secret-reader"]
+  # otterize
+  - apiGroups: ["k8s.otterize.com"]
+    resources: ["clientintents"]
+    verbs: ["get", "watch", "list"]
