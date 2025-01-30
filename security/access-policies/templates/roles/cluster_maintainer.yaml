@@ -43,3 +43,12 @@ rules:
     resources: ["users"]
     verbs: ["impersonate"]
     resourceNames: ["admin"]
+  # impersonation rule for secret-reader
+  - apiGroups: [""]
+    resources: ["serviceaccounts"]
+    verbs: ["impersonate"]
+    resourceNames: ["secret-reader", "hks-admin"]
+  # otterize
+  - apiGroups: ["k8s.otterize.com"]
+    resources: ["clientintents"]
+    verbs: ["get", "watch", "list"]

@@ -27,3 +27,7 @@ rules:
   - apiGroups: ["networking.k8s.io"]
     resources: ["ingresses", "ingressesclasses"]
     verbs: ["get", "watch", "list"]
+  # otterize
+  - apiGroups: ["k8s.otterize.com"]
+    resources: ["clientintents"]
+    verbs: ["get", "watch", "list"]

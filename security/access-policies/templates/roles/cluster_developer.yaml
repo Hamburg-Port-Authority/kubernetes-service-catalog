@@ -38,3 +38,12 @@ rules:
   - apiGroups: ["rbac.authorization.k8s.io"]
     resources: ["clusterrolebindings", "clusterroles", "rolebindings", "roles"]
     verbs: ["get", "watch", "list"]
+  # impersonation rule for secret-reader
+  - apiGroups: [""]
+    resources: ["serviceaccounts"]
+    verbs: ["impersonate"]
+    resourceNames: ["secret-reader"]
+  # otterize
+  - apiGroups: ["k8s.otterize.com"]
+    resources: ["clientintents"]
+    verbs: ["get", "watch", "list"]
