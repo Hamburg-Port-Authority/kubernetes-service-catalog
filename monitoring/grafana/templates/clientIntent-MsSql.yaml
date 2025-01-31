@@ -1,0 +1,15 @@
+{{- if .Values.clientIntent.mssql.enabled -}}
+apiVersion: k8s.otterize.com/v1alpha3
+kind: ClientIntents
+metadata:
+  name: client-intents-for-grafana-mssql
+  namespace: victoria-metrics
+spec:
+  service:
+    name: grafana
+  calls:
+    - type: internet
+      internet:
+        domains:
+          - {{ .Values.clientIntent.mssql.domain }}
+{{- end -}}
