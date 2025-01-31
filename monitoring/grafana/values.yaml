@@ -5,6 +5,10 @@ externalSecret:
     enabled: true
   mssql:
     enabled: false
+clientIntent:
+  mssql:
+    enabled: false
+    domain: "overlay_me"
 
 grafana:
   rbac:
