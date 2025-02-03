@@ -14,11 +14,8 @@ spec:
       internet:
         domains:
           - proxy.ht.stadt.hamburg.de
-        ips:
-          - 172.30.36.122/32 # proxy.ht.stadt.hamburg.de
 {{- if .Values.clientIntent.mssql.enabled -}}
-    - type: internet
-      internet:
-        domains:
           - {{ .Values.clientIntent.mssql.domain }}
 {{- end -}}
+        ips:
+          - 172.30.36.122/32 # proxy.ht.stadt.hamburg.de
