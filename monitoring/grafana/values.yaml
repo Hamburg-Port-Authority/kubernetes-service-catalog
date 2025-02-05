@@ -6,9 +6,15 @@ externalSecret:
   mssql:
     enabled: false
 clientIntent:
-  mssql:
+  enabled: false
+  name: "overlay_me"
+  namespace: "overlay_me"
+  serviceName: "overlay_me"
+  calls: {}
+  internet:
     enabled: false
-    domain: "overlay_me"
+    domains: {}
+    ips: {}
 
 grafana:
   rbac:
