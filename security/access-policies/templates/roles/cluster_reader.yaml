@@ -34,4 +34,3 @@ rules:
   # certificates
   - apiGroups: ["cert-manager.io"]
     resources: ["certificate"]
-    verbs: ["get", "watch", "list"]
