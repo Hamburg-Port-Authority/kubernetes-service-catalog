@@ -33,5 +33,5 @@ rules:
     verbs: ["get", "watch", "list"]
   # certificates
   - apiGroups: ["cert-manager.io"]
-    resources: ["certificate"]
+    resources: ["certificates"]
     verbs: ["get", "watch", "list"]
