@@ -91,7 +91,3 @@ dependencies:
     arrayPosition: 0
     sourcePath: security/otterize/
     repositoryName: otterize/otterize-kubernetes
-  - name: "helm-restart-pod-job"
-    arrayPosition: 0
-    sourcePath: security/restart-pod-job/
-    repositoryName: zahlenhelfer/helm-restart-pod-job
