@@ -31,3 +31,7 @@ rules:
   - apiGroups: ["k8s.otterize.com"]
     resources: ["clientintents"]
     verbs: ["get", "watch", "list"]
+  # certificates
+  - apiGroups: ["cert-manager.io"]
+    resources: ["certificates"]
+    verbs: ["get", "watch", "list"]
