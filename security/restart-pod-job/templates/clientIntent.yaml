@@ -1,0 +1,24 @@
+{{- if .Values.clientIntent.enabled }}
+apiVersion: k8s.otterize.com/v1alpha3
+kind: ClientIntents
+metadata:
+  name: {{ .Values.clientIntent.name }}
+  namespace: {{ .Values.clientIntent.namespace }}
+spec:
+  service:
+    name: {{ .Values.clientIntent.serviceName }}
+  calls:
+    {{- toYaml .Values.clientIntent.calls | nindent 4 }}
+    {{- if .Values.clientIntent.internet.enabled }}
+    - type: internet
+      internet:
+        {{- if not (.Values.clientIntent.internet.domains | empty) }}
+        domains:
+          {{- toYaml .Values.clientIntent.internet.domains | nindent 10 }}
+        {{- end }}
+        {{- if not (.Values.clientIntent.internet.domains | empty) }}
+        ips:
+          {{- toYaml .Values.clientIntent.internet.ips | nindent 10 }}
+        {{- end }}
+    {{- end }}
+{{- end }}
