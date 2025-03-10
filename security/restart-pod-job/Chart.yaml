@@ -1,0 +1,8 @@
+apiVersion: v2
+name: restart-pod-job
+version: 1.0.0
+description: This chart deploys restart-pod-job.
+dependencies:
+  - name: helm-restart-pod-job
+    version: 0.1.2-bdebf7
+    repository: oci://ghcr.io/zahlenhelfer/helm-restart-pod-job
