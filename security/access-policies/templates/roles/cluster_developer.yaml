@@ -51,3 +51,11 @@ rules:
   - apiGroups: ["cert-manager.io"]
     resources: ["certificate"]
     verbs: ["get", "watch", "list", "delete", "patch", "update", "create"]
+  # prometheus rules
+  - apiGroups: ["monitoring.coreos.com"]
+    resources: ["prometheusrule"]
+    verbs: ["get", "watch", "list", "delete", "patch", "update", "create"]
+  # victoria metrics rules
+  - apiGroups: ["operator.victoriametrics.com"]
+    resources: ["vmrule"]
+    verbs: ["get", "watch", "list", "delete", "patch", "update", "create"]
