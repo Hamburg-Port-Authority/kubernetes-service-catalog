@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: falco-exporter
-  labels:
-    kubernetes.io/metadata.name: falco-exporter
-    pod-security.kubernetes.io/enforce: privileged

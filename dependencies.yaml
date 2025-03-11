@@ -71,10 +71,6 @@ dependencies:
     arrayPosition: 0
     sourcePath: security/falco
     repositoryName: falcosecurity/falco
-  - name: "Falco Exporter"
-    arrayPosition: 0
-    sourcePath: monitoring/falco-exporter
-    repositoryName: falcosecurity/falco-exporter
   - name: "minIO Operator"
     arrayPosition: 0
     repositoryName: minio-operator/operator
