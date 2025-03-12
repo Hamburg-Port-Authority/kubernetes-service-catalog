@@ -31,7 +31,7 @@ otterize-kubernetes:
           memory: 500Mi
         requests:
           cpu: 10m
-          memory: 128Mi
+          memory: 192Mi
     watchedNamespaces: null # by default, watch all
 
 
@@ -51,4 +51,4 @@ otterize-kubernetes:
           memory: 256Mi
         requests:
           cpu: 100m
-          memory: 128Mi
+          memory: 64Mi
