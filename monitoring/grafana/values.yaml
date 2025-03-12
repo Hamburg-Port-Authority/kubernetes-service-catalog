@@ -138,10 +138,10 @@ grafana:
     resources:
       limits:
         cpu: 100m
-        memory: 100Mi
+        memory: 200Mi
       requests:
         cpu: 50m
-        memory: 50Mi
+        memory: 75Mi
     alerts:
       enabled: false
     dashboards:
