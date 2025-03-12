@@ -8,11 +8,11 @@ sealed-secrets:
     create: false
   resources:
     requests:
-      memory: 75Mi
-      cpu: 75m
+      memory: 32Mi
+      cpu: 10m
     limits:
       memory: 125Mi
-      cpu: 250m
+      cpu: 50m
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
