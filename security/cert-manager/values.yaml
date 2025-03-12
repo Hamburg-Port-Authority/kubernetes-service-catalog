@@ -2,7 +2,7 @@ cert-manager:
   installCRDs: true
   resources: 
       limits:
-        cpu: 50m
+        cpu: 20m
         memory: 128Mi
       requests:
         cpu: 10m
@@ -10,15 +10,15 @@ cert-manager:
   webhook:
     resources: 
       limits:
-        cpu: 50m
-        memory: 128Mi
+        cpu: 20m
+        memory: 64Mi
       requests:
         cpu: 10m
-        memory: 128Mi
+        memory: 32Mi
   cainjector:
     resources: 
       limits:
-        cpu: 50m
+        cpu: 20m
         memory: 128Mi
       requests:
         cpu: 10m
@@ -26,7 +26,7 @@ cert-manager:
   startupapicheck:
     resources: 
       limits:
-        cpu: 50m
+        cpu: 20m
         memory: 128Mi
       requests:
         cpu: 10m
