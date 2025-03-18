@@ -4,5 +4,5 @@ version: 1.0.0
 description: This chart deploys restart-pod-job.
 dependencies:
   - name: helm-restart-pod-job
-    version: 1.0.2-3a2715
+    version: 1.0.2-af2505
     repository: oci://ghcr.io/hamburg-port-authority/helm-restart-pod-job
