@@ -75,10 +75,6 @@ dependencies:
     arrayPosition: 0
     repositoryName: minio-operator/operator
     sourcePath: storage/minio-operator
-  - name: "kubeclarity"
-    arrayPosition: 0
-    sourcePath: security/kubeclarity
-    repositoryName: kubeclarity/kubeclarity
   - name: "opencost"
     arrayPosition: 0
     sourcePath: finops/opencost
