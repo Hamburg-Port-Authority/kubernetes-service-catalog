@@ -36,10 +36,10 @@ argo-cd:
     resources: 
       limits:
         cpu: 200m
-        memory: 128Mi
+        memory: 64Mi
       requests:
         cpu: 100m
-        memory: 64Mi
+        memory: 32Mi
 
   controller:
     replicas: 1
@@ -85,11 +85,11 @@ argo-cd:
       targetMemoryUtilizationPercentage: 90
     resources:
       limits:
-        cpu: 200m
-        memory: 256Mi
-      requests:
         cpu: 100m
-        memory: 64Mi
+        memory: 512Mi
+      requests:
+        cpu: 50m
+        memory: 256Mi
     metrics:
       enabled: true
       serviceMonitor:
@@ -107,7 +107,7 @@ argo-cd:
         memory: 128Mi
       requests:
         cpu: 100m
-        memory: 128Mi
+        memory: 64Mi
   dex:
     initImage:
       resources: 
@@ -136,4 +136,4 @@ argo-cd:
         memory: 128Mi
       requests:
         cpu: 100m
-        memory: 128Mi
+        memory: 64Mi

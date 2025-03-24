@@ -111,7 +111,7 @@ data:
               {
                 "editorMode": "code",
                 "exemplar": false,
-                "expr": "sum (\n    label_replace(\n        label_replace(\n            container_memory_working_set_bytes{pod!=\"\", container!=\"\", namespace=~\"$Namespace\"}, \"exported_pod\", \"$1\", \"pod\", \"(.+)\"\n        ), \"exported_namespace\", \"$1\", \"namespace\", \"(.+)\"\n    ) \n) by (exported_pod, exported_namespace)\n/\nsum(kube_pod_container_resource_requests{resource=\"memory\", exported_pod!=\"\"}) by (exported_namespace, exported_pod)",
+                "expr": "sum (\n    label_replace(\n        label_replace(\n            container_memory_working_set_bytes{pod!=\"\", container!=\"\", namespace=~\"$Namespace\"}, \"exported_pod\", \"$1\", \"pod\", \"(.+)\"\n        ), \"exported_namespace\", \"$1\", \"namespace\", \"(.+)\"\n    ) \n) by (exported_pod, exported_namespace)\n/\nmax(kube_pod_container_resource_requests{resource=\"memory\", exported_pod!=\"\"}) by (exported_namespace, exported_pod)",
                 "format": "table",
                 "instant": true,
                 "legendFormat": "__auto",
@@ -226,7 +226,7 @@ data:
                   "uid": "PABDA7AB1AD2A1489"
                 },
                 "editorMode": "code",
-                "expr": "sum(kube_pod_container_resource_requests{resource=\"memory\", exported_pod!=\"\"}) by (exported_namespace, exported_pod)\n/\nsum (\n    label_replace(\n        label_replace(\n            container_memory_working_set_bytes{pod!=\"\", container!=\"\", namespace=~\"$Namespace\"}, \"exported_pod\", \"$1\", \"pod\", \"(.+)\"\n        ), \"exported_namespace\", \"$1\", \"namespace\", \"(.+)\"\n    ) \n) by (exported_pod, exported_namespace) * 100",
+                "expr": "max(kube_pod_container_resource_requests{resource=\"memory\", exported_pod!=\"\"}) by (exported_namespace, exported_pod)\n/\nsum (\n    label_replace(\n        label_replace(\n            container_memory_working_set_bytes{pod!=\"\", container!=\"\", namespace=~\"$Namespace\"}, \"exported_pod\", \"$1\", \"pod\", \"(.+)\"\n        ), \"exported_namespace\", \"$1\", \"namespace\", \"(.+)\"\n    ) \n) by (exported_pod, exported_namespace) * 100",
                 "hide": false,
                 "legendFormat": "__auto",
                 "range": true,
@@ -296,7 +296,7 @@ data:
               {
                 "editorMode": "code",
                 "exemplar": false,
-                "expr": "sum(\n    label_replace(\n        label_replace(\n            rate(\n                container_cpu_usage_seconds_total{pod!=\"\", container!=\"\", namespace=~\"$Namespace\"}[1m]\n            ), \"exported_pod\", \"$1\", \"pod\", \"(.+)\"\n        ), \"exported_namespace\", \"$1\", \"namespace\", \"(.+)\"\n    )\n) by (exported_pod, exported_namespace) \n/\nsum(kube_pod_container_resource_requests{resource=\"cpu\", exported_pod!=\"\"}) by (exported_namespace, exported_pod)",
+                "expr": "sum(\n    label_replace(\n        label_replace(\n            rate(\n                container_cpu_usage_seconds_total{pod!=\"\", container!=\"\", namespace=~\"$Namespace\"}[1m]\n            ), \"exported_pod\", \"$1\", \"pod\", \"(.+)\"\n        ), \"exported_namespace\", \"$1\", \"namespace\", \"(.+)\"\n    )\n) by (exported_pod, exported_namespace) \n/\nmax(kube_pod_container_resource_requests{resource=\"cpu\", exported_pod!=\"\"}) by (exported_namespace, exported_pod)",
                 "format": "table",
                 "instant": true,
                 "legendFormat": "__auto",
@@ -411,7 +411,7 @@ data:
                   "uid": "PABDA7AB1AD2A1489"
                 },
                 "editorMode": "code",
-                "expr": "sum(kube_pod_container_resource_requests{resource=\"cpu\", exported_pod!=\"\"}) by (exported_namespace, exported_pod)\n/\nsum(\n    label_replace(\n        label_replace(\n            rate(\n                container_cpu_usage_seconds_total{pod!=\"\", container!=\"\", namespace=~\"$Namespace\"}[1m]\n            ), \"exported_pod\", \"$1\", \"pod\", \"(.+)\"\n        ), \"exported_namespace\", \"$1\", \"namespace\", \"(.+)\"\n    )\n) by (exported_pod, exported_namespace) * 100",
+                "expr": "max(kube_pod_container_resource_requests{resource=\"cpu\", exported_pod!=\"\"}) by (exported_namespace, exported_pod)\n/\nsum(\n    label_replace(\n        label_replace(\n            rate(\n                container_cpu_usage_seconds_total{pod!=\"\", container!=\"\", namespace=~\"$Namespace\"}[1m]\n            ), \"exported_pod\", \"$1\", \"pod\", \"(.+)\"\n        ), \"exported_namespace\", \"$1\", \"namespace\", \"(.+)\"\n    )\n) by (exported_pod, exported_namespace) * 100",
                 "hide": false,
                 "legendFormat": "__auto",
                 "range": true,

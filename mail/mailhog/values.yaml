@@ -9,10 +9,10 @@ mailhog:
     pullPolicy: IfNotPresent
   resources:
     limits:
-      cpu: 100m
+      cpu: 50m
       memory: 128Mi
     requests:
-      cpu: 100m
+      cpu: 10m
       memory: 128Mi
   containerSecurityContext:
     seccompProfile:
