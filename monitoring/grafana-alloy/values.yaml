@@ -105,6 +105,7 @@ alloy:
 
         local.file_match "kubernetes_pods" {
           path_targets = discovery.relabel.kubernetes_pods.output
+          sync_period = "5s"
         }
 
         loki.process "kubernetes_pods" {
@@ -116,7 +117,7 @@ alloy:
         loki.source.file "kubernetes_pods" {
           targets               = local.file_match.kubernetes_pods.targets
           forward_to            = [loki.process.kubernetes_pods.receiver]
-          legacy_positions_file = "/run/promtail/positions.yaml"
+          tail_from_end = true
         }
 
         loki.write "default" {
