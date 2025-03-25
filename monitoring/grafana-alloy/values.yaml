@@ -1,3 +1,19 @@
+clientIntent:
+  enabled: false
+  name: "overlay_me"
+  namespace: "overlay_me"
+  # targets: 
+  #   - kuberentes:
+  #       name: "overlay_me"
+  #       kind: "optional"
+  #   - internet:
+  #       domains:
+  #         - "overlay_me.com"
+  #       ips:
+  #         - "overlay_me"
+  #       ports:
+  #         - "overlay_me"
+
 alloy:
   ## Global properties for image pulling override the values defined under `image.registry` and `configReloader.image.registry`.
   ## If you want to override only one image registry, use the specific fields but if you want to override them all, use `global.image.registry`
@@ -132,40 +148,11 @@ alloy:
     # Alloy.
     enableReporting: false
 
-    # -- Extra environment variables to pass to the Alloy container.
-    extraEnv: []
-
-    # -- Maps all the keys on a ConfigMap or Secret as environment variables. https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.24/#envfromsource-v1-core
-    envFrom: []
-
-    # -- Extra args to pass to `alloy run`: https://grafana.com/docs/alloy/latest/reference/cli/run/
-    extraArgs: []
-
-    mounts:
-      # -- Mount /var/log from the host into the container for log collection.
-      varlog: false
-      # -- Mount /var/lib/docker/containers from the host into the container for log
-      # collection.
-      dockercontainers: false
-
-      # -- Extra volume mounts to add into the Grafana Alloy container. Does not
-      # affect the watch container.
-      extra: []
-
     # -- Security context to apply to the Grafana Alloy container.
     securityContext: {}
 
     # -- Resource requests and limits to apply to the Grafana Alloy container.
     resources: {}
-
-    # -- Set livenessProbe for the Grafana Alloy container.
-    livenessProbe: {}
-
-  image:
-    # -- Grafana Alloy image registry (defaults to docker.io)
-    registry: "docker.io"
-    # -- Grafana Alloy image repository.
-    repository: grafana/alloy
 
   # Options for the extra controller used for config reloading.
   configReloader:
@@ -193,58 +180,8 @@ alloy:
     # Must be one of 'daemonset', 'deployment', or 'statefulset'.
     type: 'daemonset'
 
-    # -- nodeSelector to apply to Grafana Alloy pods.
-    nodeSelector: {}
-
     # -- Tolerations to apply to Grafana Alloy pods.
     tolerations: []
 
-    # -- Affinity configuration for pods.
-    affinity: {}
-
-    volumes:
-      # -- Extra volumes to add to the Grafana Alloy pod.
-      extra: []
-
   serviceMonitor:
     enabled: true
-
-  ingress:
-    # -- Enables ingress for Alloy (Faro port)
-    enabled: false
-    # For Kubernetes >= 1.18 you should specify the ingress-controller via the field ingressClassName
-    # See https://kubernetes.io/blog/2020/04/02/improvements-to-the-ingress-api-in-kubernetes-1.18/#specifying-the-class-of-an-ingress
-    # ingressClassName: nginx
-    # Values can be templated
-    annotations:
-      {}
-      # kubernetes.io/ingress.class: nginx
-      # kubernetes.io/tls-acme: "true"
-    labels: {}
-    path: /
-    faroPort: 12347
-
-    # pathType is only for k8s >= 1.1=
-    pathType: Prefix
-
-    hosts:
-      - chart-example.local
-    ## Extra paths to prepend to every host configuration. This is useful when working with annotation based services.
-    extraPaths: []
-    # - path: /*
-    #   backend:
-    #     serviceName: ssl-redirect
-    #     servicePort: use-annotation
-    ## Or for k8s > 1.19
-    # - path: /*
-    #   pathType: Prefix
-    #   backend:
-    #     service:
-    #       name: ssl-redirect
-    #       port:
-    #         name: use-annotation
-
-    tls: []
-    #  - secretName: chart-example-tls
-    #    hosts:
-    #      - chart-example.local
