@@ -4,5 +4,5 @@ version: 1.0.0
 description: This Chart deploys otterize-kubernetes.
 dependencies:
   - name: otterize-kubernetes
-    version: 4.0.123
+    version: 5.0.39
     repository: https://helm.otterize.com

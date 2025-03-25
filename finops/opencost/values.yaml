@@ -1,6 +1,13 @@
 opencost:
   opencost:
     exporter:
+      resources:
+        requests:
+          cpu: '10m'
+          memory: '128Mi'
+        limits:
+          cpu: '20m'
+          memory: '256Mi'
       extraEnv:
         KUBECOST_SCRAPE_INTERVAL: 1m
       securityContext: 

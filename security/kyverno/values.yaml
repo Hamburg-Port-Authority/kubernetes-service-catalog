@@ -24,32 +24,32 @@ kyverno:
       resources:
         # -- Pod resource limits
         limits:
-          cpu: "200m"
+          cpu: "100m"
           memory: 128Mi
         # -- Pod resource requests
         requests:
-          cpu: 100m
+          cpu: 50m
           memory: 64Mi
 
   backgroundController:
     resources:
     # -- Pod resource limits
       limits:
-        cpu: "200m"
+        cpu: "20m"
         memory: 128Mi
       # -- Pod resource requests
       requests:
-        cpu: 100m
+        cpu: 10m
         memory: 64Mi
   cleanupController:
     resources:
     # -- Pod resource limits
       limits:
-        cpu: "200m"
+        cpu: "20m"
         memory: 128Mi
       # -- Pod resource requests
       requests:
-        cpu: 100m
+        cpu: 10m
         memory: 64Mi
   reportsController:
     resources:
