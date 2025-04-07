@@ -1,5 +1,5 @@
 deployment:
-  image: ghcr.io/coveros/webhook-tester:sha-847b6a9
+  image: ghcr.io/deb4sh/webhook-tester:edge
   resources:
     requests:
       cpu: 10 #value in m
