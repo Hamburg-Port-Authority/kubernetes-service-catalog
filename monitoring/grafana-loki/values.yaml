@@ -192,7 +192,7 @@ loki:
         cpu: 100m
         memory: 800Mi
       requests:
-        cpu: 30m
+        cpu: 50m
         memory: 300Mi
     topologySpreadConstraints:
       - maxSkew: 1
@@ -208,7 +208,7 @@ loki:
         cpu: 100m
         memory: 500Mi
       requests:
-        cpu: 25m
+        cpu: 40m
         memory: 250Mi
     topologySpreadConstraints:
       - maxSkew: 1

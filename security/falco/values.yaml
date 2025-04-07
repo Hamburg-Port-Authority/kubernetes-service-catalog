@@ -75,10 +75,10 @@ falco:
     resources: 
       requests:
         cpu: 10m
-        memory: 128Mi
+        memory: 64Mi
       limits:
         cpu: 100m
-        memory: 256Mi
+        memory: 128Mi
   falcoctl:
     artifact:
       install:
@@ -106,3 +106,17 @@ falco:
 
     grpc_output:
       enabled: true
+  falcosidekick:
+    enabled: true
+    config:
+      alertmanager:
+        hostport: "http://vmalertmanager-alertmanager.victoria-metrics.svc.cluster.local:9093"
+        endpoint: "/api/v2/alerts"
+        extralabels: "namespace:falco"
+    resources: 
+      limits:
+        cpu: 50m
+        memory: 128Mi
+      requests:
+        cpu: 10m
+        memory: 64Mi

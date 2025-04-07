@@ -32,10 +32,10 @@ prometheus-node-exporter:
 
   resources:
     limits:
-      cpu: 200m
+      cpu: 50m
       memory: 50Mi
     requests:
-      cpu: 100m
+      cpu: 10m
       memory: 30Mi
 
   serviceAccount:

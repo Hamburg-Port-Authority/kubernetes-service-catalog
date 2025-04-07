@@ -27,12 +27,6 @@ grafana:
 
   replicas: 1
 
-  autoscaling:
-    enabled: true
-    minReplicas: 1
-    maxReplicas: 3
-    targetCPU: "60"
-
   deploymentStrategy:
     type: Recreate
 
@@ -46,11 +40,11 @@ grafana:
 
   resources:
     limits:
-      cpu: 1000m
+      cpu: 500m
       memory: 1024Mi
     requests:
-      cpu: 1000m
-      memory: 1024Mi
+      cpu: 100m
+      memory: 512Mi
 
   initChownData:
     enabled: false
@@ -138,10 +132,10 @@ grafana:
     resources:
       limits:
         cpu: 100m
-        memory: 100Mi
+        memory: 200Mi
       requests:
         cpu: 50m
-        memory: 50Mi
+        memory: 75Mi
     alerts:
       enabled: false
     dashboards:
