@@ -22,16 +22,18 @@ otterize-kubernetes:
       mode: defaultActive
       autoGenerateTLSUsingCredentialsOperator: true
       enableNetworkPolicyCreation: true
-      enableKafkaACLCreation: true
+      enableKafkaACLCreation: false
       allowExternalTraffic: ifBlockedByOtterize
-      enableIstioPolicyCreation: true    
+      enableIstioPolicyCreation: false
+      enableDatabasePolicyCreation: false
+      enableLinkerdPolicyCreation: false
       resources: 
         limits:
-          cpu: 100m
-          memory: 500Mi
+          cpu: 300m
+          memory: 800Mi
         requests:
-          cpu: 10m
-          memory: 192Mi
+          cpu: 100m
+          memory: 384Mi
     watchedNamespaces: null # by default, watch all
 
 

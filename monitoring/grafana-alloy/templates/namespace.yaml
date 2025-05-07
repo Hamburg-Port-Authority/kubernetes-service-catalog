@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: alloy
+  labels:
+    kubernetes.io/metadata.name: alloy
+    pod-security.kubernetes.io/enforce: privileged

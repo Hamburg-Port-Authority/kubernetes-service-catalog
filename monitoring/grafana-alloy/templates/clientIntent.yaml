@@ -1,0 +1,12 @@
+{{- if .Values.clientIntent.enabled }}
+apiVersion: k8s.otterize.com/v2beta1
+kind: ClientIntents
+metadata:
+  name: intents-for-{{ .Values.clientIntent.name }}
+  namespace: {{ .Values.clientIntent.namespace }}
+spec:
+  workload:
+    name: {{ .Values.clientIntent.name }}
+  targets:
+    {{- toYaml .Values.clientIntent.targets | nindent 6 }}
+{{- end }}
