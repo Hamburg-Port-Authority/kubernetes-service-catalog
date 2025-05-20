@@ -190,10 +190,10 @@ loki:
     resources:
       limits:
         cpu: 100m
-        memory: 800Mi
+        memory: 1500Mi
       requests:
         cpu: 50m
-        memory: 300Mi
+        memory: 600Mi
     topologySpreadConstraints:
       - maxSkew: 1
         topologyKey: kubernetes.io/hostname
