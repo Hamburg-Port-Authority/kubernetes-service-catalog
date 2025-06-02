@@ -59,10 +59,6 @@ dependencies:
     arrayPosition: 0
     sourcePath: monitoring/grafana-loki
     repositoryName: grafana/loki
-  - name: "Grafana Alloy"
-    arrayPosition: 0
-    sourcePath: monitoring/grafana-alloy
-    repositoryName: grafana/alloy
   - name: "Grafana Promtail"
     arrayPosition: 0
     sourcePath: monitoring/grafana-promtail
