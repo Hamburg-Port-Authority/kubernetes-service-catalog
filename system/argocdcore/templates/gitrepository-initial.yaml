@@ -1,7 +1,7 @@
 {{- range .Values.init.repository }}
 {{ if and .isSshConnection .repositoryEnabled }}
 ---
-apiVersion: external-secrets.io/v1beta1
+apiVersion: external-secrets.io/v1
 kind: ExternalSecret
 metadata:
   name: initializer-{{ .manifestId }}
@@ -28,7 +28,7 @@ spec:
         decodingStrategy: Base64
 {{- else if .repositoryEnabled -}}
 ---
-apiVersion: external-secrets.io/v1beta1
+apiVersion: external-secrets.io/v1
 kind: ExternalSecret
 metadata:
   name: initializer-pat-{{ .manifestId }}
