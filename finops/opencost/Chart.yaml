@@ -1,8 +1,0 @@
-apiVersion: v2
-name: opencost
-version: 1.0.0
-description: This Chart deploys OpenCost.
-dependencies:
-  - name: opencost
-    version: 2.1.5
-    repository: https://opencost.github.io/opencost-helm-chart
