@@ -1,7 +1,6 @@
 apiVersion: v2
 name: grafana
 version: 1.0.0
-Appversion: 1.0.0
 description: This Chart deploys grafana.
 dependencies:
   - name: grafana
