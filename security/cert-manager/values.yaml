@@ -1,4 +1,16 @@
 cert-manager:
+
+  #HOTFIX for certificate issue
+  #REF: https://github.com/cert-manager/cert-manager/issues/7791
+  #REF: https://github.com/kubernetes/ingress-nginx/issues/11176
+  #REF: https://cert-manager.io/docs/releases/release-notes/release-notes-1.18/#option-1-disable-the-acmehttp01ingresspathtypeexact-feature-in-cert-manager
+  config:
+  featureGates:
+    # Disable the use of Exact PathType in Ingress resources, to work around a bug in ingress-nginx
+    # https://github.com/kubernetes/ingress-nginx/issues/11176
+    ACMEHTTP01IngressPathTypeExact: false
+
+
   installCRDs: true
   resources: 
       limits:
