@@ -7,11 +7,15 @@ metadata:
     kubernetes.io/ingress.class: {{ .Values.ingress.className }}
     ingress.kubernetes.io/force-ssl-redirect: "true"
     nginx.ingress.kubernetes.io/ssl-passthrough: {{ .Values.ingress.sslPassthrough | default "false" | quote }}
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    #REF: https://github.com/argoproj/argo-cd/issues/3975#issuecomment-2317236083
+    #increase buffers due to some users having trouble logging in with high amount of groups
+    nginx.ingress.kubernetes.io/proxy-buffers-number: "16"
+    nginx.ingress.kubernetes.io/proxy-buffer-size: 16k
     cert-manager.io/cluster-issuer: {{ .Values.ingress.issuer }}
     cert-manager.io/renew-before: 360h #15 days
     cert-manager.io/common-name: {{ .Values.ingress.host }}
     kubernetes.io/tls-acme: "true"
-    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
 spec:
   rules:
     - host: {{ .Values.ingress.host }}
