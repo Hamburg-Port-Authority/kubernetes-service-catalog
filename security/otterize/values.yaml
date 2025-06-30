@@ -42,10 +42,10 @@ otterize-kubernetes:
       resources: 
         limits:
           cpu: 300m
-          memory: 256Mi
+          memory: 512Mi
         requests:
           cpu: 150m
-          memory: 128Mi
+          memory: 256Mi
     sniffer:
       resources: 
         limits:
