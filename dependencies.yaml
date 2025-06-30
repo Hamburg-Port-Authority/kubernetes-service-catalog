@@ -75,10 +75,6 @@ dependencies:
     arrayPosition: 0
     repositoryName: minio-operator/operator
     sourcePath: storage/minio-operator
-  - name: "opencost"
-    arrayPosition: 0
-    sourcePath: finops/opencost
-    repositoryName: opencost/opencost
   - name: "otterize-kubernetes"
     arrayPosition: 0
     sourcePath: security/otterize/
