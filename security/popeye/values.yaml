@@ -1,6 +1,9 @@
 popeye:
   cronJob:
     schedule: "* */1 * * *"
+    history:
+      failedJobsHistoryLimit: 1
+      successfulJobsHistoryLimit: 0
     securityContext:
       runAsNonRoot: true
       seccompProfile:
