@@ -1,6 +1,6 @@
 popeye:
   cronJob:
-    schedule: "* */1 * * *"
+    schedule: "0 * * * *"
     history:
       failedJobsHistoryLimit: 1
       successfulJobsHistoryLimit: 0
