@@ -1,0 +1,9 @@
+apiVersion: k8s.otterize.com/v1alpha3
+kind: ClientIntents
+metadata:
+  name: victoria-metrics-cluster-vmauth
+spec:
+  service:
+    name: victoria-metrics-cluster-vmauth
+  calls:
+    - name: victoria-metrics-cluster-vminsert
