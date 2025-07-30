@@ -6,3 +6,6 @@ dependencies:
   - name: sealed-secrets
     version: 2.17.3
     repository: https://bitnami-labs.github.io/sealed-secrets
+  - name: default-netpol
+    version: 1.3.0-439673
+    repository: oci://ghcr.io/hamburg-port-authority/defaultnetpol
