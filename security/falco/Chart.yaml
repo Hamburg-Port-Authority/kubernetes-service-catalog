@@ -7,5 +7,5 @@ dependencies:
     version: 6.1.0
     repository: https://falcosecurity.github.io/charts
   - name: default-netpol
-    version: 1.5.0-3ff8a7
+    version: 1.5.1-3c17d4
     repository: oci://ghcr.io/hamburg-port-authority/defaultnetpol
