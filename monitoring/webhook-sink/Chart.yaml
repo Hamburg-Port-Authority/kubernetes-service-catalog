@@ -2,3 +2,7 @@ apiVersion: v2
 name: webhook-sink
 version: 1.0.0
 description: This Chart deploys a webhook to log catcher.
+dependencies:
+  - name: default-netpol
+    version: 1.4.1-ac5342
+    repository: oci://ghcr.io/hamburg-port-authority/defaultnetpol
