@@ -1,4 +1,4 @@
-
+{{- if .Values.clientIntent.enabled }}
 apiVersion: k8s.otterize.com/v1alpha3
 kind: ClientIntents
 metadata:
@@ -11,3 +11,4 @@ spec:
     - name: "svc:kubernetes.default"
     - kind: Service
       name: prometheus-pushgateway.prometheus-pushgateway
+{{- end }}
