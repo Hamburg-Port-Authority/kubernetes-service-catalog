@@ -61,3 +61,6 @@ kyverno:
       requests:
         cpu: 100m
         memory: 128Mi
+  features:
+    generateValidatingAdmissionPolicy:
+      enabled: false # only compatible with k8s >= 1.30
