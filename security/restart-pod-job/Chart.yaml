@@ -1,8 +1,0 @@
-apiVersion: v2
-name: restart-pod-job
-version: 1.0.0
-description: This chart deploys restart-pod-job.
-dependencies:
-  - name: helm-restart-pod-job
-    version: 1.0.4-22cf7d
-    repository: oci://ghcr.io/hamburg-port-authority/helm-restart-pod-job

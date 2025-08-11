@@ -6,3 +6,6 @@ dependencies:
   - name: external-dns
     version: 8.7.5
     repository: oci://ghcr.io/hamburg-port-authority/helm-bitnami-external-dns-oci
+  - name: default-netpol
+    version: 1.5.1-3c17d4
+    repository: oci://ghcr.io/hamburg-port-authority/defaultnetpol

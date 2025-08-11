@@ -11,6 +11,9 @@ spec:
   jobTemplate:
     spec:
       template:
+        metadata:
+          labels:
+            app: vm-alertmanager-config-delete
         spec:
           containers:
           - name: kubectl

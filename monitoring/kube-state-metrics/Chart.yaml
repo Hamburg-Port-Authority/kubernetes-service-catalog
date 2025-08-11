@@ -6,3 +6,6 @@ dependencies:
   - name: kube-state-metrics
     version: 5.16.0
     repository: https://prometheus-community.github.io/helm-charts
+  - name: default-netpol
+    version: 1.5.1-3c17d4
+    repository: oci://ghcr.io/hamburg-port-authority/defaultnetpol

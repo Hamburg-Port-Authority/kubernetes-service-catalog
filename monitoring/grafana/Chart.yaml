@@ -4,5 +4,8 @@ version: 1.0.0
 description: This Chart deploys grafana.
 dependencies:
   - name: grafana
-    version: 9.2.10
+    version: 9.3.1
     repository: https://grafana.github.io/helm-charts
+  - name: default-netpol
+    version: 1.5.1-3c17d4
+    repository: oci://ghcr.io/hamburg-port-authority/defaultnetpol

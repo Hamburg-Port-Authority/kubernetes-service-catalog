@@ -4,5 +4,8 @@ version: 1.0.0
 description: This Chart deploys prometheus-alertmanager.
 dependencies:
   - name: alertmanager
-    version: 1.23.1
+    version: 1.23.2
     repository: https://prometheus-community.github.io/helm-charts
+  - name: default-netpol
+    version: 1.5.1-3c17d4
+    repository: oci://ghcr.io/hamburg-port-authority/defaultnetpol
