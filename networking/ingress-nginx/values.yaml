@@ -21,6 +21,9 @@ ingress-nginx:
     setAsDefaultIngress: true
     extraArgs:
       enable-ssl-passthrough: true
+    admissionWebhooks:
+      certManager:
+        enabled: true
   defaultBackend:
     enabled: true
     resources:
