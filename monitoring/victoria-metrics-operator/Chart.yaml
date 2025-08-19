@@ -4,7 +4,7 @@ version: 1.0.0
 description: This Chart deploys victoria-metrics-operator.
 dependencies:
   - name: victoria-metrics-operator
-    version: 0.51.4
+    version: 0.52.1
     repository: https://victoriametrics.github.io/helm-charts/
   - name: default-netpol
     version: 1.5.1-3c17d4
