@@ -2,7 +2,3 @@ apiVersion: v2
 name: vm-alertmanager-config-delete
 version: 1.0.0
 description: This Chart deploys a cronjob that deletes the http issuers regularly.
-dependencies:
-  - name: default-netpol
-    version: 1.5.1-3c17d4
-    repository: oci://ghcr.io/hamburg-port-authority/defaultnetpol
