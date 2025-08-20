@@ -1,0 +1,12 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: http-issuer-delete
+subjects:
+- kind: ServiceAccount
+  name: http-issuer-delete
+  namespace: {{.Values.namespace}}
+roleRef:
+  kind: ClusterRole
+  name: http-issuer-delete
+  apiGroup: rbac.authorization.k8s.io

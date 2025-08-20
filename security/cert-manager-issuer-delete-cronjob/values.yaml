@@ -1,0 +1,27 @@
+namespace: cert-manager
+schedule: "0 3 1 * *"
+image: bitnami/kubectl:latest
+resources:
+  requests:
+    cpu: 10m #value in m
+    memory: 64Mi #value in Mi
+  limits:
+    cpu: 100m #value in m
+    memory: 512Mi #value in Mi
+
+affinity: {}
+  # example affinity:
+  # nodeAffinity:
+  #     requiredDuringSchedulingIgnoredDuringExecution:
+  #       nodeSelectorTerms:
+  #       - matchExpressions:
+  #         - key: nodetype
+  #           operator: In
+  #           values:
+  #           - infrastructurenode
+
+tolerations: {}
+  # - key: "nodetype"
+  #   operator: "Equal"
+  #   value: "infrastructurenode"
+  #   effect: "NoSchedule"

@@ -1,0 +1,57 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+metadata:
+  labels:
+    app: http-issuer-delete
+  name: http-issuer-delete
+  namespace: {{.Values.namespace}}
+spec:
+  schedule: {{.Values.schedule}}
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            app: http-issuer-delete
+        spec:
+          containers:
+          - name: kubectl
+            image: {{.Values.image}}
+            command:
+            - /bin/bash
+            - -c
+            - |
+              ISSUERS=$(kubectl get clusterissuer -o jsonpath='{.items[*].metadata.name}')
+              for ISSUER in $ISSUERS; do
+                kubectl delete ClusterIssuer $ISSUER
+              done
+            resources:
+              requests:
+                cpu: {{.Values.resources.requests.cpu}}
+                memory: {{.Values.resources.requests.memory}}
+              limits:
+                cpu: {{.Values.resources.limits.cpu}}
+                memory: {{.Values.resources.limits.memory}}
+            securityContext: 
+              capabilities:
+                drop:
+                - ALL
+              readOnlyRootFilesystem: true
+              allowPrivilegeEscalation: false
+          securityContext: 
+            runAsNonRoot: true
+            runAsUser: 1000
+            seccompProfile:
+              type: RuntimeDefault
+          serviceAccount: http-issuer-delete
+          serviceAccountName: http-issuer-delete
+          restartPolicy: OnFailure
+          {{- if .Values.affinity }}
+          affinity: 
+            {{- toYaml .Values.affinity | nindent 12 }}
+          {{- end}}
+          {{- if .Values.tolerations }}
+          tolerations:
+            {{- toYaml .Values.tolerations | nindent 12 }}
+          {{- end }}
