@@ -1,3 +1,5 @@
+clientIntent:
+  enabled: true
 victoria-metrics-cluster:
   rbac:
     create: true

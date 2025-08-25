@@ -6,3 +6,6 @@ dependencies:
   - name: external-secrets
     version: "0.18.2"
     repository: https://charts.external-secrets.io
+  - name: default-netpol
+    version: 1.5.1-3c17d4
+    repository: oci://ghcr.io/hamburg-port-authority/defaultnetpol

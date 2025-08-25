@@ -1,3 +1,4 @@
+{{- if .Values.clientIntent.enabled }}
 apiVersion: k8s.otterize.com/v1alpha3
 kind: ClientIntents
 metadata:
@@ -7,3 +8,4 @@ spec:
     name: victoria-metrics-cluster-vmauth
   calls:
     - name: victoria-metrics-cluster-vminsert
+{{- end }}

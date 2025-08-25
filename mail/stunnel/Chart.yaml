@@ -3,3 +3,7 @@ name: stunnel
 version: 1.0.0
 appVersion: 1.0.0
 description: This Chart deploys stunnel.
+dependencies:
+  - name: default-netpol
+    version: 1.5.1-3c17d4
+    repository: oci://ghcr.io/hamburg-port-authority/defaultnetpol

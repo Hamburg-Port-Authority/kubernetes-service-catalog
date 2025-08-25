@@ -6,3 +6,6 @@ dependencies:
   - name: victoria-metrics-operator
     version: 0.51.4
     repository: https://victoriametrics.github.io/helm-charts/
+  - name: default-netpol
+    version: 1.5.1-3c17d4
+    repository: oci://ghcr.io/hamburg-port-authority/defaultnetpol
