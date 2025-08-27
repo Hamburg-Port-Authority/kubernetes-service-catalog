@@ -5,7 +5,7 @@ description: This Chart deploys krane.
 dependencies:
   - name: krane
     version: 0.1.4-5ef85b
-    repository: oci://ghcr.io/hamburg-port-authority/krane/krane
+    repository: oci://ghcr.io/hamburg-port-authority/krane
   - name: default-netpol
     version: 1.5.1-3c17d4
     repository: oci://ghcr.io/hamburg-port-authority/defaultnetpol
