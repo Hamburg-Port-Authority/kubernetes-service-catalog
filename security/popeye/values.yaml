@@ -1,5 +1,3 @@
-clientIntent:
-  enabled: true
 popeye:
   cronJob:
     schedule: "0 * * * *"

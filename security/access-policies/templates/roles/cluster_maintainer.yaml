@@ -43,10 +43,6 @@ rules:
     resources: ["serviceaccounts"]
     verbs: ["impersonate"]
     resourceNames: ["secret-reader", "hks-admin"]
-  # otterize
-  - apiGroups: ["k8s.otterize.com"]
-    resources: ["clientintents"]
-    verbs: ["get", "watch", "list", "delete", "patch", "update", "create"]
   # certificates
   - apiGroups: ["cert-manager.io"]
     resources: ["certificate"]
