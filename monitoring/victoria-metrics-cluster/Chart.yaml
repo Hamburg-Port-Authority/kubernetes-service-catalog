@@ -4,7 +4,7 @@ version: 1.0.0
 description: This Chart deploys victoria-metrics-cluster.
 dependencies:
   - name: victoria-metrics-cluster
-    version: 0.28.2
+    version: 0.28.3
     repository: https://victoriametrics.github.io/helm-charts/
   - name: default-netpol
     version: 1.5.1-3c17d4
