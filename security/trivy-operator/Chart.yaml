@@ -4,7 +4,7 @@ version: 1.0.0
 description: This Chart deploys trivy-operator.
 dependencies:
   - name: trivy-operator
-    version: 6.2.5
+    version: 0.30.0
     repository: https://aquasecurity.github.io/helm-charts/
   - name: default-netpol
     version: 1.5.1-3c17d4
